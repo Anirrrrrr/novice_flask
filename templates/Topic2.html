@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="static\css\topic1_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<header>
+    <div class="menu">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            <span>NOVICE</span>
+        </div>
+        <nav>
+            <div class="menu-items">
+                <ul>
+                    <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                    <li class="additional-text">
+                        <a>Designed by Yelyzaveta Migulina<br>
+                        <br>
+                        Developed by Kateryna Astafieva<br>
+                        <br>
+                        &#9400;2023 Novice, Inc.
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                    {% if 'email' in session %}
+                    <div class="buttons-container">
+                        <div class="special3" id="userIconMenu">
+                            <a href="{{ url_for('profile') }}">
+                                <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                            </a>
+                            <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                <div class="user-info">
+                                    <div class="user-details">
+                                        <span>{{ session['email'] }}</span>
+                                    </div>
+                                    <div class="user-actions">
+                                        <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                        <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                        <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                        <a class="lang-fr"style="display: none;" href="{{ url_for('logout') }}">Déconnexion</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="buttons-container">
+                        <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                        <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                    </div>
+                    {% endif %}
+                    <div class="languages-container">
+                        <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                        <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                        </div>
+        </nav>
+    </div>
+</header>
+<center><h1>Requirements analysis</h1></center>
+<div class="text">
+    Requirements analysis encompasses those tasks that go into determining the needs or conditions to meet for a new or altered product or project, taking account of the possibly conflicting requirements of the various stakeholders, analyzing, documenting, validating and managing software or system requirements.
+Requirements analysis is critical to the success of a systems or software project. The requirements should be documented, actionable, measurable, testable, traceable, related to identified business needs or opportunities, and defined to a level of detail sufficient for system design.
+<br>Conceptually, requirements analysis includes three types of activities:
+<br>• Eliciting requirements:(e.g. the project charter or definition), business process documentation, and stakeholder interviews. This is also called requirements gathering.
+<br>• Analyzing requirements: determining whether the stated requirements are clear, complete, consistent and unambiguous, and resolving any apparent conflicts.
+<br>• Recording requirements: Requirements may be documented in various forms, usually including a summary list and may include natural-language documents, use cases, user stories, or process specifications.
+Requirements analysis can be a long and tiring process during which many delicate psychological skills are involved. New systems change the environment and relationships between people, so it is important to identify all the stakeholders, take into account all their needs and ensure they understand the implications of the new systems. Analysts can employ several techniques to elicit the requirements from the customer. These may include the development of scenarios (represented as user stories ), the identification of use cases, holding interviews, or focus groups (more aptly named in this context as requirements workshops, or requirements review sessions) and creating requirements lists. Prototyping may be used to develop an example system that can be demonstrated to stakeholders. Where necessary, the analyst will employ a combination of these methods to establish the exact requirements of the stakeholders, so that a system that meets the business needs is produced.
+<br>Types of requirements
+<br>As you start to specify what you want or desire, you hit up against technical language of requirements. Fear not, this is quite straightforward:
+<br>• Functional requirements - are what you want a system to do.
+<br>• Non-functional requirements - are restrictions on the types of solutions that will meet the functional requirements.
+<br>• Design objectives - are the guides to use in selecting a solution.
+<br>Functional Requirements
+<br>These are the type of behaviour you want the system to perform. If you were buying vehicles for a business your functional requirement might be:
+<br>• The vehicle should be able to take a load from a warehouse to a shop.
+<br>Similarly for a computer system you define what the system is to do. For example:
+<br>• The system should store all details of a customer’s order.
+<br>The important point to note is that WHAT is wanted is specified, and not HOW it will be delivered.
+<br>Non-Functional Requirements
+<br>These often lead to much mystical mumblings, implying that a high priest of the computing fraternity is the only person who can understand them. They are however quite simple; they are the restrictions or constraints to be placed on the system and how to build it. Their purpose is to restrict the number of solutions that will meet a set of requirements. Non-functional requirements can be split into two types: performance and development.
+<br>Performance Constraints
+<br>These constraints are how the system should perform when it is delivered. The vehicle example, without any constraints, might result in solutions being offered for everything from a large truck to a sports car. To restrict the types of solutions you might include these performance constraints:
+<br>• It must take a load of at least one ton.
+<br>• The load area must be covered.
+<br>• The load area must have a height of at least 10 feet.
+<br>You may include more. Similarly for a computer system you might specify values for these generic types of performance constraints:
+<br>• The response time for information to appear to a user.
+<br>• The number of hours a system should be available.
+<br>• The number of records a system should be able to hold.
+<br>• The capacity for growth of the system.
+<br>• The length of time a record should be held for auditing purposes.
+<br>For the customer records example these might be:
+<br>• Information should be made available and be stored in a maximum of 3 seconds.
+<br>• The system should be available from 9am to 5 pm Monday to Friday.
+<br>• The system should be able to hold a 100,000 customer records initially.
+<br>• The system should be able to add 10,000 records a year for 10 years.
+<br>• A record should be fully available on the system for at least 7 years.
+<br>The important point with these is that they restrict the number of solution options that are offered to you by the developer. Performance Testing is used to prove these have been met.
+<br>Development Constraints
+<br>In addition to the performance constraints you may include some development constraints. These mainly fall in the field of project management, but are still a restriction on the types of solution that can be offered. There are three general types of development constraint:
+<br>• Time - When a system should be delivered is the obvious time constraint.
+<br>• Resource - How much money is available to develop the system is obvious, but a key resource would be the amount of time business staff could spend in briefing system development staff.
+<br>• Quality - Any standards which are used to develop the system including project management, development methods etc.
+<br>Use cases
+<br>A use case is a structure for documenting the functional requirements for a system, usually involving software, whether that is new or being changed. Each use case provides a set of scenarios that convey how the system should interact with a human user or another system, to achieve a specific business goal. Use cases typically avoid technical jargon, preferring instead the language of the end-user. Use cases are deceptively simple tools for describing the behavior of software or systems. A use case contains a textual description of the ways in which users are intended to work with the software or system. Use cases should not describe internal workings of the system, nor should they explain how that system will be implemented. Instead, they show the steps needed to perform a task.
+<br>A user story is a description consisting of one or more sentences in the everyday or business language of the end user or user of a system that captures what a user does or needs to do as part of his or her job function. User stories are used with agile software development methodologies as the basis for defining the functions a business system must provide. It captures the "who", "what" and "why" of a requirement in a simple, concise way, often limited in detail by what can be hand-written on a small paper notecard.
+<br>Format of a user story
+<br>A team at Connextra developed the traditional user-story template in 2001:[4]
+<br>"As a &lt;role&gt;, I want &lt;goal/desire&gt; so that &lt;benefit&gt;"
+<br>Mike Cohn, a well-known author on user stories, regards the "so that" clause as optional:
+<br>"As a &lt;role&gt;, I want &lt;goal/desire&gt;"
+<br>"In order to &lt;receive benefit as a &lt;role&gt; I want &lt;goal/desire&gt;"
+<br>Another template based on the Five Ws specifies:
+<br>"As &lt;who&gt; &lt;when&gt; &lt;where&gt;, I &lt;what&gt; because &lt;why&gt;."
+<br>A template developed at Capital One in 2004 during their initial adoption of Agile methods focuses on the functionality and specifies:
+<br>"As a &lt;role&gt;, I can &lt;action with system&gt; so that &lt;external benefit&gt;"
+<br>Examples
+<br>Screening Quiz (Epic Story)
+<br>As the HR manager, I want to create a screening quiz so that I can understand whether I want to send possible recruits to the functional manager.[8]
+<br>Quiz Recall
+<br>As a manager, I want to browse my existing quizzes so I can recall what I have in place and figure out if I can just reuse or update an existing quiz for the position I need now.
+<br>Limited Backup
+<br>As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved.
+<br>A software requirements specification (SRS) is a description of a software system to be developed. It lays out functional and non-functional requirements, and may include a set of use cases that describe user interactions that the software must provide.
+<br>Prototyping
+<br>A prototype is a computer program that exhibits a part of the properties of another computer program, allowing users to visualize an application that has not yet been constructed. A popular form of prototype is a mockup, which helps future users and other stakeholders to get an idea of what the system will look like. Prototypes make it easier to make design decisions, because aspects of the application can be seen and shared before the application is built.
+<br>The purpose of a prototype is to allow users of the software to evaluate developers' proposals for the design of the eventual product by actually trying them out, rather than having to interpret and evaluate the design based on descriptions. Prototyping can also be used by end users to describe and prove requirements that have not been considered, and that can be a key factor in the commercial relationship between developers and their clients.
+</div>
+{% if 'email' in session %}
+<div class="bb" data-topic="Requirements analysis">
+    <button class="like-button" onclick="likeTopic('Requirements analysis')">&#10084; Like</button>
+    <button class="unlike-button" onclick="unlikeTopic('Requirements analysis')">Unlike</button>
+{% endif %}
+<div class="proposal"><center> <p>If you do not know the meaning of some words you can use <a href="{{ url_for('novice') }}">our dictionary</a>.</p></center></div>
+
+<div class="test">
+    <p class="task"> Ex. 1. Answer the questions</p>
+    <ol>
+        <li>What does requirements analysis encompass?</li>
+        <li>What characteristics should requirements have?</li>
+        <li>What types of activities should requirements analysis include?</li>
+        <li>What techniques to elicit the requirements from the customer can there exist?</li>
+        <li>What is a use case?</li>
+        <li>What is a user story?</li>
+        <li>What is prototyping?</li>     
+    </ol>
+
+ <p class="task"> Ex 2. Fill in the blanks with one of the following words.</p>
+<p>
+    1.
+    <select id="blank1">
+            <option value="" disabled selected hidden></option>
+            <option value="Gather">Gather</option>
+            <option value="Requirements">Requirements</option>
+           <option value="Analyze">Analyze</option>
+           <option value="Prioritize">Prioritize</option>
+    </select>
+    <span id="result1"></span> analysis encompasses the tasks that go into determining the needs or conditions to meet for a new or altered product or project.
+</p>
+<p>
+    2.Before developing a system it is necessary to take into account possibly conflicting 
+    <select id="blank2">
+            <option value="" disabled selected hidden></option>
+            <option value="evaluate">evaluate</option>
+            <option value="consider">consider</option>
+           <option value="requirements">requirements</option>*
+           <option value="document">document</option>
+    </select>
+    <span id="result2"></span> of the various stakeholders, to analyze, document, validate and manage software or system requirements.
+</p>
+<p>
+   3. Requirements analysis is
+    <select id="blank3">
+            <option value="" disabled selected hidden></option>
+            <option value="critical">critical</option>
+            <option value="vital">vital</option>
+            <option value="integral">integral</option>
+            <option value="essential">essential</option>
+           <option value="fundamental">fundamental</option>
+    </select>
+    <span id="result3"></span> to the success of a systems or software
+    <select id="blank4">
+        <option value="" disabled selected hidden></option>
+        <option value="initiative">initiative</option>
+        <option value="endeavor">endeavor</option>
+        <option value="venture">venture</option>
+       <option value="project">project</option>
+    </select>
+    <span id="result4"></span>.
+</p>
+<p>
+    4. The requirements should be
+     <select id="blank5">
+             <option value="" disabled selected hidden></option>
+             <option value="precisely">precisely</option>
+             <option value="defined">defined</option>
+             <option value="explicitly">explicitly</option>
+             <option value="specifically">specifically</option>
+     </select>
+     <span id="result5"></span>, actionable, measurable, testable, traceable, related to identified business or opportunities.
+ </p>
+ <p>
+    5. The requirements should be 
+     <select id="blank6">
+             <option value="" disabled selected hidden></option>
+             <option value="captured">captured</option>
+             <option value="recorded">recorded</option>
+             <option value="noted">noted</option>
+            <option value="documented">documented</option>
+     </select>
+     <span id="result6"></span> to a level of detail
+     <select id="blank7">
+         <option value="" disabled selected hidden></option>
+         <option value="appropriate">appropriate</option>
+         <option value="comprehensive">comprehensive</option>
+         <option value="thorough">thorough</option>
+        <option value="sufficient">sufficient</option>
+     </select>
+     <span id="result7"></span>for system design.
+ </p>
+<p>
+  6. There are three types of
+   <select id="blank8">
+     <option value="" disabled selected hidden></option>
+     <option value="key">key</option>
+     <option value="activities">activities</option>
+     <option value="central">central</option>
+     <option value="primary">primary</option>
+   </select>
+ <span id="result8"></span>in requirements analysis:
+ <select id="blank9">
+    <option value="" disabled selected hidden></option>
+    <option value="collecting">collecting</option>
+    <option value="eliciting">eliciting</option>
+    <option value="extracting">extracting</option>
+    <option value="obtaining">obtaining</option>
+ </select>
+ <span id="result9"></span>requirements, analyzing requirements, and 
+ <select id="blank10">
+    <option value="" disabled selected hidden></option>
+    <option value="documenting">documenting </option>
+    <option value="noting">noting</option>
+    <option value="registering">registering</option>
+    <option value="listing">listing</option>
+ </select>
+ <span id="result10"></span>requirements.
+</p>
+<p>7. 
+    <select id="blank11">
+      <option value="" disabled selected hidden></option>
+      <option value="Models">Models</option>
+      <option value="Samples">Samples</option>
+     <option value="Prototypes">Prototypes</option>
+     <option value="Demonstrations">Demonstrations</option>
+   </select>
+   <span id="result11"></span> may be used to develop an example system that can be demonstrated to stakeholders.
+  </p>
+<p>8. There exist several techniques to elicit the requirements from the customer: the development of
+    <select id="blank12">
+      <option value="" disabled selected hidden></option>
+      <option value="simulations">simulations</option>
+      <option value="representations">representations</option>
+      <option value="models">models</option>
+     <option value="prototypes">prototypes</option>
+   </select>
+   <span id="result12"></span>(represented as user stories ), the identification of use cases,
+
+   <select id="blank13">
+    <option value="" disabled selected hidden></option>
+    <option value="conducting">conducting</option>
+    <option value="carrying out">carrying out</option>
+    <option value="executing">executing</option>
+    <option value="holding">holding</option>
+ </select>
+ <span id="result13"></span>interviews, or requirements workshops, and
+ <select id="blank14">
+    <option value="" disabled selected hidden></option>
+    <option value="generating">generating</option>
+        <option value="compiling">compiling</option>
+        <option value="formulating">formulating</option>
+        <option value="creating">creating</option>
+ </select>
+ <span id="result14"></span>requirements lists.
+</p>
+  <p>
+    9. 
+    <select id="blank15">
+      <option value="" disabled selected hidden></option>
+      <option value="Use cases">Use cases</option>
+      <option value="Situations">Situations</option>
+      <option value="Instances">Instances</option>
+      <option value="Conditions">Conditions</option>
+   </select>
+   <span id="result15"></span> are the type of behaviour you want the system to perform.
+  </p>
+
+  <p>
+    10. The system should
+    <select id="blank16">
+      <option value="" disabled selected hidden></option>
+      <option value="document">document</option>
+      <option value="record">record</option>
+      <option value="store">store</option>
+      <option value="log">log</option>
+      
+   </select>
+   <span id="result16"></span>  all details of a customer’s order.
+  </p>
+  <p>
+    11. Development constraints relate to project 
+    <select id="blank17">
+      <option value="" disabled selected hidden></option>
+      <option value="scope">scope</option>
+      <option value="management">management</option>*
+      <option value="schedule">schedule</option>
+      <option value="budget">budget</option>
+      <option value="risks">risks</option>
+   </select>
+   <span id="result17"></span>.
+  </p>
+  <p>
+    12.  Performance 
+    <select id="blank18">
+      <option value="" disabled selected hidden></option>
+      <option value="Verification">Verification</option>
+      <option value="Evaluation">Evaluation</option>
+     <option value="Testing">Testing</option>
+     <option value="Validation">Validation</option>
+   </select>
+   <span id="result18"></span> is used to prove performance constraints have been met.
+  </p>
+
+  <p>
+    13. A 
+    <select id="blank19">
+      <option value="" disabled selected hidden></option>
+      <option value="use case">use case</option>8
+      <option value="situation">situation</option>
+      <option value="condition">condition</option>
+      <option value="instance">instance</option>
+   </select>
+   <span id="result19"></span> contains a textual description of the ways in which users 
+   <select id="blank20">
+    <option value="" disabled selected hidden></option>
+    <option value="intend">intend</option>
+    <option value="plan">plan</option>
+    <option value="anticipate">anticipate</option>
+    <option value="envision">envision</option>
+ </select>
+ <span id="result20"></span>to work with the software or system.
+  </p>
+  <p>
+    14. Use cases should not describe how the 
+    <select id="blank21">
+      <option value="" disabled selected hidden></option>
+      <option value="inside">inside</option>
+      <option value="internal">internal</option>
+      <option value="interior">interior</option>
+      <option value="inward">inward</option>
+   </select>
+   <span id="result21"></span>workings of the system, nor should they explain how that system will be
+   <select id="blank22">
+    <option value="" disabled selected hidden></option>
+    <option value="executed">executed</option>
+    <option value="realized">realized</option>
+    <option value="deployed">deployed</option>
+   <option value="implemented">implemented</option>
+ </select>
+ <span id="result22"></span> Instead, they show the steps needed to 
+ <select id="blank23">
+    <option value="" disabled selected hidden></option>
+    <option value="complete">complete</option>
+    <option value="fulfill">fulfill</option>
+   <option value="achieve">achieve</option>
+   <option value="attain">attain</option>
+ </select>
+ <span id="result23"></span>a task.
+  </p>
+
+</div>
+<div id="resultContainer"></div>
+
+<div class="test2">
+    <p class="task"> Ex 3. Match the terms with their definitions</p>
+    <div class="container">
+        <center><p>Terms</p></center>
+        <div class="terms-container" id="termsContainer">
+            <div id="termA" class="term" draggable="true" ondragstart="drag(event)">Non-functional requirements</div>
+            <div id="termB" class="term" draggable="true" ondragstart="drag(event)">Prototype</div>
+            <div id="termC" class="term" draggable="true" ondragstart="drag(event)">Software requirements specification</div>
+            <div id="termD" class="term" draggable="true" ondragstart="drag(event)">Use case</div>
+            <div id="termE" class="term" draggable="true" ondragstart="drag(event)">Performance Constraints</div>
+            <div id="termF" class="term" draggable="true" ondragstart="drag(event)">User story </div>
+            <div id="termG" class="term" draggable="true" ondragstart="drag(event)">Development Constraints</div>
+            <div id="termH" class="term" draggable="true" ondragstart="drag(event)">Design objectives</div>
+            <div id="termI" class="term" draggable="true" ondragstart="drag(event)">Functional requirements</div>
+            <div id="termJ" class="term" draggable="true" ondragstart="drag(event)">Requirements analysis</div>
+        </div>
+        <center><p>Definitions</p></center>
+        <div class="definitions-container" id="definitionsContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="definitionI" class="definition" droppable="true" data-term="termI">are the type of behavior you want the system to perform.</div>
+            <div id="definitionB" class="definition" droppable="true" data-term="termB">is a computer program that exhibits a part of the properties of another computer program, allowing users to visualize an application that has not yet been constructed.</div>
+            <div id="definitionD" class="definition" droppable="true" data-term="termD">is a structure for documenting the functional requirements for a system, usually involving software. Each use case provides a set of scenarios that convey how the system should interact with a human user or another system, to achieve a specific business goal.</div>
+            <div id="definitionA" class="definition" droppable="true" data-term="termA">are restrictions on the types of solutions that will meet the functional requirements.</div>
+            <div id="definitionE" class="definition" droppable="true" data-term="termE">are how the system should perform when it is delivered.</div>
+            <div id="definitionC" class="definition" droppable="true" data-term="termC"> is a description of a software system to be developed. It lays out functional and non-functional requirements, and may include a set of use cases that describe user interactions that the software must provide.</div>
+            <div id="definitionG" class="definition" droppable="true" data-term="termG">fall in the field of project management, but are still a restriction on the types of solution that can be offered. There are three main types of them: time, resource and quality.</div>
+            <div id="definitionH" class="definition" droppable="true" data-term="termH">are the guides to use in selecting a solution.</div>
+            <div id="definitionF" class="definition" droppable="true" data-term="termF">is a description consisting of one or more sentences in the everyday or business language of the end user or user of a system that captures the "who", "what" and "why" of a requirement in a simple, concise way, often limited in detail by what can be hand-written on a small paper notecard.</div>
+            <div id="definitionJ" class="definition" droppable="true" data-term="termJ">encompasses those tasks that go into determining the needs or conditions to meet for a new or altered product or project, taking account of the possibly conflicting requirements of the various stakeholders, analyzing, documenting, validating and managing software or system requirements.</div>
+        </div>
+        <div id="result" class="result"></div>
+        <div id="score"></div>
+        <button class="submit-btn" onclick="checkAllAnswers()" >Submit</button>
+      
+        <div id="score"></div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification" id="notification">
+        <span class="close-btn" onclick="closeNotification()">×</span>
+        <p id="notificationText">Please <a href="{{ url_for('login') }}">log in </a>or <a href="{{ url_for('register') }}">register</a> to check answers.</p>
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+<div id="liked-topics-container" style="display: none;">
+    <!-- Этот контейнер будет использоваться для отображения лайкнутых тем -->
+</div>
+    <button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+        <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+        <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+        <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    </svg></button>
+    <div class="element-before-footer "></div>
+    <footer>
+        <div class="footer-column">
+            <div class="first">
+            <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+    
+                <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                    <br>
+                    Developed by Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+                    <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                        <br>
+                        Développé par Kateryna Astafieva<br>
+                        <br>
+                        &copy; 2023 Novice, Inc.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column">
+            <center><ul>
+                <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+            </ul></center>
+        </div>
+        <div class="footer-column">
+            <div class="contact">
+                <div>Contacts</div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+              </svg> +380 88 888 88 88<br></div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+              </svg> kbvkdebkje@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        likeButton.addEventListener('click', function () {
+            // Извлекаем значение data-topic с использованием parentNode
+            var topicButtonsContainer = likeButton.parentNode;
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            likeTopic(topicName);
+        });
+    });
+
+    // Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+    likeButtons.forEach(function (likeButton) {
+        var topicButtonsContainer = likeButton.parentNode;
+        
+        if (topicButtonsContainer) {
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+            if (likeState === 'liked') {
+                likeButton.style.display = 'none';
+                likeButton.nextElementSibling.style.display = 'block';
+            } else if (likeState === 'unliked') {
+                likeButton.style.display = 'block';
+                likeButton.nextElementSibling.style.display = 'none';
+            }
+        } else {
+            console.error('Parent element with data-topic not found.');
+        }
+    });
+});
+
+// Остальной код...
+
+
+// Остальной код...
+
+
+// Остальной код...
+
+function likeTopic(topicName) {
+    console.log(`Liking topic: ${topicName}`);
+    sendLikeRequest(topicName, true);
+}
+
+function unlikeTopic(topicName) {
+    console.log(`Unliking topic: ${topicName}`);
+    sendLikeRequest(topicName, false);
+}
+
+function sendLikeRequest(topicName, liked) {
+    fetch(`/like_topic/${encodeURIComponent(topicName)}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${liked ? 'Like' : 'Unlike'} successful for topic: ${topicName}`);
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            updateLikeButtons(topicName, liked);
+            // Добавляем или удаляем тему из отображаемого списка лайкнутых тем
+            updateLikedTopicsContainer(topicName, liked);
+            // Сохраняем состояние лайка в localStorage
+            localStorage.setItem(`likeState_${topicName}`, liked ? 'liked' : 'unliked');
+        } else {
+            console.error(`Failed to process ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error(`Error while processing ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${error}`);
+    });
+}
+
+function updateLikeButtons(topicName, liked) {
+    // Находим элемент с нужным data-topic
+    var likeButtonsContainer = document.querySelector(`[data-topic="${topicName}"]`);
+
+    if (likeButtonsContainer) {
+        // Находим кнопки внутри контейнера
+        var likeButton = likeButtonsContainer.querySelector('.like-button');
+        var unlikeButton = likeButtonsContainer.querySelector('.unlike-button');
+
+        if (liked) {
+            likeButton.style.display = 'none';
+            unlikeButton.style.display = 'block';
+        } else {
+            likeButton.style.display = 'block';
+            unlikeButton.style.display = 'none';
+        }
+    } else {
+        console.error(`Element with data-topic "${topicName}" not found.`);
+    }
+}
+
+function updateLikedTopicsContainer(topicName, liked) {
+    var likedTopicsContainer = document.getElementById('liked-topics-container');
+    var topicElement = likedTopicsContainer.querySelector(`[data-topic="${topicName}"]`);
+
+    if (liked) {
+        if (!topicElement) {
+            topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            topicElement.setAttribute('data-topic', topicName);
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    } else {
+        if (topicElement) {
+            likedTopicsContainer.removeChild(topicElement);
+        }
+    }
+}
+
+// Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+document.addEventListener('DOMContentLoaded', function () {
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        var topicName = likeButton.closest('.like-buttons').dataset.topic;
+        var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+        if (likeState === 'liked') {
+            likeButton.style.display = 'none';
+            likeButton.nextElementSibling.style.display = 'block';
+        } else if (likeState === 'unliked') {
+            likeButton.style.display = 'block';
+            likeButton.nextElementSibling.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+var correctCount = 0;
+
+function checkAllAnswers() {
+    checkAuthenticationStatus().then(function(isAuthenticated) {
+        if (isAuthenticated) { 
+            correctCount = 0;
+            checkAnswers1();
+            checkAnswers2();
+            document.getElementById("resultContainer").innerHTML = `Correct Answers: ${correctCount}`;
+        } else {
+            // Если пользователь не аутентифицирован, покажем уведомление
+            showNotification("Please log in to check answers.");
+        }
+    });
+}
+
+
+function showNotification(message) {
+    var notificationContainer = document.getElementById("notificationContainer");
+        var notification = document.getElementById("notification");
+        var notificationText = document.getElementById("notificationText");
+        var progressBar = document.getElementById("progressBar");
+
+        notificationContainer.style.display = "block";
+
+        // Можно изменить текст уведомления по вашему усмотрению
+
+
+        // Устанавливаем время отображения уведомления в миллисекундах (в данном случае, 30 секунд)
+        var displayTime = 10000;
+
+        // Устанавливаем интервал обновления полосы прогресса
+        var interval = 100; // каждые 100 миллисекунд
+
+        var progress = 0;
+
+        // Обновляем полосу прогресса каждые interval миллисекунд
+        var progressInterval = setInterval(function() {
+            progress += (interval / displayTime) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Когда полоса прогресса достигнет 100%, закрываем уведомление
+            if (progress >= 100) {
+                closeNotification();
+                clearInterval(progressInterval); // Останавливаем интервал
+            }
+        }, interval);
+    }
+
+
+
+function closeNotification() {
+    var notificationContainer = document.getElementById("notificationContainer");
+        notificationContainer.style.display = "none";
+    }
+
+function checkAuthenticationStatus() {
+    // Отправка запроса на сервер для проверки статуса аутентификации
+    return fetch("/check-auth", {
+        method: "GET",
+        credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => data.isAuthenticated)
+    .catch(error => {
+        console.error("Error checking authentication status:", error);
+        return false;
+    });
+}
+
+function checkAnswers1() {
+    // Список правильных ответов
+    const correctAnswers = [
+       "Requirements",
+       "requirements",
+       "critical",
+       "project",
+       "defined",
+       "documented",
+       "sufficient",
+       "activities",
+       "eliciting",
+        "documenting",
+        "Prototypes",
+        "prototypes",
+        "conducting",
+        "creating",
+        "Use cases",
+        "record",
+        "management",
+        "Testing",
+        "use case",
+        "intend",
+        "internal",
+        "implemented",
+        "achieve"
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 23; i++) {
+        const selectedValue = document.getElementById(`blank${i}`).value;
+        const resultSpan = document.getElementById(`result${i}`);
+
+        if (selectedValue === correctAnswers[i - 1]) {
+            resultSpan.textContent = " ✓";
+            resultSpan.style.color = "green";
+            correctCount++;
+        } else {
+            resultSpan.textContent = " ✗";
+            resultSpan.style.color = "red";
+        }
+    }
+
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.textContent = `Number of correct answers: ${correctCount}`;
+}
+
+
+
+function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+
+            if (event.target.classList.contains("definition")) {
+                var dropTarget = event.target;
+                dropTarget.appendChild(draggedElement);
+
+                // Проверка на корректность соединения
+                if (draggedElement.dataset.term === dropTarget.dataset.term) {
+                    dropTarget.classList.add("correct");
+                    if (!dropTarget.classList.contains("counted")) {
+                        correctCount++;
+                        dropTarget.classList.add("counted");
+                    }
+                }
+            }
+        }
+
+    function checkAnswers2() {
+        var correctAnswers = document.querySelectorAll(".definition");
+        var correctCount = 0;
+
+        correctAnswers.forEach(function (answer) {
+            var termElement = answer.querySelector(".term");
+            if (termElement) {
+                if (answer.dataset.term === termElement.id) {
+                    answer.classList.add("correct");
+                    if (!answer.classList.contains("counted")) {
+                        correctCount++;
+                        answer.classList.add("counted");
+                    }
+                } else {
+                    answer.classList.add("incorrect");
+                }
+            }
+        });
+
+        document.getElementById("score").innerHTML = "Correct Answers: " + correctCount;
+    }
+
+
+
+
+  
+
+
+
+
+
+
+     function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+    
+    function toggleMenu() {
+        const menu = document.querySelector('.burger-menu');
+        menu.classList.toggle('close');
+    }
+    
+    
+    
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                const burgerMenu = document.querySelector('.burger-menu');
+                const nav = document.querySelector('nav');
+        
+                burgerMenu.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.getElementById('userIconMenu');
+        const userDropdown = document.getElementById('userDropdown');
+    
+        userIcon.addEventListener('mouseover', () => {
+            userDropdown.style.display = 'block';
+        });
+    
+        userIcon.addEventListener('mouseout', () => {
+            userDropdown.addEventListener('mouseover', () => {
+                userDropdown.style.display = 'block';
+            });
+    
+            userDropdown.addEventListener('mouseout', () => {
+                userDropdown.style.display = 'none';
+            });
+    
+            userDropdown.style.display = 'none';
+        });
+    });
+    
+    
+    
+    
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    
+        // Получаем кнопку "наверх"
+        var toTopButton = document.getElementById('toTopBtn');
+    
+        // Получаем футер
+        var footer = document.querySelector('footer');
+    
+        // Функция, которая будет проверять положение при прокрутке
+        function handleScroll() {
+            var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    
+    
+            if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+            } else {
+                toTopButton.style.bottom = '20px';
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>

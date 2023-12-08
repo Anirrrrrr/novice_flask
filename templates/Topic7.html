@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="static\css\topic1_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<body>
+<header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span>NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a>Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Log out</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                        </div>
+                        {% endif %}
+                        <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+            </nav>
+        </div>
+</header>
+<center><h1>Languages</h1></center>
+<div class="text">
+    <br>Computers are machines, and as intelligent as they might appear, they are devices that only recognize the presence or absence of electronic pulses. Picture a computer as being made up of thousands, even millions, of light switches. Each switch is either on or off — it either has an electronic pulse or it doesn't. These "switches" are called bits (binary digits) and are assigned numeric values. If a switch is on, it has the value 1; if it is off, it has the value 0 (or vice versa).
+    <br>Each computer is designed with a machine language. Machine language, or machine code, is the combination of bits that the computer recognizes as instructions. For example, the bit combina­tion 1111 1010 could mean add, while 1101 0101 could mean compare. Each computer model has its own machine code. The code for an IBM mainframe is not the same as the code for a Unisys mainframe. In fact, it is not even the same as the code for an IBM microcomputer.
+    <br>Originally, computer programs were written in machine code. The process was not only diffi­cult and time consuming; it was also inaccurate. Simply transposing ones and zeros would change an instruction completely. It is not surprising that computer languages such as CO­BOL were quickly developed.
+    <br>Computer, or programming, languages were the first tools developed to automate at least some of the job of the programmer. A computer language is an English-like language that has a set vocabulary and syntax rules to cover such things as punctuation and word order.
+    <br>Each language has a language translator, which is a program that takes the English-like instructions and converts them to machine code, thus creating a program the com­puter can execute. This means that there really are two versions of every program: the English language ver­sion used by the developer (called source code), and the executable machine language version, which is ex­ecutable. There are several different levels of computer languages ranging from low to high level. Low-level lan­guages are more difficult to learn and use, but create the most efficient programs. They take more time from the developer, but execute faster. The high level lan­guages are easier to learn and use, but the machine code programs generated are less efficient. Low-level languages are the closest to the actual machine language and are the most technical. The high-level languages are computer independent, work with any computer system, and require less technical knowledge by the programmer. Technical developers are more likely to work with low-level languages and applications developers with high-level languages and application development environments. Programmers today usually know many languages, and unless assembler language knowledge is required it is important to realize that a specific language is the least important of a programmer's skills. Languages can be learned quickly by experienced programmers as most of the activities involved in development, analysis, design, and testing, are independent of the programming language. Today programming languages are only one of the tools available to programmers. Tools exist to automate all phases of the development life cycle, and many tools are available espe­cially for the design and testing phases.
+    <br>Many programming languages are in use today, and it's not unusual for a program­mer to have experience with over a dozen languages. Languages can be classified as low-level (machine specific) and high-level (machine independent.) Only two types of languages are low-level: machine language and assembler language.
+    <br>All others are high-level and can be used in any machine environment as long as a translator pro­gram is available.
+    <br>Assembler Languages
+   <br> These languages are also called mnemonic languages, or mnemonic code. Assembler lan­guages are closely related to a specific computer and follow a one-for-one correspondence to its machine language. For example, a computer has as many as a dozen different instructions to add two numbers together. The instructions vary because of the location or size of the numbers. An assembler language must have a corresponding instruction for every one of these adds. Assembler languages have as many as 200 instructions that must be learned by the programmer. Because the instructions are so tied to the machine itself, assembler lan­guage is not transferable ['trænsf(ə)rəb(ə)l] between machines. If someone knows assembler language for an IBM mainframe, he or she cannot use this language to write a program for a Control Data machine. While most of the assembler programming is done instruction-by-instruction, pro­grammers can build macros by combining two or more assembler instructions. Working with macros is still low-level programming.
+   <br> Assembler languages are rarely used in the application environment except for building em­bedded systems, but are used by the systems staff. Because the languages are so close to the actual operation of the machine, more efficient programs can be written although there is a tradeoff in programming time. Actually, extreme efficiency is usually not important in an application environment. When a company runs its payroll, the programs might take hours to run, but they are only run once every two weeks. It makes more sense to save time writing the programs than to save time in execution. The reverse is true with systems programs. A pro­gram written by a systems programmer might produce the date on reports. Because this program will be executed hundreds of times every day, speed of execution is critical.
+   <br> Compiler Languages
+   <br> Compilers are called third-generation languages and are used for the most critical program­ming. A compiler language is a general-purpose language and is not tied to any machine. Most of these languages were developed outside the computer industry. COBOL, the most popular of all the languages, was developed by the U.S. Navy. PASCAL was developed at a Swiss university. With these languages, syntax, rules, and vocabulary were defined, and then computer manufacturers wrote translator programs to take the pre-defined language input and create machine-specific output. This means that knowledge of a compiler [kəm'paɪlə] language is transferable. Although minor changes are often needed, a COBOL program written for an IBM machine can indeed be executed on a Control Data machine. All the programmer has to do is use the appropriate translator.
+   <br> Compiler languages are much easier to learn than assemblers [ə'sembləz] , and programs take less time to write. A compiler, for example, will have a single add instruction. The translator chooses which of the machine instructions to use, and this saves time for the programmer both in learning the language and in writing programs. Compiler languages are heavily used in appli­cations programming and some, such as C and PASCAL, are efficient enough to be used in systems programming. Object-oriented, interpreters, and scripting languages are all varia­tions of compiler languages.
+   <br> Object-Oriented Languages Specific compiler languages were developed to work with object technology and work with object classes and libraries. C++ and Java are the most common of these languages although there are many, all of which are used by some companies.
+   <br> Interpreters. An interpreter is any programming language that works by translating the English language statements into machine code and immediately executing the code. That is, the translation and execution are both done every time the program needs to run. Interpreters are very flexible and allow the devel­oper to immediately see results. Scripting languages are usually interpreted languages, as are some compilers such as Java and Basic.
+   <br> Scripting Languages There is debate over whether scripting languages are a subset of compiler languages or a separate category, but whether they are or not, they have the following characteristics. These languages are specialized programming languages that pro­cess text strings, search files, databases ['deɪtəbeɪs] and indexes, and generate reports. They do not have all the features of other languages and would not be used for critical programming, but are excellent for input/output intensive situations. They are easier to use than any other languages and have gained popularity with the growth of the Internet and Web development. Scripting languages have been used with operating systems for many years, particularly with Unix. Unix shell languages are scripting languages, as is the Unix extension Perl.
+   <br> Query languages
+   <br> Many different languages fall under the category "query languages." A query is a program that produces a report. A report is anything that goes to paper or a terminal screen. This means the information is non-permanent - permanent data must be stored on tape or disk in the computer world. Only data that is accessible by another program is permanent. Report programs actually are simply defined. These programs access a data collection (usually a database) and select specific data or summarize data. Selection can be listing records "pro­duce a list of employees in the accounting department" or information from a record "show me name and address for the employee whose social security number is 123456789." Sum­marization is one of three things: totaling information, calculating percentages, or calculating averages. The report (the selection or the summary) can go to paper or to a terminal screen. Many people classify scripting languages as query languages, and this category also includes 4GLs and visual languages.
+   <br> 4GLs (Fourth Generation Languages)
+   <br> 4GLs, or query lan­guages, are also called user-friendly, query, and nonprocedural languages. These languages are almost free-form in structure and have few rules and predefined vocabulary. Because they were designed to be used by nonprogrammers (hence the title user-friendly), the translator program works from a simple definition of what the output should be and does not require step-by-step instructions to achieve the result.
+    <br>4GLs concentrate on instructions to query databases. A query to a database can be asking for a response back to a terminal screen (such as "Show me John Johnson's checking balance") or a com­plete report ("Produce John Johnson's monthly checking account balance").
+    <br>These lan­guages are easy to use and programs can be written very quickly using them. They are excellent for queries and reports, but do not have the control of assembler, or even com­piler languages. They are used mostly by applications programmers for report generation and to develop Internet and client/server applications. While learning and using a 4GL is simpler, than working with a compiler language, it still requires technical knowledge and these languages did not prove to be "user-friendly." SQL (Structured Query Language) is the most dominant query language.
+    <br>Visual Languages Visual languages are also called ADEs (Application Development Envi­ronments). There are systems that allow developers to use a GUI (Graphic User Interface) to create programs rather than writing code statements. These "languages" also are used for testing, so really should be classified as development tools, rather than as languages. VB (Visual Basic) and Delphi are both visual languages.
+   <br> Some Specific Languages
+    <br>There are three languages which are used extensively and worth looking at specifically: 1) SQL (Structured Query Language), which is the standard query language used to access rela­tional databases; 2) UML (Unified Modeling Language), which is used to build design models; and 3) XML, (extensible Markup Language) which is a standard interface language.
+    <br>SQL (Structured Query Language)
+    <br>SQL is a 4GL that was originally developed to query relational databases and has become an industry standard. Most databases from all vendors are accessible through SQL, and it is used in mainframe, midrange, and desktop environments. Its capabilities have been extended to access databases of all types, and even data stored in file structures. More and more, SQL knowledge is becoming part of the necessary skill base for all programmers in business environments. Because SQL has been accepted throughout the entire computer industry, it is dominantly used in any multi-vendor or multi-platform environment. Client/server and Internet applications require that different systems be able to function together, and SQL is used in the server-side processing.
+    <br>SQL is recognized by ANSI (American National Standards Institute) and the current version in use is SQL2. This doesn't necessarily mean people use the numeric designation, but it's worth noting because of the existence of SQL3. SQL3 is the language used to access objects stored in an object-relational database.
+    <br>UML (Unified Modeling Language)
+    <br>UML is both a development methodology and notational format used in object analysis and design and works with all object-oriented methodologies. Using UML (Unified Modeling Lan­guage), developers define a three-tiered model of the application: user interface, business logic and database in which they describe class (of objects), object, association, responsibility, activity, interface, use case, package, sequence, collaboration, and state. Booch, Rumbaugh, and Jacobson, three of the major developers of object-oriented technologies, created this single modeling system in the mid 1990s, and it is now an accepted standard of the Object Management Group (OMG).
+    <br>XML (Extensible Markup Language)
+    <br>XML is a markup language that enables the definition, transmission, validation, and interpretation of data between applications and between organizations. It is a product of W3C (World Wide Web Consortium) and is vendor, platform, application, language and product independent. This defini­tion really does define a technology, not just a language, and XML is used in many different ways.
+    <br>A markup language is one that uses tags to specify content and/or appearance of printed or displayed information. HTML is the most common markup language, and it is used to specify the look of information on Web pages. In HTML:
+    <br>The code: would show:
+    <br>&lt;l&gt;be sure to check&lt;/l&gt; (italic) be sure to check
+    <br>&lt;B&gt;NEW RELEASES!&lt;/B&gt; (bold) NEW RELEASES!
+    <br>While HTML provides all the allowable tags, XML goes beyond this (hence the name eXtensible) in that it permits the definition of additional tags through a DTD (Document Type Definition). These new tags can than be used in documents, text files, Web pages, and databases. For example, if a tag &lt;CustomerName&gt; existed, that tag could be used in the Web page when the visitor filled in a name field, used in a database definition so the information would automatically be transferred to the database, then used in a report definition that would provide a list of new customers to appropriate management.
+    <br>A set of defined tags is called a vocabulary, and vocabularies are being defined by industries, associations, scientific fields, etc. The benefits of industry-defined vocabularies are many. If the insurance vocabulary includes the tag &lt;policynumber&gt;, and Prudential, Allstate, and State Farm all use that tag, a Web site could find policies from all three companies. CML (Chemical Markup Language) was one of the first XML vocabularies, and covers many chemical disciplines. HRML (Human Resources Markup Language) defines HR standards and allows corporate applications, job board Web sites, ATSs (Applicant Tracking Systems), and consulting firms and agencies to share job listings. In addition to these vertical vocabularies, horizontal vocabularies that can be used across industries have been accepted by W3C. One of these, VoxML (Voice Markup Language) allows developers to add speech interfaces to their Web applications and can be used by developers in any industry. Literally hundreds of vocabularies have been defined and published.
+    <br>XML is an important tool and is fast becoming a standard skill for almost all IT developers. It's obviously used in Web development, but has additional uses. The legal field is starting to use XML to search the volumes of case work and legal issues that build a case. The Gene Ontology Consortium is producing a dynamically-controlled vocabulary that can be applied to all or­ganisms even as knowledge of gene and protein roles in cells is accumulating and changing. XML will allow automatic incorporation of the new knowledge. And, the dominant use in today's corporate world is to build an infrastructure between internal applications! Compa­nies have many applications - home-grown, ERP (Enterprise Resource Planning) systems, ven­dor supplied, eApplications, and Web front-ends. And, too often, these systems can't exchange information and processing without lengthy programming. Corporations are using XML to solve this problem. Estimates state that 70-80% of all development will be using XML. XML is poised to become a necessary skill for almost all developers, and one of the most dominant tools in all of IT.
+</div>
+{% if 'email' in session %}
+<div class="bb" data-topic="Languages">
+    <button class="like-button" onclick="likeTopic('Languages')">&#10084; Like</button>
+    <button class="unlike-button" onclick="unlikeTopic('Languages')">Unlike</button>
+</div>
+    {% endif %}
+<div class="proposal"><center> <p>If you do not know the meaning of some words you can use <a href="{{ url_for('novice') }}">our dictionary</a>.</p></center></div>
+<div class="test">
+    <p class="task"> Ex. 1. Answer the questions</p>
+    <ol>
+        <li>What is the essence of computers as machines?</li>
+        <li>What is a machine language?</li>
+        <li>What was the reason for developing computer languages such as COBOL?</li>
+        <li>What is a computer language?</li>
+        <li>What is the purpose of a program called language translator?</li>
+        <li>What is the difference between low-level computer lan¬guages and high level lan¬guages?</li>
+        <li>What are two types of low-level languages?</li>
+        <li>What are the preferences of developers towards the use of computer languages?</li>
+        <li>What is the assembler language?</li>
+        <li>Is assembler language transferable between machines and why?</li>
+        <li>What is a compiler language and what are its varia¬tions?</li>
+        <li>What are the most common object-oriented languages?</li>
+        <li>What are scripting languages?</li>
+        <li>How can you characterize fourth generation languages?</li>
+        <li>What are visual languages?</li>
+        <li>Can you name some specific languages?</li>
+        <li>What is a set of defined tags called?</li>
+    </ol>
+ <p class="task"> Ex 2. Fill in the blanks with one of the following words.</p>
+
+ <p>
+    1. While most of the assembler programming is done instruction-by-instruction, pro¬grammers can build  
+    <select id="blank1">
+        <option value="" disabled selected hidden></option>
+        <option value="functions">functions</option>
+        <option value="macros">macros</option>
+        <option value="variables">variables</option>
+        <option value="loops">loops</option>
+    </select>
+    <span id="result1"></span>by combining two or more assembler instructions. 
+</p>
+<p>
+    2. This means the information is 
+    <select id="blank2">
+        <option value="" disabled selected hidden></option>
+        <option value="permanent">permanent</option>
+        <option value="volatile">volatile</option>
+        <option value="immutable">immutable</option>
+        <option value="non">non</option>
+    </select>
+    <span id="result2"></span>-permanent data must be stored on tape or disk in the computer world.
+</p>
+<p>
+    3. 
+    <select id="blank3">
+        <option value="" disabled selected hidden></option>
+        <option value="Visual languages">Visual languages</option>
+        <option value="Programming languages">Programming languages</option>
+        <option value="Scripting languages">Scripting languages</option>
+        <option value="Markup languages">Markup languages</option>
+    </select>
+    <span id="result3"></span>are also called ADEs (Application Development Environments).
+</p>
+<p>
+    4. 
+    <select id="blank4">
+        <option value="" disabled selected hidden></option>
+        <option value="Python">Python</option>
+        <option value="SQL">SQL</option>
+        <option value="C++">C++</option>
+        <option value="Java">Java</option>
+    </select>
+    <span id="result4"></span>, which is the standard query language used to access rela¬tional databases. 
+</p>
+<p>
+    5. 
+    <select id="blank5">
+        <option value="" disabled selected hidden></option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="CSS">CSS</option>
+        <option value="HTML">HTML</option>
+        <option value="PHP">PHP</option>
+    </select>
+    <span id="result5"></span>is the most common markup language, and it is used to specify the look of information on Web pages.
+</p>
+<p>
+    6. 
+    <select id="blank6">
+        <option value="" disabled selected hidden></option>
+        <option value="XML">XML</option>
+        <option value="Java">Java</option>
+        <option value="C#">C#</option>
+        <option value="Ruby">Ruby</option>
+    </select>
+    <span id="result6"></span> is poised to become a necessary skill for almost all developers, and one of the most dominant tools in all of IT.
+</p>
+<p>
+    7. 
+    <select id="blank7">
+        <option value="" disabled selected hidden></option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="XML">XML</option>
+        <option value="CML">CML</option>
+    </select>
+    <span id="result7"></span> was one of the first XML vocabularies, and covers many chemical disciplines.
+</p>
+
+<p>
+    8. HRML (Human Resources Markup Language) defines HR standards and allows corporate applications, job board Web sites,
+    <select id="blank8">
+        <option value="" disabled selected hidden></option>
+        <option value="ATSs">ATSs</option>
+        <option value="databases">databases</option>
+        <option value="APIs">APIs</option>
+        <option value="applications">applications</option>
+    </select>
+    <span id="result8"></span>, and consulting firms and agencies to share job listings.
+</p>
+</div>
+<div id="resultContainer"></div>
+<div class="test2">
+    <p class="task"> Ex 3. Match the terms with their definitions</p>
+    <div class="container">
+        <center><p>Terms</p></center>
+        <div class="terms-container" id="termsContainer">
+            <div id="termA" class="term" draggable="true" ondragstart="drag(event)">High-level language </div>
+            <div id="termB" class="term" draggable="true" ondragstart="drag(event)">Machine code </div>
+            <div id="termC" class="term" draggable="true" ondragstart="drag(event)">Low-level language </div>
+            <div id="termD" class="term" draggable="true" ondragstart="drag(event)">Programming language  </div>
+            <div id="termE" class="term" draggable="true" ondragstart="drag(event)">Bits (binary digits) </div>
+            <div id="termF" class="term" draggable="true" ondragstart="drag(event)">Object-oriented language </div>
+            <div id="termG" class="term" draggable="true" ondragstart="drag(event)">Query</div>
+            <div id="termH" class="term" draggable="true" ondragstart="drag(event)">Compiler (language translator) </div>
+            <div id="termI" class="term" draggable="true" ondragstart="drag(event)">XML (extensible Markup Language)</div>
+            <div id="termJ" class="term" draggable="true" ondragstart="drag(event)">SQL</div>
+            <div id="termL" class="term" draggable="true" ondragstart="drag(event)">Scripting languages</div>
+            <div id="termM" class="term" draggable="true" ondragstart="drag(event)">Report</div>
+            <div id="termN" class="term" draggable="true" ondragstart="drag(event)">HTML</div>
+            <div id="termP" class="term" draggable="true" ondragstart="drag(event)">Vocabulary</div>
+        </div>
+        <center><p>Definitions</p></center>
+        <div class="definitions-container" id="definitionsContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="definitionA" class="definition" droppable="true" data-term="termA">A computer programming language that resembles natural language and is designed to reflect the requirements of a problem (machine independent) </div>
+            <div id="definitionN" class="definition" droppable="true" data-term="termN">The most common markup language used to specify the look of information on Web pages</div> 
+            <div id="definitionC" class="definition" droppable="true" data-term="termC">A computer programming language that is closer to machine language than to human language (machine specific)</div>
+            <div id="definitionP" class="definition" droppable="true" data-term="termP">A set of defined tags</div> 
+            <div id="definitionH" class="definition" droppable="true" data-term="termH">A computer program which converts language that people can use into  machine code that the computer can understand.</div>
+            <div id="definitionB" class="definition" droppable="true" data-term="termB">A way of expressing instructions and information in the form of numbers which can be understood by a computer.</div>
+            <div id="definitionF" class="definition" droppable="true" data-term="termF">A programming language created using a methodology which enables a system to be modelled as a set of objects which can be controlled and manipulated in a modular manner</div>
+            <div id="definitionE" class="definition" droppable="true" data-term="termE">A unit of information expressed as either a 0 or 1 in binary notation</div>
+            <div id="definitionI" class="definition" droppable="true" data-term="termI">A standard interface language that enables the definition, transmission, validation, and interpretation of data between applications and between organizations</div>  
+            <div id="definitionJ" class="definition" droppable="true" data-term="termJ">A standard query language used to access rela-tional databases</div>
+            <div id="definitionD" class="definition" droppable="true" data-term="termD">A simple language system designed to facilitate the writing of computer programs</div>
+            <div id="definitionM" class="definition" droppable="true" data-term="termM">Anything that goes to paper or a terminal screen.</div> 
+            <div id="definitionG" class="definition" droppable="true" data-term="termG">A program that produces a report.</div>
+            <div id="definitionL" class="definition" droppable="true" data-term="termL">Specialized programming languages that pro-cess text strings, search files, databases and indexes, and generate reports</div>
+
+        </div>
+        <div id="result" class="result"></div>
+        <div id="score"></div>
+        <button class="submit-btn" onclick="checkAllAnswers()" >Submit</button>
+      
+        <div id="score"></div>
+
+    </div>
+</div>
+
+
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification" id="notification">
+        <span class="close-btn" onclick="closeNotification()">×</span>
+        <p id="notificationText">Please <a href="{{ url_for('login') }}">log in </a>or <a href="{{ url_for('register') }}">register</a> to check answers.</p>
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+
+<div id="liked-topics-container" style="display: none;"></div>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+</svg></button>
+<div class="element-before-footer "></div>
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        likeButton.addEventListener('click', function () {
+            // Извлекаем значение data-topic с использованием parentNode
+            var topicButtonsContainer = likeButton.parentNode;
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            likeTopic(topicName);
+        });
+    });
+
+    // Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+    likeButtons.forEach(function (likeButton) {
+        var topicButtonsContainer = likeButton.parentNode;
+        
+        if (topicButtonsContainer) {
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+            if (likeState === 'liked') {
+                likeButton.style.display = 'none';
+                likeButton.nextElementSibling.style.display = 'block';
+            } else if (likeState === 'unliked') {
+                likeButton.style.display = 'block';
+                likeButton.nextElementSibling.style.display = 'none';
+            }
+        } else {
+            console.error('Parent element with data-topic not found.');
+        }
+    });
+});
+
+
+function likeTopic(topicName) {
+    console.log(`Liking topic: ${topicName}`);
+    sendLikeRequest(topicName, true);
+}
+
+function unlikeTopic(topicName) {
+    console.log(`Unliking topic: ${topicName}`);
+    sendLikeRequest(topicName, false);
+}
+
+function sendLikeRequest(topicName, liked) {
+    fetch(`/like_topic/${encodeURIComponent(topicName)}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${liked ? 'Like' : 'Unlike'} successful for topic: ${topicName}`);
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            updateLikeButtons(topicName, liked);
+            // Добавляем или удаляем тему из отображаемого списка лайкнутых тем
+            updateLikedTopicsContainer(topicName, liked);
+            // Сохраняем состояние лайка в localStorage
+            localStorage.setItem(`likeState_${topicName}`, liked ? 'liked' : 'unliked');
+        } else {
+            console.error(`Failed to process ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error(`Error while processing ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${error}`);
+    });
+}
+
+function updateLikeButtons(topicName, liked) {
+    // Находим элемент с нужным data-topic
+    var likeButtonsContainer = document.querySelector(`[data-topic="${topicName}"]`);
+
+    if (likeButtonsContainer) {
+        // Находим кнопки внутри контейнера
+        var likeButton = likeButtonsContainer.querySelector('.like-button');
+        var unlikeButton = likeButtonsContainer.querySelector('.unlike-button');
+
+        if (liked) {
+            likeButton.style.display = 'none';
+            unlikeButton.style.display = 'block';
+        } else {
+            likeButton.style.display = 'block';
+            unlikeButton.style.display = 'none';
+        }
+    } else {
+        console.error(`Element with data-topic "${topicName}" not found.`);
+    }
+}
+
+function updateLikedTopicsContainer(topicName, liked) {
+    var likedTopicsContainer = document.getElementById('liked-topics-container');
+    var topicElement = likedTopicsContainer.querySelector(`[data-topic="${topicName}"]`);
+
+    if (liked) {
+        if (!topicElement) {
+            topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            topicElement.setAttribute('data-topic', topicName);
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    } else {
+        if (topicElement) {
+            likedTopicsContainer.removeChild(topicElement);
+        }
+    }
+}
+
+// Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+document.addEventListener('DOMContentLoaded', function () {
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        var topicName = likeButton.closest('.like-buttons').dataset.topic;
+        var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+        if (likeState === 'liked') {
+            likeButton.style.display = 'none';
+            likeButton.nextElementSibling.style.display = 'block';
+        } else if (likeState === 'unliked') {
+            likeButton.style.display = 'block';
+            likeButton.nextElementSibling.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+var correctCount = 0;
+
+function checkAllAnswers() {
+    checkAuthenticationStatus().then(function(isAuthenticated) {
+        if (isAuthenticated) { 
+            correctCount = 0;
+            checkAnswers1();
+            checkAnswers2();
+            document.getElementById("resultContainer").innerHTML = `Correct Answers: ${correctCount}`;
+        } else {
+            // Если пользователь не аутентифицирован, покажем уведомление
+            showNotification("Please log in to check answers.");
+        }
+    });
+}
+
+
+function showNotification(message) {
+    var notificationContainer = document.getElementById("notificationContainer");
+        var notification = document.getElementById("notification");
+        var notificationText = document.getElementById("notificationText");
+        var progressBar = document.getElementById("progressBar");
+
+        notificationContainer.style.display = "block";
+
+        // Можно изменить текст уведомления по вашему усмотрению
+
+
+        // Устанавливаем время отображения уведомления в миллисекундах (в данном случае, 30 секунд)
+        var displayTime = 10000;
+
+        // Устанавливаем интервал обновления полосы прогресса
+        var interval = 100; // каждые 100 миллисекунд
+
+        var progress = 0;
+
+        // Обновляем полосу прогресса каждые interval миллисекунд
+        var progressInterval = setInterval(function() {
+            progress += (interval / displayTime) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Когда полоса прогресса достигнет 100%, закрываем уведомление
+            if (progress >= 100) {
+                closeNotification();
+                clearInterval(progressInterval); // Останавливаем интервал
+            }
+        }, interval);
+    }
+
+
+
+function closeNotification() {
+    var notificationContainer = document.getElementById("notificationContainer");
+        notificationContainer.style.display = "none";
+    }
+
+function checkAuthenticationStatus() {
+    // Отправка запроса на сервер для проверки статуса аутентификации
+    return fetch("/check-auth", {
+        method: "GET",
+        credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => data.isAuthenticated)
+    .catch(error => {
+        console.error("Error checking authentication status:", error);
+        return false;
+    });
+}
+function checkAnswers1() {
+    // Список правильных ответов
+    const correctAnswers = [
+    "macros",
+     "non",
+     "Visual languages",
+     "SQL",
+     "HTML",
+     "XML",
+     "CML",
+     "ATSs"     
+      
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 8; i++) {
+        const selectedValue = document.getElementById(`blank${i}`).value;
+        const resultSpan = document.getElementById(`result${i}`);
+
+        if (selectedValue === correctAnswers[i - 1]) {
+            resultSpan.textContent = " ✓";
+            resultSpan.style.color = "green";
+            correctCount++;
+        } else {
+            resultSpan.textContent = " ✗";
+            resultSpan.style.color = "red";
+        }
+    }
+
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.textContent = `Number of correct answers: ${correctCount}`;
+}
+
+
+
+function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+
+            if (event.target.classList.contains("definition")) {
+                var dropTarget = event.target;
+                dropTarget.appendChild(draggedElement);
+
+                // Проверка на корректность соединения
+                if (draggedElement.dataset.term === dropTarget.dataset.term) {
+                    dropTarget.classList.add("correct");
+                    if (!dropTarget.classList.contains("counted")) {
+                        correctCount++;
+                        dropTarget.classList.add("counted");
+                    }
+                }
+            }
+        }
+
+    function checkAnswers2() {
+        var correctAnswers = document.querySelectorAll(".definition");
+        var correctCount = 0;
+
+        correctAnswers.forEach(function (answer) {
+            var termElement = answer.querySelector(".term");
+            if (termElement) {
+                if (answer.dataset.term === termElement.id) {
+                    answer.classList.add("correct");
+                    if (!answer.classList.contains("counted")) {
+                        correctCount++;
+                        answer.classList.add("counted");
+                    }
+                } else {
+                    answer.classList.add("incorrect");
+                }
+            }
+        });
+
+        document.getElementById("score").innerHTML = "Correct Answers: " + correctCount;
+    }
+
+
+
+
+  
+
+
+
+
+
+
+     function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+    
+    function toggleMenu() {
+        const menu = document.querySelector('.burger-menu');
+        menu.classList.toggle('close');
+    }
+    
+    
+    
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                const burgerMenu = document.querySelector('.burger-menu');
+                const nav = document.querySelector('nav');
+        
+                burgerMenu.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.getElementById('userIconMenu');
+        const userDropdown = document.getElementById('userDropdown');
+    
+        userIcon.addEventListener('mouseover', () => {
+            userDropdown.style.display = 'block';
+        });
+    
+        userIcon.addEventListener('mouseout', () => {
+            userDropdown.addEventListener('mouseover', () => {
+                userDropdown.style.display = 'block';
+            });
+    
+            userDropdown.addEventListener('mouseout', () => {
+                userDropdown.style.display = 'none';
+            });
+    
+            userDropdown.style.display = 'none';
+        });
+    });
+    
+    
+    
+    
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    
+        // Получаем кнопку "наверх"
+        var toTopButton = document.getElementById('toTopBtn');
+    
+        // Получаем футер
+        var footer = document.querySelector('footer');
+    
+        // Функция, которая будет проверять положение при прокрутке
+        function handleScroll() {
+            var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    
+    
+            if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+            } else {
+                toTopButton.style.bottom = '20px';
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>NOVICE</title>
+    <link rel="stylesheet" href="static\css\blog.css">
+    <link rel="icon" href="static\img\logo.png">
+
+    <!--<script src="https://raw.githubusercontent.com/bedimcode/responsive-card-slider/main/assets/js/swiper-bundle.min.js"></script>-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" crossorigin="">-->
+
+
+    
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+
+
+
+
+</head>
+<header>
+    <div class="menu">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            <span >NOVICE</span>
+        </div>
+        <nav>
+            <div class="menu-items">
+                <ul>
+                    <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                    <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                    <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                    <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                    <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                    <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                    <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                    <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+                    <li class="additional-text">
+                        <a class="lang-en">Designed by Yelyzaveta Migulina<br>
+                        <br>
+                        Developed by Kateryna Astafieva<br>
+                        <br>
+                        &#9400;2023 Novice, Inc.
+                        </a>
+                        <a class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulina<br>
+                            <br>
+                             Développé par Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                    </li>
+                </ul>
+            </div>
+                    {% if 'email' in session %}
+                    <div class="buttons-container">
+                        <div class="special3" id="userIconMenu">
+                            <a href="{{ url_for('profile') }}">
+                                <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                            </a>
+                            <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                <div class="user-info">
+                                    <div class="user-details">
+                                        <span>{{ session['email'] }}</span>
+                                    </div>
+                                    <div class="user-actions">
+                                        <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                        <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                        <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                        <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    {% else %}
+                    <div class="buttons-container">
+                        <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                        <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                        
+                    </div>
+                    {% endif %}
+                        <div class="languages-container">
+                        <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                        <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+    </div>
+</header>
+
+
+
+ <center><h1 style="color: white;">BLOG</h1></center> 
+<div class="text" >
+    <p style="text-indent: 20px;" class="lang-en" >In this section, we provide you with additional information on each topic, offering a comprehensive understanding supplemented by engaging videos. Explore the richness of each subject through detailed insights, real-world examples, and expert perspectives. Enhance your knowledge and learning experience with our curated video content that brings concepts to life. Whether you're a novice or an expert, these videos aim to cater to diverse learning needs, making complex topics more accessible and enjoyable. Delve deeper into the intricacies of each subject matter and broaden your horizons with our multimedia-rich approach. Happy exploring!</p>
+    <p  class="lang-fr" style="display: none;"> Dans cette section, nous vous fournissons des informations supplémentaires sur chaque sujet, offrant une compréhension globale complétée par des vidéos attrayantes. Explorez la richesse de chaque sujet grâce à des informations détaillées, des exemples concrets et des points de vue d'experts. Améliorez vos connaissances et votre expérience d'apprentissage grâce à notre contenu vidéo qui donne vie aux concepts. Que vous soyez novice ou expert, ces vidéos visent à répondre aux différents besoins d'apprentissage, en rendant les sujets complexes plus accessibles et plus agréables. Approfondissez les subtilités de chaque sujet et élargissez vos horizons grâce à notre approche riche en multimédia. Bonne exploration !</p>
+</div>
+<div class="video">
+<section class="container">
+    <div class="card__container swiper">
+       <div class="card__content">
+          <div class="swiper-wrapper">
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/2.png') }}" alt="image" class="card__img">
+                    
+                   <!--<div id="video-1" class="card__img" ></div>-->
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">Requirements analysis</h3>
+                   <p class="card__description">
+                    Requirements analysis is the stage in software development where customer needs and system functionality are identified and documented.
+                   
+                
+                
+                </p>
+ 
+                   <a href="https://youtu.be/gyXcu78bWis?si=BTwmXXVsrr1rCAe-" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+ 
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/3.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">The Analysis Phase</h3>
+                   <p class="card__description">
+                    Analysis is determining what the problem is. This means carefully examining the existing system and any problems that exist working with it.
+                   </p>
+ 
+                   <a href="https://youtu.be/61WuIZIG5N0?si=jQzOw-d6lnlykkrB" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+ 
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/4.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">The Design Phase</h3>
+
+                   <p class="card__description">
+                    Designing the data means deciding how the data should be stored and determining such things as whether or not to use a database.
+                   </p>
+
+                   <a href="https://youtu.be/yjxnvcZ7dlc?si=yD1CUzJZMs1-daN4" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+ 
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src=" {{ url_for('static', filename='img/1.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+               
+                <div class="card__data">
+                   <h3 class="card__name">Implementation & Coding Phase in SDLC</h3>
+                   <p class="card__description">
+                    In the Implementation & Coding Phase, developers write and test the code based on design specifications, creating the functional core of the software.
+                   </p>
+ 
+                   <a href="https://youtu.be/z9xSwcGl45k?si=TmRrn-dlG1v1Q94s" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="  {{ url_for('static', filename='img/7.png') }}" alt="image" class="card__img">
+                   
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">The Programming Language Guide</h3>
+                   <p class="card__description">
+                   We will talk about how programming languages work including low-level & high-level, compiled, interpreted, etc. 
+                   </p>
+ 
+                   <a href="https://youtu.be/2lVDktWK-pc?si=blybsgNqjyjV7MXu" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/8.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">Tools EVERY Software Engineer Should Know</h3>
+                   <p class="card__description">
+                    A rundown of essential tools for software engineering. These are the tools you’ll need to know as a software developer.
+                   </p>
+
+                   <a href="https://youtu.be/D4JkWoUovdo?si=ZdRlJi8X7jbSMcp-" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/9.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">How QA is Done Today</h3>
+                   <p class="card__description">
+                    Testing has transformed into Quality Assurance, involving planning, monitoring, and control. What are the fastest-growing areas in QA today?      
+                </p>
+
+                   <a href="https://youtu.be/oLc9gVM8FBM?si=cJCaRmnYiozQcjoS" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/slid2.jpg') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">Software Testing Tutorials for Beginners</h3>
+                   <p class="card__description">
+                    In this tutorial, you will learn the basic skills and concepts of manual software testing aka Quality Assurance.</p> 
+                   <a href="https://youtu.be/goaZTAzsLMk?si=bpWdo8iD3RL7fQKE" class="card__button" target="_blank">View More</a>
+                </div>
+             </article>
+             <article class="card__article swiper-slide">
+                <div class="card__image">
+                    <img src="{{ url_for('static', filename='img/slid1.png') }}" alt="image" class="card__img">
+                   <div class="card__shadow"></div>
+                </div>
+ 
+                <div class="card__data">
+                   <h3 class="card__name">Scrum or Extreme Programming </h3>
+                   <p class="card__description">
+                    Agile Scrum: Collaborative sprints. Extreme Programming: Swift code delivery through continuous testing.</p>
+                   <a href="https://youtu.be/oLc9gVM8FBM?si=cJCaRmnYiozQcjoS" class="card__button" target="blank">View More</a>
+                </div>
+             </article>
+          </div>
+       </div>
+
+       <!-- Navigation buttons -->
+       <div class="swiper-button-next">
+          <i class="ri-arrow-right-s-line"></i>
+       </div>
+       
+       <div class="swiper-button-prev">
+          <i class="ri-arrow-left-s-line"></i>
+       </div>
+
+       <!-- Pagination -->
+       <div class="swiper-pagination"></div>
+    </div>
+ </section>
+ 
+</div>
+
+
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="#">Blog</a></li>
+            <li class="lang-en"><a href="#">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+</svg></button>
+
+<script src="static\blog.js"></script>
+
+
+<!--<script src="{{ url_for('static', filename='blog.js') }}"></script>-->
+<script src="static\swiper-bundle.min.js"></script>
+<script>
+
+
+
+
+   
+
+
+    
+
+    function showForm(formId, title) {
+            var forms = document.getElementsByClassName('form-container');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = 'none';
+            }
+    
+            var buttons = document.querySelectorAll('.option-button');
+            buttons.forEach(function(button) {
+                button.classList.remove('selected');
+            });
+    
+            // Добавляем класс "selected" к выбранной кнопке
+            event.target.classList.add('selected');
+    
+            document.getElementById(formId).style.display = 'block';
+            document.getElementById('formTitle').innerHTML = title;
+        }
+        function saveFormData(formId, formData) {
+        localStorage.setItem(formId + '_data', JSON.stringify(formData));
+        editFormData(formId); // Добавьте эту строку
+    }
+    
+    
+     function changeLanguage(lang) {
+            var langElements = document.querySelectorAll('.lang-' + lang);
+            var otherLang = (lang === 'en') ? 'fr' : 'en';
+            var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+    
+            langElements.forEach(function (element) {
+                element.style.display = 'inline';
+            });
+    
+            otherLangElements.forEach(function (element) {
+                element.style.display = 'none';
+            });
+    
+            // Сохраняем выбранный язык в localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+    
+    
+    
+    
+                function toggleMenu() {
+                    const menu = document.querySelector('.burger-menu');
+                    menu.classList.toggle('close');
+                }
+                
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const burgerMenu = document.querySelector('.burger-menu');
+                            const nav = document.querySelector('nav');
+                    
+                            burgerMenu.addEventListener('click', () => {
+                                nav.classList.toggle('active');
+                            });
+                        });
+                
+                document.addEventListener('DOMContentLoaded', function() {
+                    const userIcon = document.getElementById('userIconMenu');
+                    const userDropdown = document.getElementById('userDropdown');
+                
+                    userIcon.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+                
+                    userIcon.addEventListener('mouseout', () => {
+                        userDropdown.addEventListener('mouseover', () => {
+                            userDropdown.style.display = 'block';
+                        });
+                
+                        userDropdown.addEventListener('mouseout', () => {
+                            userDropdown.style.display = 'none';
+                        });
+                
+                        userDropdown.style.display = 'none';
+                    });
+                });
+                
+    
+    
+    
+    
+    
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    
+        // Получаем кнопку "наверх"
+        var toTopButton = document.getElementById('toTopBtn');
+    
+        // Получаем футер
+        var footer = document.querySelector('footer');
+    
+        // Функция, которая будет проверять положение при прокрутке
+        function handleScroll() {
+            var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    
+    
+            if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+            } else {
+                toTopButton.style.bottom = '20px';
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+        </script>
+    </body>
+    
+    </html>

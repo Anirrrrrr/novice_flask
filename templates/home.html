@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NOVICE</title>
+    <link rel="stylesheet" href="static\css\style.css">
+    <link rel="icon" href="static\img\logo.png">
+
+</head>
+
+
+  
+<header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span >NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a class="lang-en">Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                            <a class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulina<br>
+                                <br>
+                                 Développé par Kateryna Astafieva<br>
+                                <br>
+                                &#9400;2023 Novice, Inc.
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                            
+                        </div>
+                        {% endif %}
+                            <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+</header>
+
+
+
+
+
+    <div class="contain">
+       
+        <div class="text-container">
+            <p class="lang-en">Novice - <br>
+                Your key to the language of the digital age</p>
+                <p class="lang-fr" style="display: none;">Novice-<br>
+                    Votre clé du langage de l’ère numérique</p>
+        </div>
+        
+        <div class="image-container"><img src="{{ url_for('static', filename='img/main_foto.png') }}" , width="856px", height="565px"></div>
+        <div class="image-container2"><img src="{{ url_for('static', filename='img/main_adapt.png') }}" , width="473px", height="635px"></div>
+
+    </div>
+    
+
+      
+            <div class="animation-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="1961" viewBox="0 0 932 1961" fill="none" overflow="visible">
+                    <!-- Ваш путь -->
+                    <path d="M644.354 1958.75C-148.645 1900.75 -105.459 1311.1 230.354 1358.75C566.168 1406.41 1166.05 1130.95 836.123 790.511C506.196 450.07 -675.939 465.351 689.854 1.99478" stroke="#D9D9D9" stroke-width="4" stroke-linecap="round" stroke-dasharray="73 73"/>
+            
+                    <!-- Точка1 -->
+                    <circle cx="50.5" cy="340" r="32.5" fill="#2783AC" fill-opacity="0.9" stroke="none"/>
+                    <circle cx="50" cy="340" r="15" fill="#0C4964" stroke="none"/>
+                    <text class="animate-on-scroll" x="110" y="340" font-size="150%" fill="#D9D9D9" style="text-transform: uppercase;"><tspan>If you are sitting on the fence,</tspan>
+                        <tspan x="90" dy="28">not knowing where to start your<tspan fill="#FD6F13"> IT </tspan>pace</tspan> </text>
+    
+                    <!-- Точка2 -->
+                    <circle cx="930.5" cy="990" r="32.5" fill="#2783AC" fill-opacity="0.9"stroke="none"/>
+                    <circle cx="930" cy="990" r="15" fill="#0C4964"stroke="none"/>
+                    <text class="animate-on-scroll"  x="425" y="990" font-size="150%" fill="#D9D9D9" style="text-transform: uppercase;">
+                        Then buckle down to <tspan fill="#FD6F13">Novice</tspan> by
+                        <tspan  x="465" dy="1.2em"> learning <tspan fill="#FD6F13">it terminology</tspan></tspan>
+                    </text>
+                    <!-- Точка3 -->
+                    <circle cx="120.5" cy="1780" r="32.5" fill="#2783AC" fill-opacity="0.9"stroke="none"/>
+                    <circle cx="120" cy="1780" r="15" fill="#0C4964"stroke="none"/>
+                    <text class="animate-on-scroll"  x="160" y="1787" font-size="150%" fill="#D9D9D9" style="text-transform: uppercase;">Let our journey begin</text>
+                    <!-- Иконка -->
+                    <path d="M610 1854.6727C610 1821.7326 636.6229 1795 669.5 1795C702.3771 1795 729 1821.7326 729 1854.6727C729 1875.6898 718.37 1893.489 706.5462 1906.814C694.6964 1920.168 681.3148 1929.41 675.0316 1933.388C671.6368 1935.537 667.3632 1935.537 663.9684 1933.388C657.6852 1929.41 644.3036 1920.168 632.4538 1906.814C620.63 1893.489 610 1875.6898 610 1854.6727ZM669.5 1881C681.8228 1881 691.8125 1866.7184 691.8125 1854.4135C691.8125 1842.1086 681.8228 1832.1334 669.5 1832.1334C657.1772 1832.1334 647.1875 1842.1086 647.1875 1854.4135C647.1875 1866.7184 657.1772 1881 669.5 1881Z" fill="#D9D9D9"/>
+            
+                    <circle cx="670" cy="1960" r="15" fill="#D9D9D9"/>
+                </svg>
+            </div>
+       
+
+<div class="svgadapt">
+    <svg width="432" height="1332" viewBox="0 0 432 1332" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+        <path d="M167 1329.5C510.757 1175 510.5 1004.5 206.5 902.001C-97.4999 799.501 -30.2568 555.502 206.499 472.002C443.256 388.502 454.501 101.999 126.5 2.49998" stroke="#D9D9D9" stroke-width="4" stroke-linecap="round" stroke-dasharray="73 73"/>
+    
+        <circle cx="370.5" cy="260"" r="30.5" fill="#2783AC" fill-opacity="0.9" stroke="none"/>
+        <circle cx="370" cy="260"" r="13" fill="#0C4964" stroke="none"/>
+        <text class="animate-on-scroll" x="11" y="250" font-size="18" fill="#D9D9D9" style="text-transform: uppercase;"><tspan>If you are sitting on the fence,</tspan>
+            <tspan x="16" dy="25">not knowing where to start </tspan>
+            <tspan  x="100" dy="25">your<tspan fill="#FD6F13"> IT </tspan>pace</tspan> </text>
+        <circle  cx="10.5" cy="700" r="30.5" fill="#2783AC" fill-opacity="0.9"/>
+        <circle cx="10" cy="700" r="13" fill="#0C4964"/>
+        <text class="animate-on-scroll" x="58" y="700" font-size="18" fill="#D9D9D9" style="text-transform: uppercase;">
+            Then buckle down to <tspan fill="#FD6F13">Novice</tspan> by
+            <tspan  x="85" dy="1.2em"> learning <tspan fill="#FD6F13">it terminology</tspan></tspan>
+        </text>
+        <circle cx="420.5" cy="1100" r="30.5" fill="#2783AC" fill-opacity="0.9"stroke="none"/>
+        <circle cx="420" cy="1100" r="13" fill="#0C4964"stroke="none"/>
+        <text class="animate-on-scroll"  x="150" y="1105" font-size="18" fill="#D9D9D9" style="text-transform: uppercase;">Let our journey begin</text>
+        <path d="M81 1234.6727C81 1201.7326 107.6229 1175 140.5 1175C173.3771 1175 200 1201.7326 200 1234.6727C200 1255.6898 189.37 1273.489 177.5462 1286.814C165.6964 1300.168 152.3148 1309.41 146.0316 1313.388C142.6368 1315.537 138.3632 1315.537 134.9684 1313.388C128.6852 1309.41 115.3036 1300.168 103.4538 1286.814C91.63 1273.489 81 1255.6898 81 1234.6727ZM140.5 1261C152.8228 1261 162.8125 1246.7184 162.8125 1234.4135C162.8125 1222.1086 152.8228 1212.1334 140.5 1212.1334C128.1772 1212.1334 118.1875 1222.1086 118.1875 1234.4135C118.1875 1246.7184 128.1772 1261 140.5 1261Z" fill="#D9D9D9"/>
+ 
+                <circle cx="140" cy="1340" r="15" fill="#D9D9D9"/>
+
+    </svg>
+
+</div>
+  
+    
+    
+        
+    
+    
+    
+    
+
+
+
+<div class="element-before-footer "></div>
+    <footer>
+        <div class="footer-column">
+            <div class="first">
+            <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+    
+                <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                    <br>
+                    Developed by Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+                    <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                        <br>
+                        Développé par Kateryna Astafieva<br>
+                        <br>
+                        &copy; 2023 Novice, Inc.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column">
+            <center><ul>
+                <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+            </ul></center>
+        </div>
+        <div class="footer-column">
+            <div class="contact">
+                <div>Contacts</div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+              </svg> +380 88 888 88 88<br></div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+              </svg> kbvkdebkje@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+    <button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+        <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+        <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+        <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    </svg></button>
+
+    
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+        var elements = document.querySelectorAll('.animate-on-scroll');
+
+        function animateOnScroll() {
+            elements.forEach(function (element) {
+                var bounding = element.getBoundingClientRect();
+                if (bounding.top <= (window.innerHeight || document.documentElement.clientHeight) / 1.2) {
+                    element.style.animation = 'fadeIn 0.5s ease-out forwards';
+                    element.classList.add('animated');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // запускаем при загрузке страницы
+    });
+
+
+
+
+function showForm(formId, title) {
+        var forms = document.getElementsByClassName('form-container');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = 'none';
+        }
+
+        var buttons = document.querySelectorAll('.option-button');
+        buttons.forEach(function(button) {
+            button.classList.remove('selected');
+        });
+
+        // Добавляем класс "selected" к выбранной кнопке
+        event.target.classList.add('selected');
+
+        document.getElementById(formId).style.display = 'block';
+        document.getElementById('formTitle').innerHTML = title;
+    }
+    function saveFormData(formId, formData) {
+    localStorage.setItem(formId + '_data', JSON.stringify(formData));
+    editFormData(formId); // Добавьте эту строку
+}
+
+
+ function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+
+
+
+            function toggleMenu() {
+                const menu = document.querySelector('.burger-menu');
+                menu.classList.toggle('close');
+            }
+            
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burgerMenu = document.querySelector('.burger-menu');
+                        const nav = document.querySelector('nav');
+                
+                        burgerMenu.addEventListener('click', () => {
+                            nav.classList.toggle('active');
+                        });
+                    });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const userIcon = document.getElementById('userIconMenu');
+                const userDropdown = document.getElementById('userDropdown');
+            
+                userIcon.addEventListener('mouseover', () => {
+                    userDropdown.style.display = 'block';
+                });
+            
+                userIcon.addEventListener('mouseout', () => {
+                    userDropdown.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+            
+                    userDropdown.addEventListener('mouseout', () => {
+                        userDropdown.style.display = 'none';
+                    });
+            
+                    userDropdown.style.display = 'none';
+                });
+            });
+            
+
+
+
+
+
+function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    // Получаем кнопку "наверх"
+    var toTopButton = document.getElementById('toTopBtn');
+
+    // Получаем футер
+    var footer = document.querySelector('footer');
+
+    // Функция, которая будет проверять положение при прокрутке
+    function handleScroll() {
+        var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+
+        if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+            toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+        } else {
+            toTopButton.style.bottom = '20px';
+        }
+    }
+    window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+
+</html>

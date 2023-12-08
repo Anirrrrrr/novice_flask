@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" href="static\css\topic1_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<header>
+    <div class="menu">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            <span>NOVICE</span>
+        </div>
+        <nav>
+            <div class="menu-items">
+                <ul>
+                    <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                    <li class="additional-text">
+                        <a>Designed by Yelyzaveta Migulina<br>
+                        <br>
+                        Developed by Kateryna Astafieva<br>
+                        <br>
+                        &#9400;2023 Novice, Inc.
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                    {% if 'email' in session %}
+                    <div class="buttons-container">
+                        <div class="special3" id="userIconMenu">
+                            <a href="{{ url_for('profile') }}">
+                                <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                            </a>
+                            <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                <div class="user-info">
+                                    <div class="user-details">
+                                        <span>{{ session['email'] }}</span>
+                                    </div>
+                                    <div class="user-actions">
+                                        <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                        <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                        <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                        <a class="lang-fr"style="display: none;" href="{{ url_for('logout') }}">Déconnexion</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="buttons-container">
+                        <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                        <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                    </div>
+                    {% endif %}
+                    <div class="languages-container">
+                        <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                        <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                        </div>
+        </nav>
+    </div>
+</header>
+<center><h1>Analysis Phase</h1></center>
+<div class="text">
+   <br>   Computer professionals become involved during the analysis phase. Analysis is determining what the problem is. This means carefully examining the existing system and any problems that exist working with it. It is interesting to note that there is always an existing system. Even if a function has never been automated, there is a manual system that has been used to process the data in question.
+   <br>   The heart of the analysis phase consists of interviews. The analyst spends much time with the client determining not only what the current system does, but what the new system should do. The analyst must work with the client to distinguish between what is needed and what would be nice. At the end of every interview, the analyst should prepare a written summary of what was discussed and decided. Therefore analysts must have strong communication skills, both oral and written. In addition to strong communications skills, an analyst must be logical, organized and be able to keep track of many details and determine how each fits into the total problem. For example, if an analyst were working on a payroll/personnel system, he or she would have to examine all the various pieces of data used throughout the payroll/personnel functions, and understand the relationships between all of them. Understanding the data is necessary in order to understand the processing steps involved in the system. For example, net pay on a paycheck is a piece of data that is calculated from other pieces of data such as gross pay, overtime pay, tax deductions (federal, state, and city), pension deductions, and unemployment tax. This simple list can be used to illustrate how complex data analysis can be by pointing out that the list would be different for every company and, in fact, would be different for individuals within the same company.
+   <br>   The analysis phase of the project life cycle is critical. If this job is done incorrectly, or incompletely, the results may not show up until the entire project is complete. Analysts have tools to assist them with their work. These tools are charts and graphs and are used to analyze both the data and the procedures that process the data. One example is data flow diagrams, which chart the movement of data within a company showing both the manual and computerized processing performed on that data. Some CASE (Computer Aided Software Engineering) products have automated analysis functions, particularly data analysis functions.
+</div>
+{% if 'email' in session %}
+<div class="bb" data-topic="Analysis Phase">
+    <button class="like-button" onclick="likeTopic('Analysis Phase')">&#10084; Like</button>
+    <button class="unlike-button" onclick="unlikeTopic('Analysis Phase')">Unlike</button>
+{% endif %}
+<div class="proposal"><center> <p>If you do not know the meaning of some words you can use <a href="{{ url_for('novice') }}">our dictionary</a>.</p></center></div>
+<div class="test">
+    <p class="task"> Ex. 1. Answer the questions</p>
+    <ol>
+        <li>What is the heart of the analysis phase?</li>
+        <li>What is it important for the analyst to distinguish between?</li>
+        <li>What should be the result of the analyst’s activity?</li>
+        <li>What skills should the analyst have and why?</li>
+        <li>Why is it necessary to understand data?</li>
+        <li>Why is the analysis phase of the project life cycle critical?</li>
+        <li>What tools do analysts have to assist them in their job?</li>
+    </ol>
+ <p class="task"> Ex 2. Fill in the blanks with one of the following words.</p>
+
+
+
+ 
+ <p>
+    1.Computer professionals become
+    <select id="blank1">
+            <option value="" disabled selected hidden></option>
+            <option value="engaged">engaged</option>
+           <option value="involved">involved</option>
+           <option value="immersed">immersed</option>
+           <option value="entangled">entangled</option>
+    </select>
+    <span id="result1"></span> during the analysis phase.
+</p>
+<p>
+    2.Analysis phase means
+    <select id="blank2">
+            <option value="" disabled selected hidden></option>
+            <option value="to examine">to examine</option>
+            <option value="scrutinizing">scrutinizing</option>
+        <option value="inspecting">inspecting</option>
+        <option value="evaluating">evaluating</option>
+    </select>
+    <span id="result2"></span>carefully the
+    <select id="blank3">
+        <option value="" disabled selected hidden></option>
+        <option value="current">current</option>
+        <option value="pre-existing">pre-existing</option>
+       <option value="existing">existing</option>
+       <option value="present">present</option>
+</select>
+<span id="result3"></span>system and any problems that exist working with it.
+</p>
+<p>
+    3. Even if a function has never been
+    <select id="blank4">
+            <option value="" disabled selected hidden></option>
+            <option value="computerized">computerized</option>
+            <option value="systematized">systematized</option>
+           <option value="automated">automated</option>
+           <option value="mechanized">mechanized</option>
+    </select>
+    <span id="result4"></span>, there is a manual system that has been used to process the
+    <select id="blank5">
+        <option value="" disabled selected hidden></option>
+        <option value="data">data</option>
+        <option value="facts">facts</option>
+        <option value="information">information</option>
+        <option value="details">details</option>
+</select>
+<span id="result5"></span> in question.
+</p>
+<p>
+    4.The heart of the analysis phase consists of
+    <select id="blank6">
+            <option value="" disabled selected hidden></option>
+            <option value="an interview">an interview</option>
+            <option value="interrogation">interrogation</option>
+            <option value="questioning">questioning</option>
+            <option value="dialogue">dialogue</option>
+    </select>
+    <span id="result6"></span> 
+</p>
+<p>
+    5.The analyst must work with the client
+    <select id="blank7">
+            <option value="" disabled selected hidden></option>
+            <option value="to differentiate">to differentiate</option>
+            <option value="to discern">to discern</option>
+            <option value="to separate">to separate</option>
+           <option value="to distinguish">to distinguish</option>
+    </select>
+    <span id="result7"></span> between what is needed and what would be nice.
+</p>
+<p>
+    6. Analysts must have strong communication
+    <select id="blank8">
+            <option value="" disabled selected hidden></option>
+            <option value="abilities">abilities</option>
+        <option value="competencies">competencies</option>
+           <option value="skills">skills</option>
+           <option value="proficiencies">proficiencies</option>
+    </select>
+    <span id="result8"></span>, both oral and
+    <select id="blank9">
+        <option value="" disabled selected hidden></option>
+        <option value="scripted">scripted</option>
+        <option value="recorded">recorded</option>
+        <option value="documented">documented</option>
+       <option value="written">written</option>
+</select>
+<span id="result9"></span>.
+</p>
+<p>
+    7. An analyst must be logical, organized and be able to keep
+    <select id="blank10">
+            <option value="" disabled selected hidden></option>
+           <option value="trace">trace</option>
+           <option value="track">track</option>
+           <option value="record">record</option>
+           <option value="monitor">monitor</option>
+    </select>
+    <span id="result10"></span>of many details and determine how each
+    <select id="blank11">
+        <option value="" disabled selected hidden></option>
+        <option value="integrates">integrates</option>
+        <option value="incorporates">incorporates</option>
+        <option value="fits"></option>
+        <option value="meshes">meshes</option>
+</select>
+<span id="result11"></span>into the total problem.
+</p>
+<p>
+    8. Understanding the data is necessary in order to understand the
+    <select id="blank12">
+            <option value="" disabled selected hidden></option>
+            <option value="processing">processing</option>
+            <option value="handling">handling</option>
+            <option value="manipulation">manipulation</option>
+            <option value="operation">operation</option>
+    </select>
+    <span id="result12"></span>steps involved in the system.
+</p>
+<p>
+    9.If this job during the analysis phase is done
+    <select id="blank13">
+            <option value="" disabled selected hidden></option>
+            <option value="incorrectly">incorrectly</option>
+            <option value="faultily">faultily</option>
+          <option value="erroneously">erroneously</option>
+    </select>
+    <span id="result13"></span>, or 
+    <select id="blank14">
+        <option value="" disabled selected hidden></option>
+        <option value="partially">partially</option>
+       <option value="incompletely">incompletely</option>
+       <option value="insufficiently">insufficiently</option>
+       <option value="deficiently">deficiently</option>
+</select>
+<span id="result14"></span>, the results may not show up until the entire project is complete.
+</p>
+<p>
+    10. The
+    <select id="blank15">
+            <option value="" disabled selected hidden></option>
+            <option value="instruments">instruments</option>
+            <option value="appliances">appliances</option>
+           <option value="tools">tools</option>
+           <option value="utensils">utensils</option>
+    </select>
+    <span id="result15"></span>are charts and graphs and are used to analyze both the data and the procedures that process the data. 
+</p>
+<p>
+    11.One example is
+    <select id="blank16">
+            <option value="" disabled selected hidden></option>
+            <option value="workflow charts">workflow charts</option>
+            <option value="process diagrams">process diagrams</option>
+           <option value="data flow diagrams">data flow diagrams</option>
+           <option value="system models">system models</option>
+    </select>
+    <span id="result16"></span>, which chart the movement of data within a company showing both the manual and computerized processing performed on that data.
+</p>
+</div>
+<div id="resultContainer"></div>
+
+<button class="submit-btn" onclick="checkAllAnswers()" >Submit</button>
+
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification" id="notification">
+        <span class="close-btn" onclick="closeNotification()">×</span>
+        <p id="notificationText">Please <a href="{{ url_for('login') }}">log in </a>or <a href="{{ url_for('register') }}">register</a> to check answers.</p>
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+<div id="liked-topics-container" style="display: none;"></div>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/></svg>
+</button>
+<div class="element-before-footer "></div>
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        likeButton.addEventListener('click', function () {
+            // Извлекаем значение data-topic с использованием parentNode
+            var topicButtonsContainer = likeButton.parentNode;
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            likeTopic(topicName);
+        });
+    });
+
+    // Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+    likeButtons.forEach(function (likeButton) {
+        var topicButtonsContainer = likeButton.parentNode;
+        
+        if (topicButtonsContainer) {
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+            if (likeState === 'liked') {
+                likeButton.style.display = 'none';
+                likeButton.nextElementSibling.style.display = 'block';
+            } else if (likeState === 'unliked') {
+                likeButton.style.display = 'block';
+                likeButton.nextElementSibling.style.display = 'none';
+            }
+        } else {
+            console.error('Parent element with data-topic not found.');
+        }
+    });
+});
+
+
+function likeTopic(topicName) {
+    console.log(`Liking topic: ${topicName}`);
+    sendLikeRequest(topicName, true);
+}
+
+function unlikeTopic(topicName) {
+    console.log(`Unliking topic: ${topicName}`);
+    sendLikeRequest(topicName, false);
+}
+
+function sendLikeRequest(topicName, liked) {
+    fetch(`/like_topic/${encodeURIComponent(topicName)}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${liked ? 'Like' : 'Unlike'} successful for topic: ${topicName}`);
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            updateLikeButtons(topicName, liked);
+            // Добавляем или удаляем тему из отображаемого списка лайкнутых тем
+            updateLikedTopicsContainer(topicName, liked);
+            // Сохраняем состояние лайка в localStorage
+            localStorage.setItem(`likeState_${topicName}`, liked ? 'liked' : 'unliked');
+        } else {
+            console.error(`Failed to process ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error(`Error while processing ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${error}`);
+    });
+}
+
+function updateLikeButtons(topicName, liked) {
+    // Находим элемент с нужным data-topic
+    var likeButtonsContainer = document.querySelector(`[data-topic="${topicName}"]`);
+
+    if (likeButtonsContainer) {
+        // Находим кнопки внутри контейнера
+        var likeButton = likeButtonsContainer.querySelector('.like-button');
+        var unlikeButton = likeButtonsContainer.querySelector('.unlike-button');
+
+        if (liked) {
+            likeButton.style.display = 'none';
+            unlikeButton.style.display = 'block';
+        } else {
+            likeButton.style.display = 'block';
+            unlikeButton.style.display = 'none';
+        }
+    } else {
+        console.error(`Element with data-topic "${topicName}" not found.`);
+    }
+}
+
+function updateLikedTopicsContainer(topicName, liked) {
+    var likedTopicsContainer = document.getElementById('liked-topics-container');
+    var topicElement = likedTopicsContainer.querySelector(`[data-topic="${topicName}"]`);
+
+    if (liked) {
+        if (!topicElement) {
+            topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            topicElement.setAttribute('data-topic', topicName);
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    } else {
+        if (topicElement) {
+            likedTopicsContainer.removeChild(topicElement);
+        }
+    }
+}
+
+// Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+document.addEventListener('DOMContentLoaded', function () {
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        var topicName = likeButton.closest('.like-buttons').dataset.topic;
+        var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+        if (likeState === 'liked') {
+            likeButton.style.display = 'none';
+            likeButton.nextElementSibling.style.display = 'block';
+        } else if (likeState === 'unliked') {
+            likeButton.style.display = 'block';
+            likeButton.nextElementSibling.style.display = 'none';
+        }
+    });
+});
+
+  
+
+  
+
+
+
+
+
+
+
+
+var correctCount = 0;
+
+function checkAllAnswers() {
+    checkAuthenticationStatus().then(function(isAuthenticated) {
+        if (isAuthenticated) { 
+            correctCount = 0;
+            checkAnswers1();
+            checkAnswers2();
+            document.getElementById("resultContainer").innerHTML = `Correct Answers: ${correctCount}`;
+        } else {
+            // Если пользователь не аутентифицирован, покажем уведомление
+            showNotification("Please log in to check answers.");
+        }
+    });
+}
+
+
+function showNotification(message) {
+    var notificationContainer = document.getElementById("notificationContainer");
+        var notification = document.getElementById("notification");
+        var notificationText = document.getElementById("notificationText");
+        var progressBar = document.getElementById("progressBar");
+
+        notificationContainer.style.display = "block";
+
+        // Можно изменить текст уведомления по вашему усмотрению
+
+
+        // Устанавливаем время отображения уведомления в миллисекундах (в данном случае, 30 секунд)
+        var displayTime = 10000;
+
+        // Устанавливаем интервал обновления полосы прогресса
+        var interval = 100; // каждые 100 миллисекунд
+
+        var progress = 0;
+
+        // Обновляем полосу прогресса каждые interval миллисекунд
+        var progressInterval = setInterval(function() {
+            progress += (interval / displayTime) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Когда полоса прогресса достигнет 100%, закрываем уведомление
+            if (progress >= 100) {
+                closeNotification();
+                clearInterval(progressInterval); // Останавливаем интервал
+            }
+        }, interval);
+    }
+
+
+
+function closeNotification() {
+    var notificationContainer = document.getElementById("notificationContainer");
+        notificationContainer.style.display = "none";
+    }
+
+function checkAuthenticationStatus() {
+    // Отправка запроса на сервер для проверки статуса аутентификации
+    return fetch("/check-auth", {
+        method: "GET",
+        credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => data.isAuthenticated)
+    .catch(error => {
+        console.error("Error checking authentication status:", error);
+        return false;
+    });
+} 
+function checkAnswers1() {
+    // Список правильных ответов
+    const correctAnswers = [
+       "involved",
+       "to examine",
+       "existing",
+       "automated",
+       "data",
+       "an interview",
+       "to distinguish",
+       "skills",
+       "written",
+       "track",
+       "fits",
+       "processing",
+       "incorrectly",
+       "incompletely",
+       "tools",
+       "data flow diagrams"
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 16; i++) {
+        const selectedValue = document.getElementById(`blank${i}`).value;
+        const resultSpan = document.getElementById(`result${i}`);
+
+        if (selectedValue === correctAnswers[i - 1]) {
+            resultSpan.textContent = " ✓";
+            resultSpan.style.color = "green";
+            correctCount++;
+        } else {
+            resultSpan.textContent = " ✗";
+            resultSpan.style.color = "red";
+        }
+    }
+
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.textContent = `Number of correct answers: ${correctCount}`;
+}
+
+
+
+
+
+
+
+
+
+function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+
+
+
+
+
+
+            function toggleMenu() {
+                const menu = document.querySelector('.burger-menu');
+                menu.classList.toggle('close');
+            }
+            
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burgerMenu = document.querySelector('.burger-menu');
+                        const nav = document.querySelector('nav');
+                
+                        burgerMenu.addEventListener('click', () => {
+                            nav.classList.toggle('active');
+                        });
+                    });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const userIcon = document.getElementById('userIconMenu');
+                const userDropdown = document.getElementById('userDropdown');
+            
+                userIcon.addEventListener('mouseover', () => {
+                    userDropdown.style.display = 'block';
+                });
+            
+                userIcon.addEventListener('mouseout', () => {
+                    userDropdown.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+            
+                    userDropdown.addEventListener('mouseout', () => {
+                        userDropdown.style.display = 'none';
+                    });
+            
+                    userDropdown.style.display = 'none';
+                });
+            });
+            
+            
+            
+            
+            function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            
+                // Получаем кнопку "наверх"
+                var toTopButton = document.getElementById('toTopBtn');
+            
+                // Получаем футер
+                var footer = document.querySelector('footer');
+            
+                // Функция, которая будет проверять положение при прокрутке
+                function handleScroll() {
+                    var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+            
+            
+                    if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                        toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+                    } else {
+                        toTopButton.style.bottom = '20px';
+                    }
+                }
+                window.addEventListener('scroll', handleScroll);
+
+
+</script>
+</body>
+</html>

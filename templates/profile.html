@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My profile</title>
+    <link rel="stylesheet" href="static\css\prof.css">
+    <link rel="icon" href="static\img\logo.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4644426112126009"
+     crossorigin="anonymous"></script>
+     <meta http-equiv="Cache-Control" content="no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span >NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a class="lang-en">Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                            <a class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulina<br>
+                                <br>
+                                 Développé par Kateryna Astafieva<br>
+                                <br>
+                                &#9400;2023 Novice, Inc.
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                            
+                        </div>
+                        {% endif %}
+                            <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+</header>
+
+<div class="cont">
+<div id="options-column">
+    <div class="icon">{{ session['email'][0] | upper }}</div>
+    <div id="userDataContainer">
+        <p><strong>Name:</strong> <span id="userName">{{ session['name'] | capitalize }}</span> </p>
+        <p><strong>Surname:</strong> <span id="userSurname">{{ session['surname'] | capitalize }}</span> </p>
+        <p><strong>Gender:</strong> <span id="userGender">{{ session['gender'] | capitalize }}</span></p>
+    </div>
+    
+    <button class="option-button" onclick="showForm('nameForm', 'PROFILE')">Edit Profile</button>
+    <button class="option-button" onclick="showForm('likedTopicsForm','LIKED TOPICS')">Liked Topics</button>
+
+</div>
+
+<div id="content-area">
+    <div id="nameForm" class="form-container" onsubmit="saveFormData('nameForm'); return false;">
+        
+        <center><h2 id="formTitle"></h2></center>
+        <form id="formData">
+            <div>
+                <input type="text" placeholder="Name" name="Name" id="nameInput" required>
+                <input type="text" placeholder="Surname" name="Surname" id="surnameInput" required>
+                <select id="gender" name="gender">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                </div>
+                <button onclick="saveFormData()" class="custom-button" type="button"> Save</button> 
+                
+        
+        </form>
+    </div>
+  
+    <div id="likedTopicsForm" class="form-container">
+        <h2 id="topicsTitle">LIKED TOPICS</h2>
+       
+        <div id="liked-topics-container">
+            <!-- Здесь будут отображаться лайкнутые темы -->
+            {% for topic in liked_topics %}
+                <div>{{ topic }}</div>
+            {% endfor %}
+        </div>
+          </div>
+    </div>
+</div>
+</div>
+
+<div class="element-before-footer "></div>
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+</svg></button>
+
+
+
+
+<script>
+// Функция для добавления темы в отображаемый список лайкнутых тем
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+                addToLikedTopics(topicName);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    document.addEventListener('click', function (event) {
+        var target = event.target;
+
+        if (target.classList.contains('like-button')) {
+            // Извлекаем значение data-topic
+            var topicName = target.closest('.bb').dataset.topic;
+            likeTopic(topicName);
+        }
+    });
+
+    // Функция для добавления темы в отображаемый список лайкнутых тем
+    function addToLikedTopics(topicName) {
+        var likedTopicsContainer = document.getElementById('liked-topics-container');
+        if (likedTopicsContainer) {
+            var topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    }
+
+    // Остальной ваш код...
+});
+
+
+
+
+
+
+
+
+function updateFormDataOnClient(data) {
+    console.log('Updating data on client:', data);
+
+    document.getElementById('userName').innerText = data.name;
+    document.getElementById('userSurname').innerText = data.surname;
+    document.getElementById('userGender').innerText = data.gender;
+}
+
+
+
+
+function saveFormData() {
+    var name = document.getElementById('nameInput').value;
+    var surname = document.getElementById('surnameInput').value;
+    var gender = document.getElementById('gender').value;
+
+    var data = {
+        name: name,
+        surname: surname,
+        gender: gender
+    };
+
+    fetch('/save_data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        // Отладочные сообщения
+        console.log('Save data result:', result);
+
+        // Обновление данных на странице без перезагрузки
+        updateFormDataOnClient(result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+//function loadFormData() {
+//    fetch('/load_data')
+ //       .then(response => response.json())
+//        .then(data => {
+//            // Отладочные сообщения
+//            console.log('Load data result:', data);
+//
+ //           document.getElementById('nameInput').value = data.name;
+//            document.getElementById('surnameInput').value = data.surname;
+//            document.getElementById('gender').value = data.gender;
+//        })
+//        .catch(error => {
+//            console.error('Error:', error);
+ //       });
+//}
+
+
+function loadFormData() {
+    fetch('/load_data')
+        .then(response => response.json())
+        .then(data => {
+            // Отладочные сообщения
+            console.log('Load data result:', data);
+
+            // Обновление данных на странице
+            updateFormDataOnClient(data);
+
+            // Ваш остальной код, если есть
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', loadFormData);
+
+
+function showForm(formId, title) {
+        var forms = document.getElementsByClassName('form-container');
+     for (var i = 0; i < forms.length; i++) {
+        forms[i].style.display = 'none';
+     }
+
+     var buttons = document.querySelectorAll('.option-button');
+     buttons.forEach(function(button) {
+         button.classList.remove('selected');
+     });
+
+       // Добавляем класс "selected" к выбранной кнопке
+        event.target.classList.add('selected');
+
+       document.getElementById(formId).style.display = 'block';
+     document.getElementById('formTitle').innerHTML = title;
+  }
+
+
+
+    
+   function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+
+
+
+            function toggleMenu() {
+                const menu = document.querySelector('.burger-menu');
+                menu.classList.toggle('close');
+            }
+            
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burgerMenu = document.querySelector('.burger-menu');
+                        const nav = document.querySelector('nav');
+                
+                        burgerMenu.addEventListener('click', () => {
+                            nav.classList.toggle('active');
+                        });
+                    });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const userIcon = document.getElementById('userIconMenu');
+                const userDropdown = document.getElementById('userDropdown');
+            
+                userIcon.addEventListener('mouseover', () => {
+                    userDropdown.style.display = 'block';
+                });
+            
+                userIcon.addEventListener('mouseout', () => {
+                    userDropdown.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+            
+                    userDropdown.addEventListener('mouseout', () => {
+                        userDropdown.style.display = 'none';
+                    });
+            
+                    userDropdown.style.display = 'none';
+                });
+            });
+            
+
+
+
+
+
+function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    // Получаем кнопку "наверх"
+    var toTopButton = document.getElementById('toTopBtn');
+
+    // Получаем футер
+    var footer = document.querySelector('footer');
+
+    // Функция, которая будет проверять положение при прокрутке
+    function handleScroll() {
+        var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+
+        if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+            toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+        } else {
+            toTopButton.style.bottom = '20px';
+        }
+    }
+    window.addEventListener('scroll', handleScroll);
+</script>
+</body>
+</html>

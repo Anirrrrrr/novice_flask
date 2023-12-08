@@ -1,0 +1,26 @@
+ <svg xmlns="http://www.w3.org/2000/svg" width="932" height="1961" viewBox="0 0 932 1961" fill="none" overflow="visible">
+                <!-- Ваш путь -->
+                <path d="M644.354 1958.75C-148.645 1900.75 -105.459 1311.1 230.354 1358.75C566.168 1406.41 1166.05 1130.95 836.123 790.511C506.196 450.07 -675.939 465.351 689.854 1.99478" stroke="#D9D9D9" stroke-width="4" stroke-linecap="round" stroke-dasharray="73 73"/>
+        
+                <!-- Точка1 -->
+                <circle cx="50.5" cy="340" r="32.5" fill="#2783AC" fill-opacity="0.9" stroke="none"/>
+                <circle cx="50" cy="340" r="15" fill="#0C4964" stroke="none"/>
+                <text x="110" y="340" font-size="28" fill="#D9D9D9" style="text-transform: uppercase;"><tspan>If you are sitting on the fence,</tspan>
+                    <tspan x="90" dy="28">not knowing where to start your<tspan fill="#FD6F13"> IT </tspan>pace</tspan> </text>
+
+                <!-- Точка2 -->
+                <circle cx="930.5" cy="990" r="32.5" fill="#2783AC" fill-opacity="0.9"stroke="none"/>
+                <circle cx="930" cy="990" r="15" fill="#0C4964"stroke="none"/>
+                <text x="340" y="990" font-size="30" fill="#D9D9D9" style="text-transform: uppercase;">
+                    Then buckle down to <tspan fill="#FD6F13">Novice</tspan> by
+                    <tspan  x="385" dy="1.2em"> learning <tspan fill="#FD6F13">it terminology</tspan></tspan>
+                </text>
+                <!-- Точка3 -->
+                <circle cx="120.5" cy="1780" r="32.5" fill="#2783AC" fill-opacity="0.9"stroke="none"/>
+                <circle cx="120" cy="1780" r="15" fill="#0C4964"stroke="none"/>
+                <text x="160" y="1787" font-size="28" fill="#D9D9D9" style="text-transform: uppercase;">Let our journey begin</text>
+                <!-- Иконка -->
+                <path d="M610 1854.6727C610 1821.7326 636.6229 1795 669.5 1795C702.3771 1795 729 1821.7326 729 1854.6727C729 1875.6898 718.37 1893.489 706.5462 1906.814C694.6964 1920.168 681.3148 1929.41 675.0316 1933.388C671.6368 1935.537 667.3632 1935.537 663.9684 1933.388C657.6852 1929.41 644.3036 1920.168 632.4538 1906.814C620.63 1893.489 610 1875.6898 610 1854.6727ZM669.5 1881C681.8228 1881 691.8125 1866.7184 691.8125 1854.4135C691.8125 1842.1086 681.8228 1832.1334 669.5 1832.1334C657.1772 1832.1334 647.1875 1842.1086 647.1875 1854.4135C647.1875 1866.7184 657.1772 1881 669.5 1881Z" fill="#D9D9D9"/>
+        
+                <circle cx="670" cy="1960" r="15" fill="#D9D9D9"/>
+            </svg>

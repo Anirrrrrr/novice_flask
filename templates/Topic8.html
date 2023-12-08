@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="static\css\topic1_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<body>
+<header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span>NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a>Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Log out</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                        </div>
+                        {% endif %}
+                        <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+            </nav>
+        </div>
+</header>
+<center><h1>Development Tools</h1></center>
+<div class="text">
+    <br>It seems that as soon as people started to develop application programs, software appeared to help the programmer. Some development tools worked with the entire development life cycle, but other tools were developed to work with only one phase. This automation of the development process has been going on for many years and there now are many tools avail­able to developers. Development is often discussed as "high-level" which is done indepen­dently of the platform the system will run on, and "low-level" which requires knowing the specific run-time platform. The phases of the life cycle follow this designation, with analysis and design being high-level development and programming and testing being low-level. Knowledge of one or more of these tools is often a required skill of developers.
+    <br>Low Level Development Tools
+    <br>Low level tools are used to assist developers during the programming and testing phases of the life cycle. Work done during these phases requires knowledge of the platform or platforms the system will run on, the databases being used, and any necessary communications or networks that will be part of the system.
+    <br>Application Development Environments (ADEs), Software Development Kits (SDKs), and Studios, or Integrated Program­ming Environment (IDE), is a software package that enables programmers to write, test, and document computer programs from a terminal. These tools are often called "devel­opment kits," and provide a visual environment for developers to do their work. These systems provide access to existing databases and contain report and program generators. This allows programmers to use point-and-click and drag-and-drop functions rather than writing lines of code. ADEs are also called RAD (Rapid Application Development) tools and GUI (Graphic User Interface) builders and are used to develop client/server and Internet applications. Many provide cross-platform capabilities (building applications that will run on different platforms). Some application development environments, especially those referred to as software development kits or studios, actually contain modeling tools to provide tools for most of the development cycle. Other development environments con­centrate on programming and testing, but interface with modeling tools.
+    <br>Application development environments are heavily used for client-side development in client/server and Internet applications and in object-oriented development. They are also used for RAD development, report generation and query programming. These tools are easier to learn than are programming languages and are often called visual languages. Some of them really are "user friendly" and do not require any technical skills or back­ground. This enables businessmen/women to create many of their own reports and run their own queries. More and more programming is done with these tools.
+    <br>Programming Utilities. This category is a catch-all for a variety of different programs that provide specific assistance to programmers. Most programming utilities are written by outside vendors, not by the computer manufacturer. These outside vendors have seen a need for support and often deal with computer systems from many vendors.
+    <br>Many programming utilities are conversion tools. For instance, these programs can convert applications written to run under one operating system so they can run under another. Some utilities will convert JCL (Job Control Language) from one operating system to the JCL of another. And still others will convert online commands from one online system to an­other. Other programming utilities provide the needed interfaces so application programs can access software products (such as databases) from different vendors. These utilities can be important in a company that has more than one database or more than one communi­cation system. A programming utility will, for example, allow the programmer to use the same program to access both a DB2 database and an IDMS/R (интегрированная система управления данными) database.
+    <br>Still others provide such functions as analyzing programs to make sure they follow company standards, analyzing data descriptions to eliminate redundancy, and defining critical datasets in a system to determine the resources (such as disk space, tape reels) necessary to process the data. Programming utilities provide just about any type of support for the programming function.
+    <br>Report Generators A report generator, or report writer, is a program that generates formatted reports from simple input statements, thus eliminating the need to write com­plete programs to accomplish fundamental print tasks. Report generators exist for all types of computers because they save so much time. Rather than having to write a com­plete computer program, a programmer can simply provide a description of the data to be used and the way he or she wants the report to look; the generator will do the rest. These programs will generate the instructions necessary to do any desired totaling, aver­aging or percent calculation. In addition, they will take care of print spacing, header lines and/or trailer lines on reports, and page numbering. All JCLs and ADEs contain report generation functions.
+    <br>Program Generators A program generator is a computer program that can generate all, or part, of the code necessary to build a program in a source language. Programmers provide input that describes the data the desired program will work with, how that data should be processed, and what the output should look like. The generator will then pro­duce the source statements that follow the syntax rules and use the vocabulary of the source language. Many of these generators do not produce the entire program, but can only handle part of it. Generators can usually produce source statements for data defini­tions, but often the statements that manipulate the data must be written by the program­mer. The most common program generators produce C, C++, or COBOL statements. Program generators are also called application generators and code generators, and are often part of ADEs.
+    <br>Screen Editors Screen editors are computer programs that handle the input and modi­fication of programming statements from a terminal. These programs are similar to word processors and have features such as global changes (i.e. changing the character '"x" to "x\" everyplace it appears in a program), block movement of statements, and repetition of statements. In addition to handling programming source statements, screen editors also work with JCL statements. Screen editors also provide access to programming and data libraries so programmers can, through the screen editor, copy programs and/or data files, delete them, rename them, and so on.
+    <br>Screen Painters/GUI Builders A screen painter is a program that will generate the code necessary to define a terminal screen for an application system from a sample of the screen. This means that the programmer can design the screen right on the terminal by moving the cursor around. Once he or she is satisfied with the way the screen looks, the program will generate the code to be incorporated in the online program. When a screen painter is also a GUI builder this means the developer can incorporate the GUI interface through the tool. Screen painters/GUI builders are part of application development envi­ronments or can be stand-alone tools used for online system development.
+    <br>High Level Development Tools
+    <br>High level tools are used during the analysis and design phases of development and do not require knowledge of hardware, databases, or specific communication or networking tools. Actually this is when decisions are made about which of these technologies will be used. Work done during analysis is often done by non-technical people who know a lot about how the business system actually works, but do not know computer technology.
+    <br>CASE (Computer Aided Software Engineering). The tools developed to assist in the automation of the analysis, design, and project management functions are usually re­ferred to as CASE tools and have existed since the 1980s. Several things contributed to the emergence of CASE products. There was (and still is) an overwhelming demand for soft­ware. Most IT Departments have a three to ten year backlog of program requests and still spend most of their time maintaining existing systems. Also, while the cost of computers and associated hardware seems high, it doesn't approach the cost of software develop­ment. All these are reasons for the industry's look at ways to produce higher-quality pro­grams more quickly and with less effort. The overall goal of the CASE industry is to provide software that, from a specification of what a program is to do, will figure out how it should function and then write and test the program. In other words, CASE products were originally designed to automate the entire systems development cycle. While many of these tools still do this, the automation of the programming and testing phases is com­monly done by separate Application Development Environments and tools. Today's CASE products automate analysis, design, managerial functions such as planning and schedul­ing and provide automatic documentation throughout the system's development. Mod­eling tools are part of today's CASE environment.
+    <br>Modeling and Modeling Tools. Modeling is used to specify, visualize, and document software systems. While it is required for large and complex systems (all data warehouses are modeled), it is valuable for any system development. Two definitive types of modeling exist: data and process modeling. Process modeling has two sub-sets - software and busi­ness process modeling. There are different methodologies and tools used for all three.
+    <br>ER (Entity Relationship) modeling is the oldest and most common data modeling technol­ogy. It was introduced by Peter Chen in 1976 and identifies information as entities and ties these entities to each other through various rules that define relationships. As new technologies appeared, ER techniques and notational systems were incorporated and ex­panded. ER modeling is included in IE (Information Engineering), IDEF1X (Integrated Definition) (метод описания интеграции), and UML (Unified Modeling Language). Each of these systems has expanded the technology and each has its own notational system, but all are very similar and it's very easy to move from one to another.
+    <br>Process modeling gets more involved - it's always harder to work with actions than it is with information, and that's what processes are - actions. Software processes can be programs, modules, objects, components. Modeling the software processes means defin­ing the executable segments - and when and how they will execute. Business processes, of course, are the actions of our businesses. For example, order entry is a business process. It consists of working with data (collecting it, updating it, etc.), but the main focus is on the action itself (answer the phone, ask specific questions, enter this data, etc.), when the action occurs (throughout the day, every Friday, at the close of business, etc.).
+    <br>Several notational techniques are used in processing modeling, especially when creating software systems. Flowcharting simply uses a step-by-step graphical representation of a process that shows all decision making and the different steps taken at each decision point. Use Case shows the interaction of people, systems, and organizations with the processes. Action diagrams support parallel activities and their synchronization and can easily identify the process start for different user interests. Interaction diagrams describe the behavior of several objects in a single use case, and activity diagrams are good at showing the general sequence of actions for several objects and use cases. Simulation measures overall changes in results caused by the specific changes made to processes. These notational techniques are used in many modeling technologies including UML and IDEF (метод описания интеграции). UML is the dominant technology in the business world and innumerable tools sup­porting UML are in general use. IDEF is an older technology (it has actually been around for over twenty-five years) and is used much more by government agencies.
+    <br>Business process modeling is the newest form of modeling and it is the one that could have the largest impact on IT. Business process modeling can be done with any process modeling tool and technology, but in fact new tools are being developed. Many of these tools are designed to be used by business men and women - not by IT professionals. This could cause significant changes in the way applications are developed. Two languages have already been developed - BPEL (Business Process Execution Language) and BPML (Business Process Modeling Language). Even more important, BPMN (Business Process Modeling Notation) has been introduced and is growing in use by both the business community and government agencies. This technology was developed specifically for business process modeling and is supported by over 20 IT companies including IBM and Microsoft. BPMN models are much easier for non-technical people to work with than those created with UML and IDEF.
+    <br>Development Platforms - J2EE and .NET
+    <br>A development platform is the technology used to develop and deploy (run) application programs. It actually includes three kinds of tools: development languages and utilities, middleware tools to connect application components, and execution programs to deploy the application. The two dominant development platforms are J2EE and .NET. Both plat­forms use object-oriented technology. Both platforms are used to build Web services. And the use of both platforms is growing by leaps and bounds. The platforms should be looked at through each of the three areas.
+    <br>Development tools. This is the easiest - J2EE uses Java and .NET uses VisualStudio.NET, which includes C++ .NET, C# .NET and VB .NET (and support for other) languages.
+    <br>Middleware (промежуточное программное обеспечение) tools. These provide the connectivity between application components including database access and multiple processing components. For example, an applica­tion that supports Internet purchases would have many components. When a Web visitor "proceeds to checkout," the application must access a database to make sure the selected products are available, access another database to store information about the purchaser. There undoubtedly are multiple processing components including a component that cal­culates shipping, another component that sends email confirmations to the purchasers, another component to total the purchase, etc. All these components must communicate with each other and both J2EE and .NET specify the middleware that defines the commu­nication. J2EE includes EJB (Enterprise JavaBeans) and JMS (Java Message Service) for com­ponent communication, and JDBC (Java DataBase Connectivity) for database connectivity. .NET uses MSMQ (Microsoft Message Queue), MTS (Microsoft Transaction Server), and C0M+ for component communication, and ODBC (Open DataBase Connectivity) for da­tabase access.
+    <br>Execution, or Deployment. Both J2EE and .NET use an interpreter which works with generated code (bytecode in J2EE and C1L in .NET) and associated libraries and files to create an executable module. Java's components are interpreted by JRE (Java Runtime Envi­ronment) which is part of J2EE, and are then deployed by any Java compatible application server including WebSphere, WebLogic, JBoss, Enhydra, etc. Of course the Sun Java System Application Server is one of these servers. .Net applications are interpreted by CLR (Com­mon Language Runtime общеязыковая среда выполнения) which is part of the .NET Framework. CLR, however, also deploys the application which means that applications can only run on systems with the .NET Frame­work installed. This means .NET applications can only run on Windows platforms.
+    <br>This is actually the major difference between the two development platforms. J2EE can only be used for Java development but can run on many execution platforms (the combination of the operating system and the computer). .NET can be used with many languages, but can only run on Windows platforms. Some other differences include: .NET is easier to learn and use; J2EE is an open specification while .NET is proprietary; and security is handled differently by the two systems. There are, of course, other differences, but one of the biggest growing areas of tool development is to create software that lets applications developed by either platform to interface with each other. While companies that use Unix, Linux, and mainframe systems are likely to use more J2EE, in all companies PC-based systems are likely to be devel­oped with .NET. It's no longer expected that companies have to pick one platform or the other. It works to use both.<br>
+</div>
+{% if 'email' in session %}
+<div class="bb" data-topic="Development Tools">
+    <button class="like-button" onclick="likeTopic('Development Tools')">&#10084; Like</button>
+    <button class="unlike-button" onclick="unlikeTopic('Development Tools')">Unlike</button>
+</div>
+    {% endif %}
+<div class="proposal"><center> <p>If you do not know the meaning of some words you can use <a href="{{ url_for('novice') }}">our dictionary</a>.</p></center></div>
+<div class="test">
+    <p class="task"> Ex. 1. Answer the questions</p>
+    <ol>
+        <li>What types of development and development tools are there?</li>
+        <li>What is the difference between high-level and low-level development?</li>
+        <li>What is the purpose of low level tools?</li>
+        <li>What do development kits provide developers with?</li>
+        <li>What are application development environments used for?</li>
+        <li>How do report generators facilitate the programmers’ work? </li>
+        <li>What is the principle of program generators’ work?</li>
+        <li>What features do screen editors have?</li>
+        <li>What sort of code does a screen painter generate? </li>
+        <li>What are the advantages of high level development tools?</li>
+        <li>What is the reason for the emergence of CASE products? </li>
+        <li>What is modeling used for?</li>
+        <li>What is the oldest and most common data modeling technology?</li>
+        <li>What does Use Case show? </li>
+        <li>What type of technology do J2EE and .NET use? </li>
+        <li>What is the major difference between J2EE and .NET development platforms?</li>
+    </ol>
+<p class="task"> Ex 2. Fill in the blanks with one of the following words.</p>
+
+
+<p>1. This
+
+    <select id="blank1">
+        <option value="" disabled selected hidden></option>
+        <option value="optimization">optimization</option>
+        <option value="automation"></option>
+        <option value="streamlining">streamlining</option>
+        <option value="integration">integration</option>
+    </select>
+    <span id="result1"></span>of the development process has been going on for many years and there now are many tools avail¬able to developers.
+</p>
+<p>2. These tools are often called "development kits," and provide a
+
+    <select id="blank2">
+        <option value="" disabled selected hidden></option>
+        <option value="structured">structured</option>
+        <option value="flexible">flexible</option>
+        <option value="visual">visual</option>
+    </select>
+    <span id="result2"></span>environment for developers to do their work.
+</p>
+
+<p>3. This allows programmers to use 
+    <select id="blank3">
+        <option value="" disabled selected hidden></option>
+        <option value="point-and-click">point-and-click</option>
+        <option value="visual">visual</option>
+        <option value="scripting">scripting</option>
+    </select>
+    <span id="result3"></span> and drag-and-drop functions rather than writing lines of code.
+</p>
+<p>4. This category is a
+    <select id="blank4">
+        <option value="" disabled selected hidden></option>
+        <option value="collection">collection</option>
+        <option value="toolbox">toolbox</option>
+        <option value="suite">suite</option>
+        <option value="catch-all"></option>
+    </select>
+    <span id="result4"></span>for a variety of different programs that provide specific assistance to programmers.
+</p>
+<p>5. A programming utility will, for example, allow the programmer to use the same program to 
+
+    <select id="blank5">
+        <option value="" disabled selected hidden></option>
+        <option value="connect">connect</option>
+        <option value="interface">interface</option>
+        <option value="access">access</option>
+        <option value="query">query</option>
+    </select>
+    <span id="result5"></span> both a DB2 database and an IDMS/R database.
+</p>
+<p>6. A 
+    <select id="blank6">
+        <option value="" disabled selected hidden></option>
+        <option value="report generator">report generator</option>
+        <option value="compiler">compiler</option>
+        <option value="translator">translator</option>
+    </select>
+    <span id="result6"></span>, or report writer, is a program that generates formatted reports from simple input statements, thus eliminating the need to write com¬plete programs to accomplish fundamental print tasks.
+</p>
+<p>7. The generator will then produce the
+    <select id="blank7">
+        <option value="" disabled selected hidden></option>
+        <option value="reports">reports</option>
+        <option value="source statements">source statements</option>
+        <option value="output">output</option>
+        <option value="results">results</option>
+    </select>
+    <span id="result7"></span>that follow the 
+    <select id="blank8">
+        <option value="" disabled selected hidden></option>
+        <option value="semantics">semantics</option>
+        <option value="rules">rules</option>
+        <option value="guidelines">guidelines</option>
+        <option value="syntax rules"></option>
+    </select>
+    <span id="result8"></span>and use the vocabulary of the source language.
+</p>
+<p>8. These programs are similar to word processors and have features such as
+
+    <select id="blank9">
+        <option value="" disabled selected hidden></option>
+        <option value="search and replace">search and replace</option>
+        <option value="spell check">spell check</option>
+        <option value="formatting">formatting</option>
+        <option value="global changes">global changes</option>
+    </select>
+    <span id="result9"></span>(i.e. changing the character '"x" to "x\" everyplace it appears in a program), block movement of statements, and repetition of statements.
+</p>
+<p>9. Screen painters/GUI builders are part of application development envi-ronments or can be 
+
+    <select id="blank10">
+        <option value="" disabled selected hidden></option>
+        <option value="integrated">integrated</option>
+        <option value="independent">independent</option>
+        <option value="stand-alone tools">stand-alone tools</option>
+        <option value="collaborative">collaborative</option>
+    </select>
+    <span id="result10"></span> used for online system development.
+</p>
+<p>10. High level tools are used during the analysis and design phases of development and do not require knowledge of hardware, databases, or specific communication or
+
+    <select id="blank11">
+        <option value="" disabled selected hidden></option>
+        <option value="interfaces">interfaces</option>
+        <option value="networking tools">networking tools</option>
+        <option value="middleware">middleware</option>
+        <option value="protocols">protocols</option>
+    </select>
+    <span id="result11"></span>.
+</p>
+<p>11. In other words, CASE products were originally designed to 
+ 
+    <select id="blank12">
+        <option value="" disabled selected hidden></option>
+        <option value="facilitate">facilitate</option>
+        <option value="expedite">expedite</option>
+        <option value="streamline">streamline</option>
+        <option value="automate">automate</option>
+    </select>
+    <span id="result12"></span>the entire systems development cycle.
+</p>
+<p>12.  While it is required for large and complex systems (all 
+
+    <select id="blank13">
+        <option value="" disabled selected hidden></option>
+        <option value="systems">systems</option>
+        <option value="data warehouses">data warehouses</option>
+        <option value="applications">applications</option>
+        <option value="projects">projects</option>
+    </select>
+    <span id="result13"></span>are modeled), it is valuable for any system development.
+</p>
+<p>13. 
+   
+    <select id="blank14">
+        <option value="" disabled selected hidden></option>
+        <option value="Database">Database</option>
+        <option value="ER modeling">ER modeling</option>
+        <option value="Object-Oriented">Object-Oriented</option>
+        <option value="Flowcharting">Flowcharting</option>
+    </select>
+    <span id="result14"></span> is included in IE (Information Engineering), IDEF1X (Integrated Definition), and UML (Unified Modeling Language).
+</p>
+<p>14. Several
+ 
+    <select id="blank15">
+        <option value="" disabled selected hidden></option>
+        <option value="notational techniques">notational techniques</option>
+        <option value="graphical notations">graphical notations</option>
+        <option value="diagramming techniques">diagramming techniques</option>
+        <option value="modeling approaches">modeling approaches</option>
+    </select>
+    <span id="result15"></span>are used in processing modeling, especially when creating software systems.
+</p>
+<p>15. 
+ 
+    <select id="blank16">
+        <option value="" disabled selected hidden></option>
+        <option value="Entity-Relationship Diagrams">Entity-Relationship Diagrams</option>
+        <option value="Flowcharting">Flowcharting</option>
+        <option value="Data Modeling">Data Modeling</option>
+        <option value="UML Diagrams">UML Diagrams</option>
+    </select>
+    <span id="result16"></span>simply uses a step-by-step graphical representation of a process that shows all decision making and the different steps taken at each decision point.
+</p>
+</div>
+<div id="resultContainer"></div>
+
+
+<div class="test2">
+    <p class="task"> Ex 3. Match the terms with their definitions</p>
+    <div class="container">
+        <center><p>Terms</p></center>
+        <div class="terms-container" id="termsContainer">
+            <div id="termA" class="term" draggable="true" ondragstart="drag(event)">Low level tools</div>
+            <div id="termB" class="term" draggable="true" ondragstart="drag(event)">Cross-platform capabilities</div>
+            <div id="termC" class="term" draggable="true" ondragstart="drag(event)">Conversion tools</div>
+            <div id="termD" class="term" draggable="true" ondragstart="drag(event)">Report generator/report writer</div>
+            <div id="termE" class="term" draggable="true" ondragstart="drag(event)">Program generator</div>
+            <div id="termF" class="term" draggable="true" ondragstart="drag(event)">CASE</div>
+            <div id="termG" class="term" draggable="true" ondragstart="drag(event)">Action diagrams</div>
+            <div id="termH" class="term" draggable="true" ondragstart="drag(event)">Interaction diagrams</div>
+            <div id="termI" class="term" draggable="true" ondragstart="drag(event)">Activity diagrams </div>
+            <div id="termJ" class="term" draggable="true" ondragstart="drag(event)">Middleware tools</div>
+        </div>
+        <center><p>Definitions</p></center>
+        <div class="definitions-container" id="definitionsContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="definitionJ" class="definition" droppable="true" data-term="termJ">Provide the connectivity between application components including database access and multiple processing components</div> 
+            <div id="definitionI" class="definition" droppable="true" data-term="termI">Are good at showing the general sequence of actions for several objects and use cases</div>  
+            <div id="definitionE" class="definition" droppable="true" data-term="termE">A computer program that can generate all, or part, of the code necessary to build a program in a source language</div>
+            <div id="definitionG" class="definition" droppable="true" data-term="termG">Support parallel activities and their synchronization and help easily identify the process start for different user interests</div>
+            <div id="definitionD" class="definition" droppable="true" data-term="termD">A program that generates formatted reports from simple input statements and eliminates the need to write com¬plete programs to accomplish fundamental print tasks</div>
+            <div id="definitionF" class="definition" droppable="true" data-term="termF">Tools developed to assist in the automation of the analysis, design, and project management functions</div>
+            <div id="definitionB" class="definition" droppable="true" data-term="termB">Building applications that will run on different platforms</div>
+            <div id="definitionH" class="definition" droppable="true" data-term="termH">Describe the behavior of several objects in a single use case</div>
+            <div id="definitionA" class="definition" droppable="true" data-term="termA">Used to assist developers during the programming and testing phases of the life cycle</div>
+            <div id="definitionC" class="definition" droppable="true" data-term="termC">Programs that can convert applications written to run under one operating system so they can run under another</div>
+
+        </div>
+        <div id="result" class="result"></div>
+        <div id="score"></div>
+        <button class="submit-btn" onclick="checkAllAnswers()" >Submit</button>
+      
+        <div id="score"></div>
+
+    </div>
+</div>
+
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification" id="notification">
+        <span class="close-btn" onclick="closeNotification()">×</span>
+        <p id="notificationText">Please <a href="{{ url_for('login') }}">log in </a>or <a href="{{ url_for('register') }}">register</a> to check answers.</p>
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+<div id="liked-topics-container" style="display: none;"></div>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+</svg></button>
+<div class="element-before-footer "></div>
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        likeButton.addEventListener('click', function () {
+            // Извлекаем значение data-topic с использованием parentNode
+            var topicButtonsContainer = likeButton.parentNode;
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            likeTopic(topicName);
+        });
+    });
+
+    // Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+    likeButtons.forEach(function (likeButton) {
+        var topicButtonsContainer = likeButton.parentNode;
+        
+        if (topicButtonsContainer) {
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+            if (likeState === 'liked') {
+                likeButton.style.display = 'none';
+                likeButton.nextElementSibling.style.display = 'block';
+            } else if (likeState === 'unliked') {
+                likeButton.style.display = 'block';
+                likeButton.nextElementSibling.style.display = 'none';
+            }
+        } else {
+            console.error('Parent element with data-topic not found.');
+        }
+    });
+});
+
+
+function likeTopic(topicName) {
+    console.log(`Liking topic: ${topicName}`);
+    sendLikeRequest(topicName, true);
+}
+
+function unlikeTopic(topicName) {
+    console.log(`Unliking topic: ${topicName}`);
+    sendLikeRequest(topicName, false);
+}
+
+function sendLikeRequest(topicName, liked) {
+    fetch(`/like_topic/${encodeURIComponent(topicName)}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${liked ? 'Like' : 'Unlike'} successful for topic: ${topicName}`);
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            updateLikeButtons(topicName, liked);
+            // Добавляем или удаляем тему из отображаемого списка лайкнутых тем
+            updateLikedTopicsContainer(topicName, liked);
+            // Сохраняем состояние лайка в localStorage
+            localStorage.setItem(`likeState_${topicName}`, liked ? 'liked' : 'unliked');
+        } else {
+            console.error(`Failed to process ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error(`Error while processing ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${error}`);
+    });
+}
+
+function updateLikeButtons(topicName, liked) {
+    // Находим элемент с нужным data-topic
+    var likeButtonsContainer = document.querySelector(`[data-topic="${topicName}"]`);
+
+    if (likeButtonsContainer) {
+        // Находим кнопки внутри контейнера
+        var likeButton = likeButtonsContainer.querySelector('.like-button');
+        var unlikeButton = likeButtonsContainer.querySelector('.unlike-button');
+
+        if (liked) {
+            likeButton.style.display = 'none';
+            unlikeButton.style.display = 'block';
+        } else {
+            likeButton.style.display = 'block';
+            unlikeButton.style.display = 'none';
+        }
+    } else {
+        console.error(`Element with data-topic "${topicName}" not found.`);
+    }
+}
+
+function updateLikedTopicsContainer(topicName, liked) {
+    var likedTopicsContainer = document.getElementById('liked-topics-container');
+    var topicElement = likedTopicsContainer.querySelector(`[data-topic="${topicName}"]`);
+
+    if (liked) {
+        if (!topicElement) {
+            topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            topicElement.setAttribute('data-topic', topicName);
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    } else {
+        if (topicElement) {
+            likedTopicsContainer.removeChild(topicElement);
+        }
+    }
+}
+
+// Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+document.addEventListener('DOMContentLoaded', function () {
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        var topicName = likeButton.closest('.like-buttons').dataset.topic;
+        var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+        if (likeState === 'liked') {
+            likeButton.style.display = 'none';
+            likeButton.nextElementSibling.style.display = 'block';
+        } else if (likeState === 'unliked') {
+            likeButton.style.display = 'block';
+            likeButton.nextElementSibling.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+var correctCount = 0;
+
+function checkAllAnswers() {
+    checkAuthenticationStatus().then(function(isAuthenticated) {
+        if (isAuthenticated) { 
+            correctCount = 0;
+            checkAnswers1();
+            checkAnswers2();
+            document.getElementById("resultContainer").innerHTML = `Correct Answers: ${correctCount}`;
+        } else {
+            // Если пользователь не аутентифицирован, покажем уведомление
+            showNotification("Please log in to check answers.");
+        }
+    });
+}
+
+
+function showNotification(message) {
+    var notificationContainer = document.getElementById("notificationContainer");
+        var notification = document.getElementById("notification");
+        var notificationText = document.getElementById("notificationText");
+        var progressBar = document.getElementById("progressBar");
+
+        notificationContainer.style.display = "block";
+
+        // Можно изменить текст уведомления по вашему усмотрению
+
+
+        // Устанавливаем время отображения уведомления в миллисекундах (в данном случае, 30 секунд)
+        var displayTime = 10000;
+
+        // Устанавливаем интервал обновления полосы прогресса
+        var interval = 100; // каждые 100 миллисекунд
+
+        var progress = 0;
+
+        // Обновляем полосу прогресса каждые interval миллисекунд
+        var progressInterval = setInterval(function() {
+            progress += (interval / displayTime) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Когда полоса прогресса достигнет 100%, закрываем уведомление
+            if (progress >= 100) {
+                closeNotification();
+                clearInterval(progressInterval); // Останавливаем интервал
+            }
+        }, interval);
+    }
+
+
+
+function closeNotification() {
+    var notificationContainer = document.getElementById("notificationContainer");
+        notificationContainer.style.display = "none";
+    }
+
+function checkAuthenticationStatus() {
+    // Отправка запроса на сервер для проверки статуса аутентификации
+    return fetch("/check-auth", {
+        method: "GET",
+        credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => data.isAuthenticated)
+    .catch(error => {
+        console.error("Error checking authentication status:", error);
+        return false;
+    });
+}
+function checkAnswers1() {
+    // Список правильных ответов
+    const correctAnswers = [
+    "automation",
+"visual",
+"point-and-click",
+"catch-all",
+"access",
+"report generator",
+"source statements",
+"syntax rules",
+"global changes",
+"stand-alone tools",
+"networking tools",
+"automate",
+"data warehouses",
+"ER modeling",
+"notational techniques",
+"Flowcharting"    
+      
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 16; i++) {
+        const selectedValue = document.getElementById(`blank${i}`).value;
+        const resultSpan = document.getElementById(`result${i}`);
+
+        if (selectedValue === correctAnswers[i - 1]) {
+            resultSpan.textContent = " ✓";
+            resultSpan.style.color = "green";
+            correctCount++;
+        } else {
+            resultSpan.textContent = " ✗";
+            resultSpan.style.color = "red";
+        }
+    }
+
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.textContent = `Number of correct answers: ${correctCount}`;
+}
+
+
+
+function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+
+            if (event.target.classList.contains("definition")) {
+                var dropTarget = event.target;
+                dropTarget.appendChild(draggedElement);
+
+                // Проверка на корректность соединения
+                if (draggedElement.dataset.term === dropTarget.dataset.term) {
+                    dropTarget.classList.add("correct");
+                    if (!dropTarget.classList.contains("counted")) {
+                        correctCount++;
+                        dropTarget.classList.add("counted");
+                    }
+                }
+            }
+        }
+
+    function checkAnswers2() {
+        var correctAnswers = document.querySelectorAll(".definition");
+        var correctCount = 0;
+
+        correctAnswers.forEach(function (answer) {
+            var termElement = answer.querySelector(".term");
+            if (termElement) {
+                if (answer.dataset.term === termElement.id) {
+                    answer.classList.add("correct");
+                    if (!answer.classList.contains("counted")) {
+                        correctCount++;
+                        answer.classList.add("counted");
+                    }
+                } else {
+                    answer.classList.add("incorrect");
+                }
+            }
+        });
+
+        document.getElementById("score").innerHTML = "Correct Answers: " + correctCount;
+    }
+
+
+
+
+  
+
+
+
+
+
+
+     function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+    
+    function toggleMenu() {
+        const menu = document.querySelector('.burger-menu');
+        menu.classList.toggle('close');
+    }
+    
+    
+    
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                const burgerMenu = document.querySelector('.burger-menu');
+                const nav = document.querySelector('nav');
+        
+                burgerMenu.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.getElementById('userIconMenu');
+        const userDropdown = document.getElementById('userDropdown');
+    
+        userIcon.addEventListener('mouseover', () => {
+            userDropdown.style.display = 'block';
+        });
+    
+        userIcon.addEventListener('mouseout', () => {
+            userDropdown.addEventListener('mouseover', () => {
+                userDropdown.style.display = 'block';
+            });
+    
+            userDropdown.addEventListener('mouseout', () => {
+                userDropdown.style.display = 'none';
+            });
+    
+            userDropdown.style.display = 'none';
+        });
+    });
+    
+    
+    
+    
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    
+        // Получаем кнопку "наверх"
+        var toTopButton = document.getElementById('toTopBtn');
+    
+        // Получаем футер
+        var footer = document.querySelector('footer');
+    
+        // Функция, которая будет проверять положение при прокрутке
+        function handleScroll() {
+            var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    
+    
+            if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+            } else {
+                toTopButton.style.bottom = '20px';
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+</script>
+</body>
+</html>

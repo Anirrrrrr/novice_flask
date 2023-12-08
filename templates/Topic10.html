@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="static\css\topic1_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<body>
+<header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span>NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a>Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Log out</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                        </div>
+                        {% endif %}
+                        <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+            </nav>
+        </div>
+</header>
+<center><h1>Automated Testing</h1></center>
+<div class="text">
+    <br>Automated testing is using a program (or program suite) that provides correct and complete input to the program being tested, runs the program, and compares the program output to what was expected. Once the automated test is written, it can be run automatically whenever desired. Automated testing plays a major role in online systems, and the increasing corporate use of the Internet means an increase in the use of automated testing.
+    <br>Obviously any kind of testing can be automated, but one of the most popular automations is load testing. Load testing is testing how a system will respond to a heavy load of activity. Load testing simulates the effect of having many users on an online system at one time and is very common with eApplications. It's also called stress testing and performance testing and is carried on throughout the life of the online system. This is why automation is so popular. A load test when a Web application is initially installed might return results that say the system works beautifully. This might not be true six months later as activity on the site increases. Load tests are run regularly so the IT staff can note the increasing traffic and respond to it before the site crashes - not after.
+    <br>Automated test suites can be purchased or written by internal staff. Some automated tests must be individually written, as the system specifics can only be thoroughly tested with exact test data and test scenarios. In-house developers or consultants will be needed to write the automated tests. Vendor-supplied test suites are also growing in use, and products such as Compuware's QACenter, Rational's TeamTest, and Segue's SilkTest are popular.
+    <br>Everyone has experienced the frustration of working with a program with errors (bugs), and we all wonder how the vendor let the product be marketed before it worked. It's nice to know that vendors and corporations alike are spending more time and money on testing.
+    <br>QA (Quality Assurance), SQA (Software Quality Assurance)
+    <br>Quality assurance is part of any product creation - including the creation of software systems. It is the development of standards, and formal monitoring to make sure that the standards are followed. These standards are used to develop products, including software systems, and are monitored to ensure that the system does what it is supposed to do. While the standards must be set in the beginning of the development life cycle, quality assurance is often considered to be part of testing as this is the most common QA activity. Complete quality assurance, however, also includes other techniques such as inspections, algorithm analysis, decision-table analysis, etc.
+    <br>An inspection is an example of alternative QA processing. It's a critical examination of software development by a formal, group review of documents created during the development process. While most often it is program code that is inspected, program specifications, data diagrams, test plans and test data, and other documents can also be inspected. This technique, and the others listed, find errors more quickly than testing does, as they can be applied earlier in the development cycle. Even so, testing is the most common QA activity.
+    <br>There are many different types of tests that are performed. Programmers do the unit testing on the programs they have written; systems testers verify systems and sub systems with system and integration tests, and users finally conduct the user, acceptance, or beta tests. Black box (or func­tional) testing makes sure the programs do what they're supposed to and white box (or structural) testing ensures the programs are technically correct. Regression testing is used to make sure new programming doesn't erroneously change part of a system that should be left alone.
+    <br>Several methodologies are used, the most popular being Six Sigma, TQM (Total Quality Management), and CMM (Capability Maturity Model). TQM appeared first, and describes a meth­odology of quality control for software development. It works with ongoing refinements of the software product and continual feedback thus improving software in small increments. It was developed by IBM in the mid-1970s, and is part of ISO 9000 compliance. CMM was introduced by SEI (Software Engineering Institute) in the mid-1980s and defines five levels of effectiveness; initial (ad hoc and chaotic), repeatable, defined, managed, optimizing (piloting new development ideas and technologies.) Six Sigma is a term used by statisticians and engi­neers to describe a state of nearly zero defects. It's used in IT to define a methodology for quality control during software development and focuses on critical core processes to understand customer requirements and align work processes. It uses analytical tools to improve these processes.
+</div>
+{% if 'email' in session %}
+<div class="bb" data-topic="Automated Testing">
+    <button class="like-button" onclick="likeTopic('Automated Testing')">&#10084; Like</button>
+    <button class="unlike-button" onclick="unlikeTopic('Automated Testing')">Unlike</button>
+</div>
+    {% endif %}
+<div class="proposal"><center> <p>If you do not know the meaning of some words you can use <a href="{{ url_for('novice') }}">our dictionary</a>.</p></center></div>
+<div class="test">
+    <p class="task"> Ex. 1. Answer the questions</p>
+    <ol>
+     <li>How can you explain the increase in the use of automated testing?</li>
+     <li>Which kind of testing is one of the most popular automations?</li>
+     <li>What are other names for load testing?  </li>
+     <li>What are two ways of getting automated test suites? </li>
+     <li>Why should load tests be run regularly?</li>
+     <li>What is the purpose of quality assurance?</li>
+     <li>What is the most common QA activity?</li>
+     <li>What is the meaning of an inspection? </li>
+     <li>What can be inspected?</li>
+         <li> Who conducts different types of testing?</li>
+             <li>What is the purpose of white box (or structural) testing?</li>
+             <li>What is regression testing used for?</li>
+             <li>What does the abbreviation TQM mean and what does this methodology describe?</li>
+             <li>What does the term Six Sigma describe?</li>
+             <li>What does the Six Sigma focus on?</li>
+             <li>What are five levels of effectiveness that CMM defi         </li>
+    </ol>
+<p class="task"> Ex 2. Fill in the blanks with one of the following words.</p>
+
+<p>
+    1. Once the automated test is written, it can be run
+    <select id="blank1">
+        <option value="" disabled selected hidden></option>
+        <option value="manually">manually</option>
+        <option value="automatically">automatically</option>
+        
+        <option value="periodically">periodically</option>
+        <option value="remotely">remotely</option>
+    </select>
+    <span id="result1"></span>whenever desired.
+</p>
+<p>
+    2.
+    <select id="blank2">
+        <option value="" disabled selected hidden></option>
+        <option value="Stress">Stress</option>
+        <option value="Performance">Performance</option>
+        <option value="Compatibility">Compatibility</option>
+        <option value="Load">Load</option>
+    </select>
+    <span id="result2"></span> testing is testing how a system will respond to a heavy load of activity.
+</p>
+<p>3. A load test when a Web application is initially
+  
+    <select id="blank3">
+        <option value="" disabled selected hidden></option>
+        <option value="deployed">deployed</option>
+        <option value="launched">launched</option>
+        <option value="installed">installed</option>
+        <option value="configured">configured</option>
+    </select>
+    <span id="result3"></span>might return results that say the system works beautifully.
+</p>
+<p>4. Load tests are run regularly so the IT staff can note the increasing 
+ 
+    <select id="blank4">
+        <option value="" disabled selected hidden></option>
+        <option value="demand">demand</option>
+        <option value="traffic">traffic</option>
+        <option value="workload">workload</option>
+        <option value="usage">usage</option>
+    </select>
+    <span id="result4"></span> and respond to it before the site crashes - not after.
+</p>
+<p>
+ 5. Automated test suites can be purchased or written by 
+    <select id="blank5">
+        <option value="" disabled selected hidden></option>
+        <option value="external vendors">external vendors</option>
+        <option value="third-party providers">third-party providers</option>
+        <option value="contracted teams">contracted teams</option>
+        <option value="internal staff">internal staff</option>
+    </select>
+    <span id="result5"></span>
+</p>
+<p>
+ 6.
+    <select id="blank6">
+        <option value="" disabled selected hidden></option>
+        <option value="Analytical">Analytical</option>
+        <option value="Exploratory">Exploratory</option>
+        <option value="Performance">Performance</option>
+        <option value="Usability">Usability</option>
+    </select>
+    <span id="result6"></span>test suites are also growing in use.
+</p>
+<p>7. Quality assurance is part of any product creation - including the creation of
+
+    <select id="blank7">
+        <option value="" disabled selected hidden></option>
+        <option value="hardware systems">hardware systems</option>
+        <option value="software systems"></option>
+        <option value="operating systems">operating systems</option>
+    </select>
+    <span id="result7"></span>.
+</p>
+<p>
+8. While the standards must be set in the beginning of the development life cycle, quality assurance is often considered to be part of testing as this is the most common QA
+    <select id="blank8">
+        <option value="" disabled selected hidden></option>
+        <option value="component">component</option>
+        <option value="activity">activity</option>
+        <option value="effort">effort</option>
+        <option value="phase">phase</option>
+    </select>
+    <span id="result8"></span>.
+</p>
+<p>
+   9. Complete quality assurance, however, also includes other techniques such as inspections, algorithm analysis, 
+    <select id="blank9">
+        <option value="" disabled selected hidden></option>
+        <option value="code review">code review</option>
+        <option value="unit testing">unit testing</option>
+        <option value="risk analysis">risk analysis</option>
+        <option value="decision-table">decision-table</option>
+    </select>
+    <span id="result9"></span> analysis, etc.
+</p>
+<p>
+   10. This technique, and the others listed, find errors more quickly than 
+    <select id="blank10">
+        <option value="" disabled selected hidden></option>
+        <option value="debugging">debugging</option>
+        <option value="testing">testing</option>
+        <option value="monitoring">monitoring</option>
+        <option value="troubleshooting">troubleshooting</option>
+    </select>
+    <span id="result10"></span> does, as they can be applied earlier in the development cycle.
+</p><p>
+ 11. 
+    <select id="blank11">
+        <option value="" disabled selected hidden></option>
+        <option value="Integration">Integration</option>
+        <option value="Unit">Unit</option>
+        <option value="Regression">Regression</option>
+        <option value="Acceptance">Acceptance</option>
+    </select>
+    <span id="result11"></span>testing is used to make sure new programming doesn't erroneously change part of a system that should be left alone.
+</p>
+<p>
+ 12. It works with 
+    <select id="blank12">
+        <option value="" disabled selected hidden></option>
+        <option value="regular">regular</option>
+        <option value="ongoing">ongoing</option>
+        <option value="continuous">continuous</option>
+        <option value="periodic">periodic</option>
+    </select>
+    <span id="result12"></span> refinements of the software product and continual feedback thus improving software in small
+    <select id="blank13">
+        <option value="" disabled selected hidden></option>
+        <option value="steps">steps</option>
+        <option value="stages">stages</option>
+        <option value="cycles">cycles</option>
+        <option value="increments">increments</option>
+    </select>
+    <span id="result13"></span>.
+</p>
+<p>
+ 13. Six Sigma is a term used by statisticians and engi¬neers to describe a state of nearly zero 
+    <select id="blank14">
+        <option value="" disabled selected hidden></option>
+        <option value="mistakes">mistakes</option>
+        <option value="defects">defects</option>
+        <option value="faults">faults</option>
+        <option value="errors">errors</option>
+    </select>
+    <span id="result14"></span>
+</p>
+<p>
+ 14.  It uses 
+    <select id="blank15">
+        <option value="" disabled selected hidden></option>
+        <option value="custom-built">custom-built</option>
+        <option value="in-house">in-house</option>
+        <option value="vendor-supplied">vendor-supplied</option>
+        <option value="proprietary">proprietary</option>
+    </select>
+    <span id="result15"></span> tools to improve these processes.
+</p>
+</div>
+<div id="resultContainer"></div>
+<div class="test2">
+    <p class="task"> Ex 3. Match the terms with their definitions</p>
+    <div class="container">
+        <center><p>Terms</p></center>
+        <div class="terms-container" id="termsContainer">
+            <div id="termA" class="term" draggable="true" ondragstart="drag(event)">Load testing</div>
+            <div id="termB" class="term" draggable="true" ondragstart="drag(event)">Quality assurance</div>
+            <div id="termC" class="term" draggable="true" ondragstart="drag(event)">Ispection</div>
+            <div id="termD" class="term" draggable="true" ondragstart="drag(event)">TQM</div>
+            <div id="termE" class="term" draggable="true" ondragstart="drag(event)">Six Sigma</div>
+            <div id="termF" class="term" draggable="true" ondragstart="drag(event)">Automated testing</div>
+            <div id="termG" class="term" draggable="true" ondragstart="drag(event)">Feedback</div>
+            <div id="termH" class="term" draggable="true" ondragstart="drag(event)">Vendor</div>
+            <div id="termI" class="term" draggable="true" ondragstart="drag(event)">Compliance</div>
+            <div id="termJ" class="term" draggable="true" ondragstart="drag(event)">Frustration</div>
+            <div id="termK" class="term" draggable="true" ondragstart="drag(event)">Increment</div>
+        </div>
+        <center><p>Definitions</p></center>
+        <div class="definitions-container" id="definitionsContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div id="definitionJ" class="definition" droppable="true" data-term="termJ">The feeling of being upset or annoyed as a result of being unable to achieve something</div>
+
+            <div id="definitionA" class="definition" droppable="true" data-term="termA">Testing how a system will respond to a heavy load of activity</div>
+            <div id="definitionK" class="definition" droppable="true" data-term="termK">a small positive or negative change in a variable quantity or function</div>  
+
+            <div id="definitionB" class="definition" droppable="true" data-term="termB">The maintenance of a desired level of quality in a service or product</div>
+            <div id="definitionK" class="definition" droppable="true" data-term="termK">a small positive or negative change in a variable quantity or function</div>  
+            <div id="definitionD" class="definition" droppable="true" data-term="termD">A methodology of quality control for software development that works with ongoing refinements of the software product and continual feedback, thus improving software in small increments</div>
+            <div id="definitionF" class="definition" droppable="true" data-term="termF">Using a program (or program suite) that provides correct and complete input to the program being tested, runs the program, and compares the program output to what was expected</div>
+            <div id="definitionH" class="definition" droppable="true" data-term="termH">A person or company offering something for sale</div>
+ 
+            <div id="definitionE" class="definition" droppable="true" data-term="termE">A methodology for quality control during software development that focuses on critical core processes to understand customer requirements and align work processes</div>
+
+            <div id="definitionG" class="definition" droppable="true" data-term="termG">Information about reactions to a product which is used as a basis for improvement</div>
+            <div id="definitionI" class="definition" droppable="true" data-term="termI">The state or fact of according with or meeting rules or standards</div>  
+
+            <div id="definitionC" class="definition" droppable="true" data-term="termC">A critical examination of software development by a formal, group review of documents created during the development process</div>
+
+        </div>
+        <div id="result" class="result"></div>
+        <div id="score"></div>
+        <button class="submit-btn" onclick="checkAllAnswers()" >Submit</button>
+      
+        <div id="score"></div>
+
+    </div>
+</div>
+
+
+
+
+<div class="notification-container" id="notificationContainer" style="display: none;">
+    <div class="notification" id="notification">
+        <span class="close-btn" onclick="closeNotification()">×</span>
+        <p id="notificationText">Please <a href="{{ url_for('login') }}">log in </a>or <a href="{{ url_for('register') }}">register</a> to check answers.</p>
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</div>
+<div id="liked-topics-container" style="display: none;"></div>
+<button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+    <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+    <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+</svg></button>
+<div class="element-before-footer "></div>
+<footer>
+    <div class="footer-column">
+        <div class="first">
+        <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+
+            <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                <br>
+                Developed by Kateryna Astafieva<br>
+                <br>
+                &copy; 2023 Novice, Inc.</p>
+                <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                    <br>
+                    Développé par Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-column">
+        <center><ul>
+            <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+            <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+            <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+            <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+        </ul></center>
+    </div>
+    <div class="footer-column">
+        <div class="contact">
+            <div>Contacts</div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+          </svg> +380 88 888 88 88<br></div>
+          <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+          </svg> kbvkdebkje@gmail.com</div>
+        </div>
+    </div>
+</footer>
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Загрузка состояния лайков при загрузке страницы
+    fetch('/get_liked_topics', {
+        method: 'GET',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            data.liked_topics.forEach(topicName => {
+                updateLikeButton(topicName, true);
+            });
+        } else {
+            console.error('Failed to get liked topics:', data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error while getting liked topics:', error);
+    });
+
+    // Назначаем обработчик события для кнопки лайка
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        likeButton.addEventListener('click', function () {
+            // Извлекаем значение data-topic с использованием parentNode
+            var topicButtonsContainer = likeButton.parentNode;
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            likeTopic(topicName);
+        });
+    });
+
+    // Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+    likeButtons.forEach(function (likeButton) {
+        var topicButtonsContainer = likeButton.parentNode;
+        
+        if (topicButtonsContainer) {
+            var topicName = topicButtonsContainer.getAttribute('data-topic');
+            var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+            if (likeState === 'liked') {
+                likeButton.style.display = 'none';
+                likeButton.nextElementSibling.style.display = 'block';
+            } else if (likeState === 'unliked') {
+                likeButton.style.display = 'block';
+                likeButton.nextElementSibling.style.display = 'none';
+            }
+        } else {
+            console.error('Parent element with data-topic not found.');
+        }
+    });
+});
+
+
+function likeTopic(topicName) {
+    console.log(`Liking topic: ${topicName}`);
+    sendLikeRequest(topicName, true);
+}
+
+function unlikeTopic(topicName) {
+    console.log(`Unliking topic: ${topicName}`);
+    sendLikeRequest(topicName, false);
+}
+
+function sendLikeRequest(topicName, liked) {
+    fetch(`/like_topic/${encodeURIComponent(topicName)}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log(`${liked ? 'Like' : 'Unlike'} successful for topic: ${topicName}`);
+            // Обновляем интерфейс с учетом текущего состояния для каждой темы
+            updateLikeButtons(topicName, liked);
+            // Добавляем или удаляем тему из отображаемого списка лайкнутых тем
+            updateLikedTopicsContainer(topicName, liked);
+            // Сохраняем состояние лайка в localStorage
+            localStorage.setItem(`likeState_${topicName}`, liked ? 'liked' : 'unliked');
+        } else {
+            console.error(`Failed to process ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error(`Error while processing ${liked ? 'like' : 'unlike'} for topic ${topicName}: ${error}`);
+    });
+}
+
+function updateLikeButtons(topicName, liked) {
+    // Находим элемент с нужным data-topic
+    var likeButtonsContainer = document.querySelector(`[data-topic="${topicName}"]`);
+
+    if (likeButtonsContainer) {
+        // Находим кнопки внутри контейнера
+        var likeButton = likeButtonsContainer.querySelector('.like-button');
+        var unlikeButton = likeButtonsContainer.querySelector('.unlike-button');
+
+        if (liked) {
+            likeButton.style.display = 'none';
+            unlikeButton.style.display = 'block';
+        } else {
+            likeButton.style.display = 'block';
+            unlikeButton.style.display = 'none';
+        }
+    } else {
+        console.error(`Element with data-topic "${topicName}" not found.`);
+    }
+}
+
+function updateLikedTopicsContainer(topicName, liked) {
+    var likedTopicsContainer = document.getElementById('liked-topics-container');
+    var topicElement = likedTopicsContainer.querySelector(`[data-topic="${topicName}"]`);
+
+    if (liked) {
+        if (!topicElement) {
+            topicElement = document.createElement('div');
+            topicElement.textContent = topicName;
+            topicElement.setAttribute('data-topic', topicName);
+            likedTopicsContainer.appendChild(topicElement);
+        }
+    } else {
+        if (topicElement) {
+            likedTopicsContainer.removeChild(topicElement);
+        }
+    }
+}
+
+// Проверяем localStorage при загрузке страницы и обновляем состояние кнопок
+document.addEventListener('DOMContentLoaded', function () {
+    var likeButtons = document.querySelectorAll('.like-button');
+
+    likeButtons.forEach(function (likeButton) {
+        var topicName = likeButton.closest('.like-buttons').dataset.topic;
+        var likeState = localStorage.getItem(`likeState_${topicName}`);
+
+        if (likeState === 'liked') {
+            likeButton.style.display = 'none';
+            likeButton.nextElementSibling.style.display = 'block';
+        } else if (likeState === 'unliked') {
+            likeButton.style.display = 'block';
+            likeButton.nextElementSibling.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+var correctCount = 0;
+
+function checkAllAnswers() {
+    checkAuthenticationStatus().then(function(isAuthenticated) {
+        if (isAuthenticated) { 
+            correctCount = 0;
+            checkAnswers1();
+            checkAnswers2();
+            document.getElementById("resultContainer").innerHTML = `Correct Answers: ${correctCount}`;
+        } else {
+            // Если пользователь не аутентифицирован, покажем уведомление
+            showNotification("Please log in to check answers.");
+        }
+    });
+}
+
+
+function showNotification(message) {
+    var notificationContainer = document.getElementById("notificationContainer");
+        var notification = document.getElementById("notification");
+        var notificationText = document.getElementById("notificationText");
+        var progressBar = document.getElementById("progressBar");
+
+        notificationContainer.style.display = "block";
+
+        // Можно изменить текст уведомления по вашему усмотрению
+
+
+        // Устанавливаем время отображения уведомления в миллисекундах (в данном случае, 30 секунд)
+        var displayTime = 10000;
+
+        // Устанавливаем интервал обновления полосы прогресса
+        var interval = 100; // каждые 100 миллисекунд
+
+        var progress = 0;
+
+        // Обновляем полосу прогресса каждые interval миллисекунд
+        var progressInterval = setInterval(function() {
+            progress += (interval / displayTime) * 100;
+            progressBar.style.width = progress + "%";
+
+            // Когда полоса прогресса достигнет 100%, закрываем уведомление
+            if (progress >= 100) {
+                closeNotification();
+                clearInterval(progressInterval); // Останавливаем интервал
+            }
+        }, interval);
+    }
+
+
+
+function closeNotification() {
+    var notificationContainer = document.getElementById("notificationContainer");
+        notificationContainer.style.display = "none";
+    }
+
+function checkAuthenticationStatus() {
+    // Отправка запроса на сервер для проверки статуса аутентификации
+    return fetch("/check-auth", {
+        method: "GET",
+        credentials: "include",
+    })
+    .then(response => response.json())
+    .then(data => data.isAuthenticated)
+    .catch(error => {
+        console.error("Error checking authentication status:", error);
+        return false;
+    });
+}
+function checkAnswers1() {
+    // Список правильных ответов
+    const correctAnswers = [
+    "automatically",
+"Load",
+"installed",
+"traffic",
+"internal staff",
+"Analytical",
+"software systems",
+"activity",
+"decision-table",
+"testing",
+"Regression",
+"ongoing",
+"increments",
+"defects",
+"vendor-supplied"  
+      
+    ];
+
+    let correctCount = 0;
+
+    for (let i = 1; i <= 15; i++) {
+        const selectedValue = document.getElementById(`blank${i}`).value;
+        const resultSpan = document.getElementById(`result${i}`);
+
+        if (selectedValue === correctAnswers[i - 1]) {
+            resultSpan.textContent = " ✓";
+            resultSpan.style.color = "green";
+            correctCount++;
+        } else {
+            resultSpan.textContent = " ✗";
+            resultSpan.style.color = "red";
+        }
+    }
+
+    const resultContainer = document.getElementById("resultContainer");
+    resultContainer.textContent = `Number of correct answers: ${correctCount}`;
+}
+
+
+
+function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+
+            if (event.target.classList.contains("definition")) {
+                var dropTarget = event.target;
+                dropTarget.appendChild(draggedElement);
+
+                // Проверка на корректность соединения
+                if (draggedElement.dataset.term === dropTarget.dataset.term) {
+                    dropTarget.classList.add("correct");
+                    if (!dropTarget.classList.contains("counted")) {
+                        correctCount++;
+                        dropTarget.classList.add("counted");
+                    }
+                }
+            }
+        }
+
+    function checkAnswers2() {
+        var correctAnswers = document.querySelectorAll(".definition");
+        var correctCount = 0;
+
+        correctAnswers.forEach(function (answer) {
+            var termElement = answer.querySelector(".term");
+            if (termElement) {
+                if (answer.dataset.term === termElement.id) {
+                    answer.classList.add("correct");
+                    if (!answer.classList.contains("counted")) {
+                        correctCount++;
+                        answer.classList.add("counted");
+                    }
+                } else {
+                    answer.classList.add("incorrect");
+                }
+            }
+        });
+
+        document.getElementById("score").innerHTML = "Correct Answers: " + correctCount;
+    }
+
+
+
+
+  
+
+
+
+
+
+
+     function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+    
+    function toggleMenu() {
+        const menu = document.querySelector('.burger-menu');
+        menu.classList.toggle('close');
+    }
+    
+    
+    
+    
+            document.addEventListener('DOMContentLoaded', function() {
+                const burgerMenu = document.querySelector('.burger-menu');
+                const nav = document.querySelector('nav');
+        
+                burgerMenu.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            });
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const userIcon = document.getElementById('userIconMenu');
+        const userDropdown = document.getElementById('userDropdown');
+    
+        userIcon.addEventListener('mouseover', () => {
+            userDropdown.style.display = 'block';
+        });
+    
+        userIcon.addEventListener('mouseout', () => {
+            userDropdown.addEventListener('mouseover', () => {
+                userDropdown.style.display = 'block';
+            });
+    
+            userDropdown.addEventListener('mouseout', () => {
+                userDropdown.style.display = 'none';
+            });
+    
+            userDropdown.style.display = 'none';
+        });
+    });
+    
+    
+    
+    
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    
+        // Получаем кнопку "наверх"
+        var toTopButton = document.getElementById('toTopBtn');
+    
+        // Получаем футер
+        var footer = document.querySelector('footer');
+    
+        // Функция, которая будет проверять положение при прокрутке
+        function handleScroll() {
+            var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    
+    
+            if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+            } else {
+                toTopButton.style.bottom = '20px';
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Topics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="static\css\topics_st.css">
+    <link rel="icon" href="static/img/logo.png">
+</head>
+<body>
+
+    <header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span>NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a>Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Log out</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                        </div>
+                        {% endif %}
+                        <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+            </nav>
+        </div>
+</header>
+
+<div class="name"><center><h1  class="lang-en">TOPICS</h1></center></div>
+<div class="name" ><center><h1 class="lang-fr"style="display: none;">Les sujets</h1></center></div>
+    <div class="all">
+        <div class="wrap">
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/1.png') }}"></div>
+                <div class="back"><span><p>Development Life Cycle <br> <a href="{{ url_for('Topic1') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/2.png') }}"></div>
+                <div class="back"><span><p>Requirements analysis <br> <a href="{{ url_for('Topic2') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/3.png') }}"></div>
+                <div class="back"><span><p>Analysis Phase<br> <a href="{{ url_for('Topic3') }}">Learn more...</a></p></span></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/4.png') }}"></div>
+                <div class="back"><span><p>The Design Phase <br> <a href="{{ url_for('Topic4') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/5.png') }}"></div>
+                <div class="back"><span><p>Modeling <br> <a href="{{ url_for('Topic5') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/6.png') }}"></div>
+                <div class="back"><span><p>Programming Phase <br> <a href="{{ url_for('Topic6') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/7.png') }}"></div>
+                <div class="back"><span><p>Languages  <br> <a href="{{ url_for('Topic7') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/8.png') }}"></div>
+                <div class="back"><span><p>Development Tools <br> <a href="{{ url_for('Topic8') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/9.png') }}"></div>
+                <div class="back"><span><p>Testing Phase<br> <a href="{{ url_for('Topic9') }}">Learn more...</a></p></span></div>
+            </div>
+            <div class="card">
+                <div class="front"><img src="{{ url_for('static', filename='img/10.png') }}"></div>
+                <div class="back"><span><p>Automated Testing<br> <a href="{{ url_for('Topic10') }}">Learn more...</a></p></span></div>
+            </div>
+        </div>
+        </div>
+
+       
+        
+        <button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+            <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+            <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+            <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+        </svg></button>
+
+<script>
+
+
+
+
+ function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Проверяем localStorage при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function () {
+        var preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(preferredLanguage);
+    });
+
+
+
+
+
+
+            function toggleMenu() {
+                const menu = document.querySelector('.burger-menu');
+                menu.classList.toggle('close');
+            }
+            
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burgerMenu = document.querySelector('.burger-menu');
+                        const nav = document.querySelector('nav');
+                
+                        burgerMenu.addEventListener('click', () => {
+                            nav.classList.toggle('active');
+                        });
+                    });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const userIcon = document.getElementById('userIconMenu');
+                const userDropdown = document.getElementById('userDropdown');
+            
+                userIcon.addEventListener('mouseover', () => {
+                    userDropdown.style.display = 'block';
+                });
+            
+                userIcon.addEventListener('mouseout', () => {
+                    userDropdown.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+            
+                    userDropdown.addEventListener('mouseout', () => {
+                        userDropdown.style.display = 'none';
+                    });
+            
+                    userDropdown.style.display = 'none';
+                });
+            });
+            
+            
+            
+            
+            function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            
+                // Получаем кнопку "наверх"
+                var toTopButton = document.getElementById('toTopBtn');
+            
+                // Получаем футер
+                var footer = document.querySelector('footer');
+            
+                // Функция, которая будет проверять положение при прокрутке
+                function handleScroll() {
+                    var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+            
+            
+                    if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+                        toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+                    } else {
+                        toTopButton.style.bottom = '20px';
+                    }
+                }
+                window.addEventListener('scroll', handleScroll);
+                </script>
+</body>
+</html>

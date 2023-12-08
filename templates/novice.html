@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NOVICE</title>
+    <link rel="stylesheet" href="static\css\novice_st.css">
+    <link rel="icon" href="static\img\logo.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4644426112126009" crossorigin="anonymous"></script>
+
+</head>
+
+
+  
+<header>
+        <div class="menu">
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span >NOVICE</span>
+            </div>
+            <nav>
+                <div class="menu-items">
+                    <ul>
+                        <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                        <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                        <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                        <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                        <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                        <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+                        <li class="additional-text">
+                            <a class="lang-en">Designed by Yelyzaveta Migulina<br>
+                            <br>
+                            Developed by Kateryna Astafieva<br>
+                            <br>
+                            &#9400;2023 Novice, Inc.
+                            </a>
+                            <a class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulina<br>
+                                <br>
+                                 Développé par Kateryna Astafieva<br>
+                                <br>
+                                &#9400;2023 Novice, Inc.
+                                </a>
+                        </li>
+                    </ul>
+                </div>
+                        {% if 'email' in session %}
+                        <div class="buttons-container">
+                            <div class="special3" id="userIconMenu">
+                                <a href="{{ url_for('profile') }}">
+                                    <div class="user-icon"><div class="user-initial">{{ session['email'][0] | upper }}</div></div>
+                                </a>
+                                <div class="user-dropdown-menu" id="userDropdown", style="display: none;">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <span>{{ session['email'] }}</span>
+                                        </div>
+                                        <div class="user-actions">
+                                            <a class="lang-en" href="{{ url_for('profile') }}">Edit profile</a>
+                                            <a class="lang-fr"style="display: none;" href="{{ url_for('profile') }}">Modifier le profil</a>
+                                            <a class="lang-en" href="{{ url_for('logout') }}">Logout</a>
+                                            <a class="lang-fr" style="display: none;"href="{{ url_for('logout') }}">Déconnexion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        {% else %}
+                        <div class="buttons-container">
+                            <div class="login-btn"><a href="{{ url_for('login') }}" class="special">Log in</a></div>
+                            <div class="signup-btn"><a href="{{ url_for('register') }}" class="special2">Sign up</a></div>
+                            
+                        </div>
+                        {% endif %}
+                            <div class="languages-container">
+                            <a class="lang_en" onclick="changeLanguage('en')">en</a>
+                            <a class="lang_fr" onclick="changeLanguage('fr')">fr</a>
+                            </div>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+</header>
+
+
+
+<div class="grid">
+   
+    <aside class="sidebar-left"></aside>
+    <main>
+      <div class="sear">
+        <h2 class="lang-en"> <center>Word search</center></h2>
+        <h2 class="lang-fr" style="display: none;"> <center>Recherche de mots</center></h2>
+        <section>
+          <form id="searchForm" >
+  
+            <input type="text" id="term" placeholder="Enter the word">
+            <button type="submit" class="knopka">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#0B445E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </button>
+          </form>
+        </section>
+        <section>
+          <h2 class="lang-en">Search Results</h2>
+          <h2 class="lang-fr" style="display: none;">Résultats de la recherche</h2>
+          <div id="searchResults" class="result"></div>
+        </section>
+      </div>
+    </main>
+  
+    <aside class="sidebar-right"></aside>
+  
+  </div>
+
+
+
+
+    <footer>
+        <div class="footer-column">
+            <div class="first">
+            <img src="static/img/logo.png" alt="Logo"> NOVICE<br>
+    
+                <div class="auth"><p class="lang-en">Designed by Yelyzaveta Migulina <br>
+                    <br>
+                    Developed by Kateryna Astafieva<br>
+                    <br>
+                    &copy; 2023 Novice, Inc.</p>
+                    <p class="lang-fr" style="display: none;">Conçu par Yelyzaveta Migulin<br>
+                        <br>
+                        Développé par Kateryna Astafieva<br>
+                        <br>
+                        &copy; 2023 Novice, Inc.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-column">
+            <center><ul>
+                <li class="lang-en"><a href="{{ url_for('home') }}">Home</a></li>
+                <li class="lang-en"><a href="{{ url_for('Topics') }}">Topics</a></li>
+                <li class="lang-en"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-en"><a href="{{ url_for('about') }}">About</a></li>
+                <li class="lang-fr"style="display: none;" ><a href="{{ url_for('home') }}">Accueil</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('Topics') }}">Les sujets</a></li>
+                <li class="lang-fr" style="display: none;"><a href="{{ url_for('blog') }}">Blog</a></li>
+                <li class="lang-fr"style="display: none;" ><a href="{{ url_for('about') }}">À propos</a></li>
+            </ul></center>
+        </div>
+        <div class="footer-column">
+            <div class="contact">
+                <div>Contacts</div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M14.1667 10.4167C13.125 10.4167 12.125 10.25 11.1917 9.94167C10.9 9.85 10.575 9.91667 10.3417 10.1417L8.50833 11.975C6.15 10.775 4.21667 8.85 3.01667 6.48333L4.85 4.64167C5.08333 4.425 5.15 4.1 5.05833 3.80833C4.75 2.875 4.58333 1.875 4.58333 0.833333C4.58333 0.375 4.20833 0 3.75 0H0.833333C0.375 0 0 0.375 0 0.833333C0 8.65833 6.34167 15 14.1667 15C14.625 15 15 14.625 15 14.1667V11.25C15 10.7917 14.625 10.4167 14.1667 10.4167ZM13.3333 7.5H15C15 3.35833 11.6417 0 7.5 0V1.66667C10.725 1.66667 13.3333 4.275 13.3333 7.5ZM10 7.5H11.6667C11.6667 5.2 9.8 3.33333 7.5 3.33333V5C8.88333 5 10 6.11667 10 7.5Z" fill="white"/>
+              </svg> +380 88 888 88 88<br></div>
+              <div><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <path d="M7.5 0C3.36 0 0 3.36 0 7.5C0 11.64 3.36 15 7.5 15H11.25V13.5H7.5C4.245 13.5 1.5 10.755 1.5 7.5C1.5 4.245 4.245 1.5 7.5 1.5C10.755 1.5 13.5 4.245 13.5 7.5V8.5725C13.5 9.165 12.9675 9.75 12.375 9.75C11.7825 9.75 11.25 9.165 11.25 8.5725V7.5C11.25 5.43 9.57 3.75 7.5 3.75C5.43 3.75 3.75 5.43 3.75 7.5C3.75 9.57 5.43 11.25 7.5 11.25C8.535 11.25 9.48 10.83 10.155 10.1475C10.6425 10.815 11.4825 11.25 12.375 11.25C13.8525 11.25 15 10.05 15 8.5725V7.5C15 3.36 11.64 0 7.5 0ZM7.5 9.75C6.255 9.75 5.25 8.745 5.25 7.5C5.25 6.255 6.255 5.25 7.5 5.25C8.745 5.25 9.75 6.255 9.75 7.5C9.75 8.745 8.745 9.75 7.5 9.75Z" fill="white"/>
+              </svg> kbvkdebkje@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+    <button onclick="topFunction()" id="toTopBtn" title="Go to top"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+        <circle cx="25" cy="25" r="25" fill="#D9D9D9" fill-opacity="0.7"/>
+        <line x1="25.4151" y1="13.9151" x2="36.9151" y2="33.8336" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+        <line x1="14.0849" y1="33.8337" x2="25.5849" y2="13.9151" stroke="#D9D9D9" stroke-width="5" stroke-linecap="round"/>
+    </svg></button>
+
+    
+    <script>
+
+
+
+const toggleSidebar2 = () => document.body.classList.toggle("open");
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    search();
+  });
+
+  function search() {
+    var termInput = document.getElementById('term');
+    var term = termInput.value.toLowerCase(); // Приводим к нижнему регистру
+    var definition = getDefinition(term);
+
+    var resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = '';
+
+    if (definition) {
+      // var h2 = document.createElement('h2');
+      // h2.textContent = 'Search results for "' + termInput.value + '":';
+      // resultsDiv.appendChild(h2);
+
+      var p = document.createElement('p');
+      p.textContent = definition;
+      resultsDiv.appendChild(p);
+    } else {
+      resultsDiv.textContent = 'Term not found in the dictionary.';
+    }
+  }
+
+  function getDefinition(searchTerm) {
+    var dictionary = {
+      'HTML': 'Hypertext Markup Language - standard markup language for creating web pages.',
+      'CSS': 'Cascading Style Sheets - style sheet language for describing the look and formatting of a document written in HTML.',
+      'Python': 'High-level programming language widely used in web development.',
+      'JavaScript': 'Programming language that provides interactivity on web pages.',
+      'Software': 'A set of instructions that tell a computer how to perform specific tasks.',
+      'Software Engineering': 'The process of developing software using a systematic approach.',
+      'Control Over': 'Management or influence over a specific process or object.',
+      'Apparent': 'Visible, obvious.',
+      'Environment': 'The surroundings in which a program or system operates.',
+      'Figure Out': 'To understand, to find a solution.',
+      'Proceed To': 'To continue, to move on to.',
+      'Develop a System': 'To create software or a complex of software and hardware.',
+      'Definition Phase': 'The stage of the software development process where the requirements for the system are defined.',
+      'Analysis Phase': 'The stage of the software development process where requirements are analyzed and the problem is defined.',
+      'Design Phase': 'The stage of the software development process where the architecture and design of the system are developed.',
+      'Sequence of Instructions': 'A set of commands executed in sequence.',
+      'System Development Life Cycle': 'The sequence of phases a system goes through from initial creation to discontinuation of use.',
+      'Breakdown of Steps': 'Division of a process into smaller steps for easier management.',
+      'Make Up': 'To compose, to form.',
+      'Overlap': 'To coincide or coincide partially.',
+      'Complete a Phase': 'Successfully finish all the tasks in a phase of development.',
+      'Cycle Back (To)': 'To return to a previous stage or step.',
+      'Encounter a Problem': 'To come across a difficulty or issue.',
+      'Refer To': 'To mention or allude to.',
+      'Implementation Phase': 'The stage of the software development process where the system is built or implemented.',
+      'Testing': 'The process of evaluating a system or application to identify defects or issues.',
+      'For Real': 'Actually, in practice.',
+      'Result In': 'To lead to or cause a particular outcome.',
+      'Requirements Analysis': 'The process of defining, documenting, and managing software or system requirements.',
+      'Encompass': 'To include or contain.',
+      'Go Into': 'To examine or discuss in detail.',
+      'Stakeholder': 'An individual or group with an interest or concern in the success of a project.',
+      'Validate': 'To confirm the accuracy or truth of something.',
+      'Critical (To)': 'Crucial or essential to the success of something.',
+      'Actionable': 'Capable of being acted upon or implemented.',
+      'Testable': 'Capable of being tested or verified.',
+      'Traceable': 'Capable of being traced or tracked.',
+      'Sufficient': 'Adequate or enough to meet a need or requirement.',
+      'Elicit Requirements From': 'To draw out or gather information about requirements from a source.',
+      'Project Definition': 'The clear and concise description of the scope, objectives, and deliverables of a project.',
+      'Consistent': 'Harmonious, regular, or steady.',
+      'Unambiguous': 'Clear and not open to multiple interpretations.',
+      'Resolve a Conflict': 'To find a solution or reach an agreement in a disagreement.',
+      'Natural-Language Documents': 'Documents written in a human language, as opposed to a formal programming language.',
+      'Use Case': 'A description of how a system will interact with a specific user or entity.',
+      'User Story': 'A brief description of a feature or functionality told from the perspective of the end user.',
+      'Process Specifications': 'Detailed instructions or documentation outlining the steps and procedures of a process.',
+      'Ensure Smth': 'To make sure that something happens or is done.',
+      'Implications': 'The possible effects or consequences of an action or decision.',
+      'Employ Techniques': 'To use specific methods or approaches.',
+      'Hold Interviews': 'To conduct discussions with individuals to gather information or assess qualifications.',
+      'Aptly': 'Appropriately or suitably.',
+      'Establish Requirements': 'To set or determine the necessary conditions or criteria.',
+      'Meet Business Needs': 'To fulfill or satisfy the requirements of a business.',
+      'Specify': 'To clearly define or state.',
+      'Hit Up Against': 'To encounter a barrier or obstacle.',
+      'Functional Requirements': 'Specifications describing the functions a system must perform.',
+      'Non-functional Requirements': 'Specifications that describe how a system should behave or perform, but not what it should do.',
+      'Deliver': 'To complete or provide a product or service.',
+      'Constraint': 'A limitation or restriction.',
+      'To Place Constraints On Smth': 'To impose limitations or restrictions on something.',
+      'Restrict': 'To limit or control.',
+      'Be Split Into': 'To divide or break into smaller parts.',
+      'Performance Constraints': 'Limitations related to the speed, response time, or capacity of a system.',
+      'Development Constraints': 'Limitations or restrictions affecting the development process.',
+      'Generic Types (of Constraints)': 'Common or general categories of limitations.',
+      'Response Time': 'The time it takes for a system to respond to a user action.',
+      'Hold a Record': 'To keep a written or documented account.',
+      'Capacity for Growth (of the System)': 'The ability of a system to expand or accommodate increased demands.',
+      'Auditing Purposes': 'For the purpose of systematic examination or review.',
+      'Initially': 'At first or in the beginning.',
+      'Solution Options': 'Various possible solutions or courses of action.',
+      'Performance Testing': 'The process of assessing the speed, responsiveness, and stability of a system.',
+      'Software Prototyping': 'The creation of a simplified model or version of a software product.',
+      'Mockup': 'A visual representation or model used to demonstrate the design or layout of a product.',
+      'Eventual (Product)': 'The final or ultimate version of a product.',
+      'Scenario': 'A sequence of actions or events in a specific context.',
+      'Convey': 'To communicate or express.',
+      'Fall Into the Field': 'To belong to or be categorized within a specific area.',
+      'Project Management': 'The discipline of planning, organizing, and managing resources to bring about the successful completion of a project.',
+      'Interact': 'To communicate or engage with.',
+      'Internal Workings': 'The internal processes or mechanisms of a system.',
+      'Implement': 'To put a plan or decision into effect.',
+      'Template': 'A pre-designed format or layout.',
+      'Role': 'A function or part played by a person or thing.',
+      'Five Ws': 'The basic questions—Who, What, When, Where, Why—used to gather information or analyze a situation.',
+      'HR Manager': 'Human Resources Manager - a professional responsible for managing the human resources of an organization.',
+      'A Screening Quiz': 'A set of questions or tests used to assess suitability or qualifications.',
+      'Recruit': 'To seek out and hire individuals for a job or position.',
+      'Browse': 'To search or look through information.',
+      'Update': 'To bring up to date or make current.',
+      'Recall': 'To remember or bring back to mind.',
+      'Backup': 'A copy of data or files kept in case the original is lost or damaged.',
+      'Backup Drive': 'A storage device used for keeping backup copies of data.',
+      'Software Requirements Specification (SRS)': 'A document that describes the features, functionalities, and constraints of a software system.',
+      'Try Out': 'To test or experiment with something.',
+      "Alpha Test": "A preliminary testing phase where a software application is assessed for basic functionality and usability by the internal development team.",
+  "Beta Test": "The second phase of testing, where a pre-released version of a software product is made available to a selected group of users to identify potential issues before the official release.",
+  "Acceptance Testing": "Evaluation of a system's compliance with specified requirements and its acceptance by end users or stakeholders.",
+  "Systems Testing": "Testing the complete integrated system to evaluate its compliance with specified requirements.",
+  "To Be Combined": "The process of merging different elements or components into a unified whole.",
+  "To Be Executed in Sequence": "The planned order in which tasks or processes are to be carried out.",
+  "Final Testing": "The last phase of testing before the release of a software product to ensure that it meets all requirements and functions as intended.",
+  "Parallel Testing": "Comparing the performance of a new system or process with the existing one to identify discrepancies.",
+  "To Run a System": "Initiating and operating a computer system or software application.",
+  "Debugging": "The process of identifying and resolving errors, defects, or bugs in a software program.",
+  "Error": "An unintended mistake or flaw in a program or system that may lead to incorrect results.",
+  "Bug": "An informal term for a defect or error in a software program that causes it to behave unexpectedly.",
+  "To Cause an Abend": "To trigger an abnormal end or termination of a program, often due to a critical error.",
+  "Bomb, or Dump": "An unexpected and severe failure or crash of a program or system.",
+  "To Encounter a Situation": "To come across or experience a particular set of circumstances or conditions.",
+  "Amount Withheld for Federal Tax": "The portion of income retained by an employer and submitted to the government to cover federal income tax obligations.",
+  "Testing Phase": "A specific stage in the software development life cycle dedicated to evaluating the performance and functionality of a system.",
+  "To Vary": "To change or fluctuate in different circumstances or situations.",
+  "To Be Incorporated Into": "The process of integrating or including something as part of a larger system or entity.",
+  "Unit Testing": "Testing individual units or components of a software application in isolation to ensure their proper functionality.",
+  "Inadvertent Bias": "Unintentional and unconscious prejudice or favoritism that may influence decision-making or testing outcomes.",
+  "Test Scenario": "A specific test case or situation designed to evaluate the performance or functionality of a system.",
+  "Black Box Testing": "Testing approach where the internal workings of a system are not known to the tester, focusing on input and output.",
+  "White Box Testing": "Testing approach that examines the internal logic and structure of a software application.",
+  "Regression Testing": "The process of retesting a software application after changes to ensure that existing functionalities are not adversely affected.",
+  "To Be Biased by Assumptions": "To be influenced or swayed by preconceived notions or beliefs.",
+  "Behavioral Testing, or Functional Testing": "Testing the functions and behaviors of a system to ensure they meet specified requirements.",
+  "Glass-Box Testing": "A testing approach that combines elements of both black box and white box testing, examining internal logic while assessing input and output.",
+  "To Be Used in Conjunction With": "To be employed or applied together with another element or process.",
+  "To Protect the Integrity of the System": "To safeguard the accuracy, consistency, and reliability of a system.",
+  "To Affect the Performance of a System": "To influence or change the functioning and efficiency of a system.",
+  "Path of a Program": "The sequence of operations or steps followed by a program during its execution.",
+  "Pre-Change Test": "Testing conducted prior to implementing changes in a system to ensure compatibility and prevent issues.",
+  "User Testing": "Evaluation of a software application by end users to assess its usability and identify potential improvements.",
+  "Real-Life Environment": "A setting that closely mimics the actual conditions or context in which a system or process will operate.",
+  "To Be Monitored": "To be observed, tracked, or supervised to ensure proper functioning or compliance with specified criteria.",
+  "Analysis Phase": "The stage in a project where requirements are gathered, studied, and documented before the implementation of a system or solution.",
+  "Manual System": "A system where tasks and processes are performed by human effort without the aid of automated tools or machinery.",
+  "Automate": "To introduce or implement processes that are performed automatically by machines, software, or other technology, reducing the need for manual intervention.",
+  "Process Data": "To handle, manipulate, or organize data in a systematic way to achieve a specific goal or outcome.",
+  "In Question": "Refers to something that is being discussed, investigated, or considered.",
+  "Analyst": "A professional who analyzes and studies a system, process, or data to provide insights, recommendations, or solutions.",
+  "Determine": "To ascertain, decide, or establish the outcome or characteristics of something through examination, investigation, or analysis.",
+  "Current System": "The existing system or process that is currently in use or operation within an organization.",
+  "Distinguish Between": "To identify and highlight the differences or distinctions between two or more things.",
+  "Communications Skills": "The ability to convey information effectively through verbal, written, or non-verbal means, essential for effective interaction in various contexts.",
+  "Keep Track Of": "To monitor, record, or maintain awareness of changes, developments, or the current status of something.",
+  "Payroll System": "A system used by businesses to process and manage employee salaries, including calculations for taxes, deductions, and other benefits.",
+  "Net Pay": "The amount an employee receives after deductions such as taxes and other withholdings have been subtracted from their gross pay.",
+  "Gross Pay": "The total earnings of an employee before deductions, including taxes and other withholdings.",
+  "Overtime Pay": "Additional compensation for hours worked beyond the regular working hours, often at a higher rate.",
+  "Tax Deduction": "An expense or allowance that can be subtracted from an individual's or business's taxable income to reduce the amount of income subject to taxation.",
+  "Show Up": "To display or appear as a result or output of a process or computation.",
+  "Tool": "A device, instrument, or software used to perform specific tasks or functions, often designed to make work more efficient or effective.",
+  "Chart": "A visual representation of data, often in the form of a graph or diagram, used to illustrate trends, patterns, or relationships.",
+  "Graph": "A visual representation of data points on a coordinate plane, used to illustrate relationships or trends.",
+  "Data Flow Diagram": "A visual representation of the flow of data within a system, illustrating processes, data stores, data flow, and external entities.",
+  "Perform Processing On ": "To apply operations or manipulations to data to achieve a specific result or outcome.",
+  "Computer Aided Software Engineering": "The use of computer-based tools and methodologies to assist in the development and maintenance of software systems.",
+  "Perform Processing On ": "To apply operations or manipulations to data to achieve a specific result or outcome.",
+  "Design Phase": "A stage in the software development life cycle where the overall structure and architecture of a system are planned and specified.",
+  "Process Design": "The creation and arrangement of processes and workflows within a system to achieve specific objectives.",
+  "Data Design": "The organization and structure of data within a system, including the definition of data entities, relationships, and attributes.",
+  "Input Data": "Data provided to a system for processing, often as part of an operation or transaction.",
+  "Validate Data": "To ensure the accuracy, completeness, and integrity of data through verification processes.",
+  "Store Data": "To save or retain data in a storage medium for future retrieval and use.",
+  "Update the Data": "To modify or change existing data to reflect new information or changes in the system.",
+  "Produce Reports": "To generate formatted and organized presentations of data or information for analysis or distribution.",
+  "Define a Field": "To specify and establish the characteristics and properties of a data field within a database or system.",
+  "Specify": "To define the size, format, or allowable values for a data element within a system.",
+  "Retrieve Data": "To access and bring back stored data from a database or storage medium.",
+  "Individual Field": "A single data element within a record or database, representing a specific attribute or piece of information.",
+  "Execute Operations": "To perform or carry out specific tasks or functions within a system.",
+  "Input Operations": "Activities or processes related to entering data or information into a system.",
+  "Output Operations": "Activities or processes related to presenting or displaying data or information from a system.",
+  "Graphic Tools": "Visual aids or instruments, often software-based, used for designing, illustrating, or presenting information graphically.",
+  "Flowchart": "A diagrammatic representation of a process, using various shapes and arrows to illustrate the flow of activities or steps.",
+  "Blueprint": "A detailed plan or design, often in the form of technical drawings, used to guide the construction or development of a system.",
+  "Bubble Chart": "A visual representation of data using bubbles or circles to convey information and relationships between elements.",
+  "Data Flow Diagram": "A graphical representation of how data moves within a system, illustrating processes, data stores, data flow, and external entities.",
+  "Program Specs": "Specifications detailing the requirements, functionality, and design of a software program.",
+  "Terminal Screen": "The display interface on a computer or terminal where users interact with a system or program.",
+  "On Staff": "Being employed or working within an organization.",
+  "Senior Programmer": "An experienced and often leadership role within a programming team, responsible for advanced coding and project oversight.",
+  "Software Engineer": "A professional who designs, develops, tests, and maintains software applications or systems.",
+  "Project Leader": "An individual responsible for overseeing and coordinating the activities of a project team to ensure successful project completion.",
+  "Team Leader": "An individual who leads and manages a group of individuals working together on a project or within an organization.",
+  "Changes to a System": "Modifications or updates made to the structure, functionality, or components of a system.",
+  "Overstress": "To subject a system or component to excessive stress or load, often beyond its intended capacity or design limits.",
+  "CASE  Tools": "Software tools that assist in the automation of various tasks in the software development process, enhancing efficiency and quality.",
+  "Modeling": "The process of creating representations or abstractions of real-world systems or concepts to understand, analyze, or simulate their behavior.",
+  "Three-Dimensional Model": "A representation of an object or space in three dimensions, often used in computer graphics, design, and simulations.",
+  "Data Model": "A visual representation illustrating the flow of data and processes within a system, helping to understand and design system architecture.",
+  "Graphical Representation": "A visual depiction or illustration of data, processes, or concepts using graphics, such as charts, diagrams, or graphs.",
+  "3D Graph": "A three-dimensional representation of data, often used to visualize complex relationships or patterns.",
+  "Entity Relationship Diagramming": "A modeling technique to represent the relationships between different entities in a system using diagrams.",
+  "Entities": "Objects, elements, or concepts within a system that are represented and manipulated in the modeling process.",
+  "Association Between Entities": "Connections or relationships between different entities in a system, indicating how they interact or relate to each other.",
+  "An ER Chart": "An Entity-Relationship chart or diagram, visually representing the relationships between entities in a system.",
+  "One-to-Many Relationship": "A relationship in a database model where one entity is associated with multiple instances of another entity.",
+  "Stick Figure": "A simple, human-like drawing composed of straight lines, often used to represent people or characters in diagrams and models.",
+  "Actor": "In the context of modeling and systems, an external entity or role that interacts with the system.",
+  "Modeler": "A person or tool that creates models, representing real-world systems or concepts in a structured and visual form.",
+  "Use Case Scenarios": "Detailed descriptions of how a system will be used, often specifying interactions between users (actors) and the system to achieve specific goals.",
+  "Application": "A computer program or software designed to perform specific tasks or functions for users.",
+  "UML ": "A standardized modeling language used in software engineering to visually represent and design software systems.",
+  "OOSE": "An approach to software development that focuses on object-oriented design principles and methodologies.",
+  "Unified Modeling Language": "A standardized modeling language used in software engineering to visually represent and design software systems.",
+  "Object-Oriented Software Engineering": "An approach to software development that focuses on object-oriented design principles and methodologies.",
+  "Executed": "To carry out or run a program, process, or set of instructions.",
+  "Program Spec": "Program Specification - A document outlining the requirements, functionality, and design details of a software program.",
+  "Processing": "The execution of operations or calculations on data to produce a desired result.",
+  "Determine": "To find out or ascertain through analysis, investigation, or examination.",
+  "Clarify Points": "To make certain aspects or details clearer or more understandable through explanation or discussion.",
+  "Broken Down": "To decompose or analyze a complex task or system into smaller, more manageable components or steps.",
+  "Simulated Data": "Artificial or synthetic data created to mimic the characteristics and behavior of real-world data for testing or modeling purposes.",
+  "Various Tools": "Different instruments or software applications used for specific tasks or purposes.",
+  "Document the Program": "To create written or electronic records detailing the specifications, structure, and functionality of a software program.",
+  "Program Generator": "A tool or software that automatically generates program code based on high-level specifications or user input.",
+  "Make Sure": "To verify or confirm the accuracy, completeness, or correctness of something.",
+  "Contain": "To hold or include within a specified boundary or space.",
+  "Diagrammatic Input": "Input represented through diagrams or visual symbols, often used in graphical user interfaces or modeling.",
+  "Report Generator": "A tool or software that automates the process of creating reports by extracting and formatting data.",
+  "Generate": "To produce or create something, such as code, data, or reports.",
+  "Formatted Report": "A structured and organized presentation of data or information, typically following a predefined layout or template.",
+  "Input Statement": "A command or instruction in a program that accepts data or information from external sources.",
+  "Incorporated": "To be included or integrated into a larger structure, system, or document.",
+  "Test Data": "Data specifically created or selected to test the functionality and performance of a program or system.",
+  "Application Development Environment": "A set of tools, libraries, and resources used by developers to create software applications.",
+  "Implementation of the Design": "The phase in software development where the designed system is built and put into operation.",
+  "Top-Down Programming": "An approach to programming where the overall structure of a program is defined first, and then detailed components are developed.",
+  "Bottom-Up Programming": "An approach to programming where individual components or functions are developed first and then integrated to form the complete program.",
+  "Pseudo-Code": "A notation resembling simplified programming code used to plan or represent the logic of an algorithm without adhering to specific programming language syntax.",
+  "Electronic Pulse": "An electric signal or wave that represents binary data in electronic systems.",
+  "Light Switch": "A device used to control the flow of electricity to a light fixture, allowing it to be turned on or off.",
+  "Bit": "The smallest unit of data in computing, representing a binary value of 0 or 1.",
+  "Assembly Language": "A low-level programming language that uses symbolic instructions and is closely tied to the architecture of a computer's CPU.",
+  "High-Level Language": "A programming language with higher abstraction, designed to be easily understood by humans, and independent of the computer's architecture.",
+  "Fourth-Generation Language, 4GL": "A programming language designed to simplify the process of software development, typically with a focus on database applications.",
+  "Problem-Oriented Language": "A programming language tailored to address specific problem domains or types of applications.",
+  "Machine-Oriented Language": "A programming language closely tied to a computer's architecture and easily translatable into machine code.",
+  "Assigned Numeric Values": "Values given to variables or constants in a program for representation or computation.",
+  "Machine Language": "The lowest-level programming language consisting of binary instructions directly executed by a computer's CPU.",
+  "Mainframe": "A large and powerful computer, typically used for data processing and centralized computing in large organizations.",
+  "Syntax Rules": "Rules that dictate the proper structure and arrangement of statements in a programming language.",
+  "Language Translator": "Software that translates code written in one programming language into another, such as a compiler or interpreter.",
+  "Source Code": "The human-readable version of a program written in a programming language before compilation or interpretation.",
+  "Low-Level Language": "A programming language that provides minimal abstraction from a computer's architecture, often closely resembling machine code.",
+  "Mnemonic Code": "Symbolic representations or codes used in assembly language to represent machine instructions.",
+  "Transferable": "Capable of being moved or transferred from one system or environment to another.",
+  "Macros": "Short sequences of code that represent a set of instructions and are expanded or executed as a single command.",
+  "Embedded System": "A specialized computing system designed for a specific purpose, often embedded within a larger device or product.",
+  "Tradeoff": "A balance between different factors or features that involves giving up one thing in exchange for another.",
+  "General-Purpose Language": "A programming language designed for a wide range of applications or tasks.",
+  "Text Strings": "A sequence of characters or symbols represented as text in computer programming.",
+  "Critical Programming": "Programming that is essential or crucial to the core functionality of a system or application.",
+  "Scripting Language": "A programming language used for scripting, often interpreted and designed for automating tasks.",
+  "Query Language": "A language used to interact with and retrieve information from databases.",
+  "Report Program": "A program designed to generate formatted reports from a database or other data source.",
+  "Query": "A request for information or data from a database.",
+  "Non-Permanent": "Not lasting or enduring indefinitely.",
+  "Visual Language": "A programming language that uses visual elements, diagrams, or graphical symbols to represent code structure and logic.",
+  "User-Friendly": "Designed to be easy to use and understand for end-users.",
+  "Nonprocedural Language": "A programming language that specifies the desired result without detailing the step-by-step procedures.",
+  "Step-by-Step Instruction": "Detailed instructions given in a specific sequence to achieve a particular result.",
+  "Query Database": "To request information or data from a database using a query.",
+  "Terminal Screen": "The display interface on a computer or terminal where users interact with a system or program.",
+  "Client Application": "A software application that runs on a user's device and interacts with a server or database.",
+  "Structured Query Language": "A standardized query language for managing and manipulating relational databases.",
+  "Application Development Environment": "A set of tools and resources used in software development to create applications.",
+  "Graphic User Interface": "A visual interface that allows users to interact with a computer or software using graphical elements.",
+  "Code Statement": "A line or block of code that performs a specific action or operation.",
+  "Development Tool": "A software tool used by developers to create, test, or debug software applications.",
+  "To Access": "To retrieve or obtain information or resources from a system or database.",
+  "Relational Database": "A database that organizes data into tables with relationships between them.",
+  "Extensible Markup Language": "A markup language that defines rules for encoding documents in a format that is both human-readable and machine-readable.",
+  "Vendor": "A company or person that sells goods or services.",
+  "Midrange Computer": "A computer system that falls between mainframes and microcomputers in terms of size, power, and capabilities.",
+  "Multi-Platform Environment": "An environment that supports and can run on multiple hardware or software platforms.",
+  "Server-Side Processing": "The execution of code or processing that occurs on the server rather than the client.",
+  "Current Version in Use": "The presently utilized edition or version of software or a system.",
+  "Numeric Designation": "A designation represented by numbers, often used to identify versions, releases, or specific configurations.",
+  "Notational Format": "A specific format or system of symbols used to represent information.",
+  "Three-Tiered Model": "A software architecture that separates functionality into three distinct layers: presentation, logic, and data storage.",
+  "Use Case": "A description of how a system or component will be used to achieve a specific goal or task.",
+  "Sequence": "The order or arrangement of events or elements in a specific sequence.",
+  "Validation": "The process of checking if a system or component meets specified requirements and behaves as intended.",
+  "Tag": "A label or marker used in markup languages to define elements and their attributes.",
+  "Document Type Definition": "A set of rules that specify the structure and the legal elements of an XML document.",
+  "Name Field": "A data field specifically designated for storing names or labels.",
+  "Chemical Markup Language": "An XML-based language for representing chemical information.",
+  "Job Board Web Site": "An online platform or website dedicated to listing job opportunities and connecting employers with job seekers.",
+  "Applicant Tracking Systems": "Software systems designed to automate and streamline the recruitment and hiring process.",
+  "Voice Markup Language": "A markup language for creating voice applications and interactive voice response systems.",
+  "Dynamically-Controlled Vocabulary": "A vocabulary or set of terms that can be modified or updated dynamically.",
+  "Enterprise Resource Planning": "Integrated software systems that manage various aspects of business operations, including planning, manufacturing, and accounting.",
+  "Web Front-End": "The user interface and functionality of a website or web application that users interact with.",
+  "Estimates State": "Predicts or approximates the current condition or situation.",
+  "To Be Poised to Become": "In a position ready or likely to develop into something else.",
+  "The Reverse is True With": "The opposite situation is accurate or applicable."
+    };
+
+    var matchingTerms = [];
+    for (var term in dictionary) {
+      var regex = new RegExp(searchTerm, 'i'); // 'i' делает регулярное выражение регистронезависимым
+      if (term.match(regex)) {
+        matchingTerms.push(term);
+      }
+    }
+
+    if (matchingTerms.length > 0) {
+      return dictionary[matchingTerms[0]];
+    } else {
+      return null;
+    }
+  }
+
+
+
+
+
+
+
+function showForm(formId, title) {
+        var forms = document.getElementsByClassName('form-container');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = 'none';
+        }
+
+        var buttons = document.querySelectorAll('.option-button');
+        buttons.forEach(function(button) {
+            button.classList.remove('selected');
+        });
+
+        // Добавляем класс "selected" к выбранной кнопке
+        event.target.classList.add('selected');
+
+        document.getElementById(formId).style.display = 'block';
+        document.getElementById('formTitle').innerHTML = title;
+    }
+    function saveFormData(formId, formData) {
+    localStorage.setItem(formId + '_data', JSON.stringify(formData));
+    editFormData(formId); // Добавьте эту строку
+}
+
+
+ function changeLanguage(lang) {
+        var langElements = document.querySelectorAll('.lang-' + lang);
+        var otherLang = (lang === 'en') ? 'fr' : 'en';
+        var otherLangElements = document.querySelectorAll('.lang-' + otherLang);
+
+        langElements.forEach(function (element) {
+            element.style.display = 'inline';
+        });
+
+        otherLangElements.forEach(function (element) {
+            element.style.display = 'none';
+        });
+
+        // Сохраняем выбранный язык в localStorage
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+
+
+
+            function toggleMenu() {
+                const menu = document.querySelector('.burger-menu');
+                menu.classList.toggle('close');
+            }
+            
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burgerMenu = document.querySelector('.burger-menu');
+                        const nav = document.querySelector('nav');
+                
+                        burgerMenu.addEventListener('click', () => {
+                            nav.classList.toggle('active');
+                        });
+                    });
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                const userIcon = document.getElementById('userIconMenu');
+                const userDropdown = document.getElementById('userDropdown');
+            
+                userIcon.addEventListener('mouseover', () => {
+                    userDropdown.style.display = 'block';
+                });
+            
+                userIcon.addEventListener('mouseout', () => {
+                    userDropdown.addEventListener('mouseover', () => {
+                        userDropdown.style.display = 'block';
+                    });
+            
+                    userDropdown.addEventListener('mouseout', () => {
+                        userDropdown.style.display = 'none';
+                    });
+            
+                    userDropdown.style.display = 'none';
+                });
+            });
+            
+
+
+
+
+
+function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+    // Получаем кнопку "наверх"
+    var toTopButton = document.getElementById('toTopBtn');
+
+    // Получаем футер
+    var footer = document.querySelector('footer');
+
+    // Функция, которая будет проверять положение при прокрутке
+    function handleScroll() {
+        var scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+
+        if ((scrollPosition + window.innerHeight) >= footer.offsetTop) {
+            toTopButton.style.bottom = (scrollPosition + window.innerHeight - footer.offsetTop) + 'px';
+        } else {
+            toTopButton.style.bottom = '20px';
+        }
+    }
+    window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+
+</html>
